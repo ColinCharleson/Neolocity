@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 	public LayerMask groundMask;
 
 
-	public float speed = 5f;
+	public float speed = 6f;
 	public float jumpForce = 1.5f;
 	public float glidePower;
 
@@ -39,6 +39,12 @@ public class PlayerController : MonoBehaviour
 			glidePower = 0.5f;
 		else
 			glidePower = 1;
+
+		//Sprint input
+		if (Input.GetKey(KeyCode.LeftShift))
+			speed = 9f;		//Sprint Speed
+		else
+			speed = 6f;		//Walk Speed
 
 		//Adjust velocity
 		body.velocity = (transform.forward * vertical) + (transform.right * horizontal) + (transform.up * body.velocity.y * glidePower);

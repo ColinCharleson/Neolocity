@@ -79,7 +79,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SunDisk: 1
-    - _SunSize: 0.129
+    - _SunSize: 0
     - _SunSizeConvergence: 5
     - _UVSec: 0
     - _ZWrite: 1
