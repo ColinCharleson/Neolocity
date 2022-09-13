@@ -14,15 +14,20 @@ public class PlayerController : MonoBehaviour
 	public float groundDistance = 0.4f;
 	public LayerMask groundMask;
 
-
 	public float speed = 6f;
 	public float jumpForce = 1.5f;
-	public float glidePower;
 
-	Rigidbody body;
+	private Gliding glideScript;
+	public bool gliding;
+	private WallRunning wallRunScript;
+	public bool onWall;
+
+	public Rigidbody body;
 	Camera cam;
 	void Start()
 	{
+		glideScript = GetComponent<Gliding>();
+		wallRunScript = GetComponent<WallRunning>();
 		body = GetComponent<Rigidbody>();
 		cam = GetComponentInChildren<Camera>();
 
@@ -34,12 +39,6 @@ public class PlayerController : MonoBehaviour
 		vertical = Input.GetAxis("Vertical") * speed;
 		horizontal = Input.GetAxis("Horizontal") * speed;
 
-		//Glide input
-		if (Input.GetKey(KeyCode.LeftControl) && !isGrounded)
-			glidePower = 0.5f;
-		else
-			glidePower = 1;
-
 		//Sprint input
 		if (Input.GetKey(KeyCode.LeftShift))
 			speed = 9f;		//Sprint Speed
@@ -47,7 +46,7 @@ public class PlayerController : MonoBehaviour
 			speed = 6f;		//Walk Speed
 
 		//Adjust velocity
-		body.velocity = (transform.forward * vertical) + (transform.right * horizontal) + (transform.up * body.velocity.y * glidePower);
+		body.velocity = (transform.forward * vertical) + (transform.right * horizontal) + (transform.up * body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed);
 		
 		//Jump input
 		if ((Input.GetAxis("Jump") > 0) && isGrounded)
@@ -68,5 +67,6 @@ public class PlayerController : MonoBehaviour
 
 		// is grounded check
 		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
 	}
 }
