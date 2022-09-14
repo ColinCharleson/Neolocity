@@ -17,7 +17,7 @@ public class WallRunning : MonoBehaviour
 	public float fallingSpeed;
 
 	private Transform orientation;
-	public PlayerController movement;
+	private PlayerController movement;
 	private Camera cam;
 	private void Start()
 	{
@@ -25,16 +25,17 @@ public class WallRunning : MonoBehaviour
 		movement = GetComponent<PlayerController>();
 		cam = GetComponentInChildren<Camera>();
 	}
-	private void Update()
+	private void FixedUpdate()
 	{
 		//Check for wall
 		wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, buildingsMask);
 		wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, buildingsMask);
 
-		if (wallLeft && !movement.gliding || wallRight && !movement.gliding)
+		if (wallLeft  || wallRight && !movement.gliding)
 		{
 			fallingSpeed = 0.1f;
 			movement.onWall = true;
+			movement.gliding = false;
 
 		}
 		else

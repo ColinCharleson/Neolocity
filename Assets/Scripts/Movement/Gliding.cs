@@ -16,7 +16,7 @@ public class Gliding : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Glide input
         if (Input.GetKey(KeyCode.LeftControl) && !movement.onWall)

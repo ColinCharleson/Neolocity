@@ -4,26 +4,34 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	// Movement and Rotation
 	float vertical;
 	float horizontal;
 	public float mouseSensitivity;
 	float xRotation;
 
+	//Ground Check
 	public bool isGrounded;
 	public Transform groundCheck;
-	public float groundDistance = 0.4f;
+	private float groundDistance = 0.4f;
 	public LayerMask groundMask;
 
-	public float speed = 6f;
-	public float jumpForce = 1.5f;
+	// Player movement stats
+	private float currentSpeed;
+	private float sprintSpeed = 9f;
+	private float walkSpeed = 6f;
+	private float jumpForce = 1.5f;
 
+	//Advanced movement variables
 	private Gliding glideScript;
 	public bool gliding;
 	private WallRunning wallRunScript;
 	public bool onWall;
 
+	//Other components
 	public Rigidbody body;
 	Camera cam;
+	public Animator tempKasa;
 	void Start()
 	{
 		glideScript = GetComponent<Gliding>();
@@ -36,21 +44,22 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		//Keyboard inputs
-		vertical = Input.GetAxis("Vertical") * speed;
-		horizontal = Input.GetAxis("Horizontal") * speed;
+		vertical = Input.GetAxis("Vertical") * currentSpeed;
+		horizontal = Input.GetAxis("Horizontal") * currentSpeed;
 
 		//Sprint input
 		if (Input.GetKey(KeyCode.LeftShift))
-			speed = 9f;		//Sprint Speed
+			currentSpeed = sprintSpeed;		//Sprint Speed
 		else
-			speed = 6f;		//Walk Speed
+			currentSpeed = walkSpeed;		//Walk Speed
 
 		//Adjust velocity
 		body.velocity = (transform.forward * vertical) + (transform.right * horizontal) + (transform.up * body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed);
 		
 		//Jump input
-		if ((Input.GetAxis("Jump") > 0) && isGrounded)
+		if ((Input.GetAxis("Jump") > 0))
 		{
+			if(isGrounded)
 			body.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
 		}
 
@@ -68,5 +77,12 @@ public class PlayerController : MonoBehaviour
 		// is grounded check
 		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+		if (Input.GetKey(KeyCode.R))
+			transform.position = new Vector3(26, 18, -1);
+
+		//temp animations
+		tempKasa.SetBool("Gliding", gliding);
+		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
+		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
 	}
 }
