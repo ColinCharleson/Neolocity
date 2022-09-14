@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 256859871}
   - component: {fileID: 256859870}
   - component: {fileID: 256859869}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Umbrella
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 377168662}
   - component: {fileID: 377168665}
   - component: {fileID: 377168664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1492,7 +1492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 625563192}
   - component: {fileID: 625563193}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CameraRotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1549,7 +1549,7 @@ GameObject:
   - component: {fileID: 652168843}
   - component: {fileID: 652168841}
   - component: {fileID: 652168842}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -7055,7 +7055,7 @@ GameObject:
   - component: {fileID: 890904058}
   - component: {fileID: 890904057}
   - component: {fileID: 890904056}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Kasa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7150,7 +7150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 938198246}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GoundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7183,7 +7183,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -7298,11 +7298,11 @@ MonoBehaviour:
     m_Bits: 8
   WhatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 5
-  sightRange: 3
-  playerInSightRange: 1
+  walkPointRange: 2
+  sightRange: 10
+  playerInSightRange: 0
 --- !u!136 &969719238
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7408,7 +7408,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2
-  m_Speed: 1
+  m_Speed: 2
   m_Acceleration: 2
   avoidancePriority: 50
   m_AngularSpeed: 2
