@@ -27,10 +27,18 @@ public class WallRunning : MonoBehaviour
 	private void FixedUpdate()
 	{
 		//Check for wall
-		wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, groundMask);
-		wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, groundMask);
+		if (!movement.isGrounded && !movement.gliding)
+		{
+			wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, groundMask);
+			wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, groundMask);
+		}
+		else
+		{
+			wallLeft = false;
+			wallRight = false;
+		}
 
-		if (wallLeft  || wallRight && !movement.gliding)
+		if (wallLeft|| wallRight)
 		{
 			fallingSpeed = 0.1f;
 			movement.onWall = true;

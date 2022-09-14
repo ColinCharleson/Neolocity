@@ -49,18 +49,18 @@ public class PlayerController : MonoBehaviour
 
 		//Sprint input
 		if (Input.GetKey(KeyCode.LeftShift))
-			currentSpeed = sprintSpeed;		//Sprint Speed
+			currentSpeed = sprintSpeed;     //Sprint Speed
 		else
-			currentSpeed = walkSpeed;		//Walk Speed
+			currentSpeed = walkSpeed;       //Walk Speed
 
 		//Adjust velocity
 		body.velocity = (transform.forward * vertical) + (transform.right * horizontal) + (transform.up * body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed);
-		
+
 		//Jump input
 		if ((Input.GetAxis("Jump") > 0))
 		{
-			if(isGrounded)
-			body.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+			if (isGrounded)
+				body.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
 		}
 
 		// Get Inputs

@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public Transform player;
 
-    public LayerMask WhatIsGround, WhatIsPlayer;
+    public LayerMask whatIsGround, whatIsPlayer;
 
 
     //enemy pathing
@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, WhatIsPlayer);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
 
         if (!playerInSightRange)
         {
@@ -70,7 +70,7 @@ public class EnemyAI : MonoBehaviour
         walkPoint = new Vector3(transform.position.x + randX, transform.position.y, transform.position.z + randZ);
 
         //Make sure enemy dosnt walk off map using raycast
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, WhatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
         }

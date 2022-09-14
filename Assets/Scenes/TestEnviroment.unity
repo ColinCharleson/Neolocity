@@ -966,6 +966,7 @@ GameObject:
   - component: {fileID: 652168843}
   - component: {fileID: 652168841}
   - component: {fileID: 652168842}
+  - component: {fileID: 652168845}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1058,9 +1059,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  buildingsMask:
-    serializedVersion: 2
-    m_Bits: 64
   wallLeft: 0
   wallRight: 0
   wallCheckDistance: 0.7
@@ -1079,6 +1077,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glidePower: 1
+--- !u!114 &652168845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652168837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d58a190a11660478d463a942d3b354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Kasa: {fileID: 625563191}
+  CanAttack: 1
+  AttackCooldown: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6502,7 +6515,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6577,21 +6589,6 @@ Transform:
   m_Father: {fileID: 625563192}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46d58a190a11660478d463a942d3b354, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Kasa: {fileID: 890904054}
-  CanAttack: 1
-  AttackCooldown: 2
 --- !u!1 &969719236
 GameObject:
   m_ObjectHideFlags: 0

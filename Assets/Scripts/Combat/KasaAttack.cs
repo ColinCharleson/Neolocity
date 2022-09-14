@@ -8,27 +8,33 @@ public class KasaAttack : MonoBehaviour
     public bool CanAttack = true;
     public float AttackCooldown = 2.0f;
 
-    void update()
+    private PlayerController movement;
+
+	private void Start()
+    {
+        movement = GetComponent<PlayerController>();
+    }
+	void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (CanAttack)
+            if (CanAttack && !movement.onWall && !movement.gliding)
             {
-                kasaAttack();
+                Attack();
             }
         }
     }
 
 
-    public void kasaAttack()
+    public void Attack()
     {
         CanAttack = false;
         Animator animation = Kasa.GetComponent<Animator>();
         animation.SetTrigger("Attack");
-        StartCoroutine(attackcooldownReset());
+        StartCoroutine(AttackCooldownReset());
     }
 
-    IEnumerator attackcooldownReset()
+    IEnumerator AttackCooldownReset()
     {
         yield return new WaitForSeconds(AttackCooldown);
         CanAttack = true;
