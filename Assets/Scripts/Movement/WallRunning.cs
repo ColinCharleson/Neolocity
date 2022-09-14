@@ -5,7 +5,6 @@ using UnityEngine;
 public class WallRunning : MonoBehaviour
 {
 	public LayerMask groundMask;
-	public LayerMask buildingsMask;
 
 	public  bool wallLeft;
 	public bool wallRight;
@@ -28,8 +27,8 @@ public class WallRunning : MonoBehaviour
 	private void FixedUpdate()
 	{
 		//Check for wall
-		wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, buildingsMask);
-		wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, buildingsMask);
+		wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, groundMask);
+		wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, groundMask);
 
 		if (wallLeft  || wallRight && !movement.gliding)
 		{
