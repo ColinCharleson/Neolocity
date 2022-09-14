@@ -1089,9 +1089,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d58a190a11660478d463a942d3b354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Kasa: {fileID: 625563191}
-  CanAttack: 1
-  AttackCooldown: 2
+  kasa: {fileID: 625563193}
+  canAttack: 1
+  attackCooldown: 0.5
+  timeSinceLastHit: 0
+  lastAttack: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6402,7 +6404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890904054}
   m_LocalRotation: {x: -0, y: -0, z: 0.0032563529, w: 0.99999475}
-  m_LocalPosition: {x: 0.46899986, y: -0.2609997, z: 0.283}
+  m_LocalPosition: {x: 0.46899986, y: -0.1299992, z: 0.199}
   m_LocalScale: {x: 0.12582372, y: 0.12582372, z: 0.95149845}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6625,12 +6627,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 969719243}
   player: {fileID: 652168839}
-  WhatIsGround:
+  whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
-  WhatIsPlayer:
+    m_Bits: 0
+  whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 2
   sightRange: 10
