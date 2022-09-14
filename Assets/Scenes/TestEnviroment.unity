@@ -6629,10 +6629,10 @@ MonoBehaviour:
   player: {fileID: 652168839}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 2
   sightRange: 10
