@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
 	private WallRunning wallRunScript;
 	public bool onWall;
 
+	//Story Missions
+	private int currentMission =1;
+	private bool isTalking;
+
 	//Other components
 	public Rigidbody body;
 	Camera cam;
@@ -43,6 +47,19 @@ public class PlayerController : MonoBehaviour
 	}
 	private void FixedUpdate()
 	{
+		if (Input.GetKey(KeyCode.R))
+			transform.position = new Vector3(26, 18, -1);
+
+		TalkToNPC();
+		if (!isTalking)
+		{
+			Movement();
+			Rotation();
+		}
+	}
+
+	void Movement()
+	{
 		//Keyboard inputs
 		vertical = Input.GetAxis("Vertical") * currentSpeed;
 		horizontal = Input.GetAxis("Horizontal") * currentSpeed;
@@ -52,29 +69,26 @@ public class PlayerController : MonoBehaviour
 			currentSpeed = sprintSpeed;     //Sprint Speed
 		else
 			currentSpeed = walkSpeed;       //Walk Speed
-
-		//Adjust velocity
+											//Adjust velocity
 		body.velocity = (transform.forward * vertical) + (transform.right * horizontal) + (transform.up * body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed);
 
 		//Jump input
-		if ((Input.GetAxis("Jump") > 0))
+		if ((Input.GetAxis("Jump") > 0) && isGrounded)
 		{
-			if (isGrounded)
-			{
-				body.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
-			}
-
-			if (onWall)
-			{
-				if(wallRunScript.wallLeft)
-					body.AddForce((transform.up* 5 + transform.right* 10)  * jumpForce, ForceMode.VelocityChange);
-
-				if (wallRunScript.wallRight)
-					body.AddForce((transform.up * 5 + -transform.right * 10) * jumpForce, ForceMode.VelocityChange);
-			}
-
+			body.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
 		}
 
+		// is grounded check
+		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+		//temp animations
+		tempKasa.SetBool("Gliding", gliding);
+		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
+		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
+	}
+
+	void Rotation()
+	{
 		// Get Inputs
 		float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
 		float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -85,16 +99,28 @@ public class PlayerController : MonoBehaviour
 		// Set Rotation
 		cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
 		this.transform.Rotate(Vector3.up * mouseX);
+	}
 
-		// is grounded check
-		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+	void TalkToNPC()
+	{
+		RaycastHit hit;
 
-		if (Input.GetKey(KeyCode.R))
-			transform.position = new Vector3(26, 18, -1);
+		if (Physics.Raycast(cam.transform.position, transform.forward, out hit, 3) && hit.collider.gameObject.CompareTag("NPC"))
+		{
+			if (Input.GetKey(KeyCode.E))
+			{
+				hit.transform.gameObject.GetComponent<MissionNPC>().GiveMission(currentMission);
+				isTalking = true;
+				body.velocity = Vector3.zero;
+			}
+		}
 
-		//temp animations
-		tempKasa.SetBool("Gliding", gliding);
-		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
-		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
+		if(isTalking)
+		{
+			if (Input.GetKey(KeyCode.Q))
+			{
+				isTalking = false;
+			}
+		}
 	}
 }
