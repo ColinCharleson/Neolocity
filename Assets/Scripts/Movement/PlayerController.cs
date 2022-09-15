@@ -60,7 +60,19 @@ public class PlayerController : MonoBehaviour
 		if ((Input.GetAxis("Jump") > 0))
 		{
 			if (isGrounded)
+			{
 				body.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+			}
+
+			if (onWall)
+			{
+				if(wallRunScript.wallLeft)
+					body.AddForce((transform.up* 5 + transform.right* 10)  * jumpForce, ForceMode.VelocityChange);
+
+				if (wallRunScript.wallRight)
+					body.AddForce((transform.up * 5 + -transform.right * 10) * jumpForce, ForceMode.VelocityChange);
+			}
+
 		}
 
 		// Get Inputs
