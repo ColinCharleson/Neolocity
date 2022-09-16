@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 	public bool onWall;
 
 	//Story Missions
-	private int currentMission =1;
+	public int lastMission = 0;
 	private bool isTalking;
 
 	//Other components
@@ -107,9 +107,9 @@ public class PlayerController : MonoBehaviour
 
 		if (Physics.Raycast(cam.transform.position, transform.forward, out hit, 3) && hit.collider.gameObject.CompareTag("NPC"))
 		{
-			if (Input.GetKey(KeyCode.E))
+			if (Input.GetKey(KeyCode.E) && !isTalking)
 			{
-				hit.transform.gameObject.GetComponent<MissionNPC>().GiveMission(currentMission);
+				hit.transform.gameObject.GetComponent<MissionNPC>().TalkToNPC(lastMission);
 				isTalking = true;
 				body.velocity = Vector3.zero;
 			}

@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Hiroto
   m_EditorClassIdentifier: 
   npcName: Hiroto
-  missionNumber: 5
+  missionNumber: 1
   notReadyMessage: I need someone more experienced to help me with my mission. Come
     back when youre ready.
   missionMessage: Go to the middle building
+  finishedMessage: Thanks for helping me with my quest
+  keepGoingMessage: What are you doing here? go to the middle building to complete
+    your mission!
+  allDoneMessage: You already did this mission go help someone else
