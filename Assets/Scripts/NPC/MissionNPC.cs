@@ -5,17 +5,25 @@ using UnityEngine.UI;
 
 public class MissionNPC : MonoBehaviour
 {
+	//Character Data
 	public GameObject player;
 	public DataNPC data;
 
+	//Mission Types
 	public GoToMissionData missionGoTo;
 	public GameObject missionEnd;
+
+	public PickUpMission missionPickUp;
+	public GameObject pickUpEnd;
+
 	public KillMissionData missionKill;
+
+	//Mission Status
 	public bool missionStarted;
 	public bool missionFinished;
 	public bool missionHandedIn;
 	
-
+	//Text Box
 	public GameObject missionBox;
 	public Text nameText;
 	public Text messageText;
@@ -85,31 +93,33 @@ public class MissionNPC : MonoBehaviour
 		{
 			missionStarted = true;
 			missionEnd = Instantiate(missionGoTo.missionEnd, missionGoTo.missionEndLocation, Quaternion.Euler(Vector3.zero));
-			
-			if (Vector3.Distance(player.transform.position, missionGoTo.missionEndLocation) < 10)
-			{
-				missionStarted = true;
-			}
 		}
-		if (missionKill != null)
-		{
 
+		if (missionPickUp != null && missionStarted == false)
+		{
+			missionStarted = true;
+			missionEnd = Instantiate(missionPickUp.missionPickUp, missionPickUp.pickUpLocation, Quaternion.Euler(Vector3.zero));
+			Instantiate(missionPickUp.pickUpItem, missionEnd.transform);
 		}
 	}
 	public void EndMission()
 	{
 		if (missionGoTo != null && missionStarted == true) //Go to mission
 		{
-			if (Vector3.Distance(player.transform.position, missionGoTo.missionEndLocation) < 10)
+			if (Vector3.Distance(player.transform.position, missionGoTo.missionEndLocation) < 5)
 			{
 				missionFinished = true;
 				Destroy(GameObject.FindGameObjectWithTag("MissionEnd"));
 			}
 		}
 
-		if (missionKill != null && missionStarted == true) // Kill Mission
+		if (missionPickUp != null && missionStarted == true) //Pick Up mission
 		{
-
+			if (Vector3.Distance(player.transform.position, missionPickUp.pickUpLocation) < 2)
+			{
+				missionFinished = true;
+				Destroy(GameObject.FindGameObjectWithTag("MissionEnd"));
+			}
 		}
 	}
 	public void DisableTextBox()

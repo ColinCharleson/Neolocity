@@ -12467,6 +12467,8 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 28a08d00eaa52de4fa92d7bde7692ce0, type: 2}
   missionGoTo: {fileID: 11400000, guid: c18fefd25a2ebbe448f6443ef65872e1, type: 2}
   missionEnd: {fileID: 0}
+  missionPickUp: {fileID: 0}
+  pickUpEnd: {fileID: 0}
   missionKill: {fileID: 0}
   missionStarted: 0
   missionFinished: 0
@@ -14900,8 +14902,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   data: {fileID: 11400000, guid: c2c4bd40f3eb6334281bfbf3d8a0d372, type: 2}
-  missionGoTo: {fileID: 11400000, guid: ec6e0279597f90945a7abc1e29f42673, type: 2}
+  missionGoTo: {fileID: 0}
   missionEnd: {fileID: 0}
+  missionPickUp: {fileID: 11400000, guid: ec6e0279597f90945a7abc1e29f42673, type: 2}
+  pickUpEnd: {fileID: 0}
   missionKill: {fileID: 0}
   missionStarted: 0
   missionFinished: 0

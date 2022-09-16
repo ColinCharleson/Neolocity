@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3546d59d82ec9664e818d9a59e694d81, type: 3}
+  m_Script: {fileID: 11500000, guid: 33e87e83204db2b4fa0be3f4ee80c223, type: 3}
   m_Name: Mission2
   m_EditorClassIdentifier: 
-  missionEnd: {fileID: 7607393467671626182, guid: 7f16cddbf6d91c446ad024362c5acfce, type: 3}
-  missionEndLocation: {x: -18, y: 0, z: 7}
+  missionPickUp: {fileID: 7607393467671626182, guid: facedec816230f547b253068dfafc465, type: 3}
+  pickUpItem: {fileID: 8379607875837278684, guid: 3deb8b7189a3d394a95d75d0779b5db5, type: 3}
+  pickUpLocation: {x: -17, y: 0, z: 7}
