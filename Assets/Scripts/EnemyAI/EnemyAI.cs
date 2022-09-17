@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    public float health = 100f;
 
     //enemy pathing
 
@@ -81,5 +82,13 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
+    public void TakeDamage(float damageTaken)
+    {
+        health -= damageTaken;
 
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -1320,10 +1320,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kasa: {fileID: 625563193}
+  isAttacking: 0
   canAttack: 1
   attackCooldown: 0.5
+  swingDamage: 10
   timeSinceLastHit: 0
   lastAttack: 0
+  weaponHitBox: {fileID: 890904056}
 --- !u!114 &652168846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6747,8 +6750,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5.796028, y: 1, z: 1.2117361}
+  m_Center: {x: -0.9074555, y: 1.0928558e-10, z: 0.10586634}
 --- !u!23 &890904057
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6959,6 +6962,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  health: 100
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 2
   sightRange: 10
@@ -7092,7 +7096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c172f4a67513e84c9d404d82f47ec78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 25
 --- !u!65 &969719245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7104,8 +7108,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.326788, y: 2, z: 1.192761}
-  m_Center: {x: 0.07594013, y: 0, z: -0.06897807}
+  m_Size: {x: 1.5848236, y: 2, z: 1.5476742}
+  m_Center: {x: 0.11433792, y: 0, z: -0.10332012}
 --- !u!1 &1051713544
 GameObject:
   m_ObjectHideFlags: 0
