@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hiroto
   m_EditorClassIdentifier: 
   npcName: Hiroto
-  missionNumber: 1
+  missionNumber: 2
   notReadyMessage: I need someone more experienced to help me with my mission. Come
     back when youre ready.
   missionMessage: Go to the middle building

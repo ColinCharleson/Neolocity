@@ -6,23 +6,34 @@ using UnityEngine.UI;
 public class MissionNPC : MonoBehaviour
 {
 	//Character Data
+	[Header("Character Data")]
 	public GameObject player;
 	public DataNPC data;
 
+	[Header ("Mission Types")]
 	//Mission Types
 	public GoToMissionData missionGoTo;
-	public GameObject missionEnd;
+	private GameObject missionEnd;
 
 	public PickUpMission missionPickUp;
-	public GameObject pickUpEnd;
+	private GameObject missionItem;
 
-	public KillMissionData missionKill;
+	public FollowMission missionFollow;
+	private GameObject missionTarget;
 
+	public HackMission missionHack;
+	private GameObject missionHackable;
+	private float hackTime;
+
+	//public KillMissionData missionKill;
+
+	[Header("Mission Status")]
 	//Mission Status
 	public bool missionStarted;
 	public bool missionFinished;
 	public bool missionHandedIn;
-	
+
+	[Header("Text Box Data")]
 	//Text Box
 	public GameObject missionBox;
 	public Text nameText;
@@ -98,8 +109,22 @@ public class MissionNPC : MonoBehaviour
 		if (missionPickUp != null && missionStarted == false)
 		{
 			missionStarted = true;
-			missionEnd = Instantiate(missionPickUp.missionPickUp, missionPickUp.pickUpLocation, Quaternion.Euler(Vector3.zero));
-			Instantiate(missionPickUp.pickUpItem, missionEnd.transform);
+			missionItem = Instantiate(missionPickUp.missionPickUp, missionPickUp.pickUpLocation, Quaternion.Euler(Vector3.zero));
+			Instantiate(missionPickUp.pickUpItem, missionItem.transform);
+		}
+
+		if (missionFollow != null && missionStarted == false)
+		{
+			missionStarted = true;
+			missionTarget = Instantiate(missionFollow.followTarget, missionFollow.startLocation, Quaternion.Euler(Vector3.zero));
+			missionTarget.GetComponent<FollowBot>().target = missionFollow.endLocation;
+		}
+		
+		if (missionHack != null && missionStarted == false)
+		{
+			missionStarted = true;
+			missionTarget = Instantiate(missionHack.hackTarget, missionHack.startLocation, Quaternion.Euler(Vector3.zero));
+			missionTarget.GetComponent<FollowBot>().target = missionHack.endLocation;
 		}
 	}
 	public void EndMission()
@@ -119,6 +144,62 @@ public class MissionNPC : MonoBehaviour
 			{
 				missionFinished = true;
 				Destroy(GameObject.FindGameObjectWithTag("MissionEnd"));
+			}
+		}
+
+		if (missionFollow != null && missionStarted == true) //Follow mission
+		{
+
+			if (Vector3.Distance(player.transform.position, missionFollow.endLocation) < 5)
+			{
+				missionFinished = true;
+			}
+
+			if (missionTarget.gameObject == null)
+			{
+				if(missionFinished == false)
+				{
+					missionStarted = false;
+				}
+			}
+			else
+			{
+				if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
+				{// go closer
+				}
+				else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
+				{// go closer
+				}
+			}
+		}
+
+		if (missionHack != null && missionStarted == true) //Hack mission
+		{
+			if (missionTarget.gameObject == null)
+			{
+				Debug.Log("End");
+				if (hackTime > missionHack.hackingTime)
+				{
+					missionFinished = true;
+				}
+				else
+				{
+					missionStarted = false;
+				}
+			}
+			else
+			{
+				if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
+				{// go closer
+				}
+				else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
+				{// go closer
+				}
+				else
+				{
+					hackTime += 1 * Time.deltaTime;
+					Debug.Log("Good");
+				}
 			}
 		}
 	}
