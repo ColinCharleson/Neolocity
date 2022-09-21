@@ -5,15 +5,18 @@ using UnityEngine;
 public class KasaAttack : MonoBehaviour
 {
     public Animator kasa;
+    public bool isAttacking = false;
     public bool canAttack = true;
     public float attackCooldown = 0.5f;
+    public float swingDamage = 10f;
 
     public float timeSinceLastHit;
     public float lastAttack;
 
     private PlayerController movement;
+    public BoxCollider weaponHitBox;
 
-	private void Start()
+    private void Start()
     {
         movement = GetComponent<PlayerController>();
     }
@@ -34,6 +37,8 @@ public class KasaAttack : MonoBehaviour
     public void Attack()
     {
         canAttack = false;
+
+        isAttacking = true;
 
         if (timeSinceLastHit > 1.3f)
 		{
@@ -66,7 +71,24 @@ public class KasaAttack : MonoBehaviour
 
     IEnumerator AttackCooldownReset()
     {
+        StartCoroutine(ResetAttack());
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
+    }
+
+    IEnumerator ResetAttack()
+    {
+
+        yield return new WaitForSeconds(0.5f);
+        isAttacking = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy" && isAttacking)
+        {
+            if (isAttacking)
+                other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
+        }
     }
 }

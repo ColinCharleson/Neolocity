@@ -1192,8 +1192,8 @@ GameObject:
   - component: {fileID: 652168838}
   - component: {fileID: 652168844}
   - component: {fileID: 652168843}
-  - component: {fileID: 652168841}
   - component: {fileID: 652168842}
+  - component: {fileID: 652168841}
   - component: {fileID: 652168845}
   - component: {fileID: 652168846}
   m_Layer: 7
@@ -1292,8 +1292,11 @@ MonoBehaviour:
   wallLeft: 0
   wallRight: 0
   wallCheckDistance: 0.7
-  jumpForce: 0
+  jumpUpForce: 10
+  jumpSideForce: 12
+  jumpKey: 32
   fallingSpeed: 0
+  rb: {fileID: 652168842}
 --- !u!114 &652168844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,10 +1323,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kasa: {fileID: 625563193}
+  isAttacking: 0
   canAttack: 1
-  attackCooldown: 0.5
+  attackCooldown: 0.1
+  swingDamage: 10
   timeSinceLastHit: 0
   lastAttack: 0
+  weaponHitBox: {fileID: 890904056}
 --- !u!114 &652168846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6747,8 +6753,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5.053889, y: 1, z: 1.0852022}
+  m_Center: {x: -0.9072423, y: 1.3865542e-10, z: 0.042600885}
 --- !u!23 &890904057
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6959,6 +6965,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  health: 100
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 2
   sightRange: 10

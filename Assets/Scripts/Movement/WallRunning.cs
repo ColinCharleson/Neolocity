@@ -9,15 +9,24 @@ public class WallRunning : MonoBehaviour
 	public  bool wallLeft;
 	public bool wallRight;
 	public float wallCheckDistance;
-	public float jumpForce = 10;
+	public float jumpUpForce = 10;
+	public float jumpSideForce = 10;
+
+	public KeyCode jumpKey = KeyCode.Space;
+
+
+
 	private RaycastHit leftWallhit;
 	private RaycastHit rightWallhit;
+
+
 
 	public float fallingSpeed;
 
 	private Transform orientation;
 	private PlayerController movement;
 	private Camera cam;
+	public Rigidbody rb;
 	private void Start()
 	{
 		orientation = GetComponent<Transform>();
@@ -31,6 +40,8 @@ public class WallRunning : MonoBehaviour
 		{
 			wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, groundMask);
 			wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, groundMask);
+
+			
 		}
 		else
 		{
@@ -44,12 +55,36 @@ public class WallRunning : MonoBehaviour
 			movement.onWall = true;
 			movement.gliding = false;
 
+
+			if (Input.GetKeyDown(jumpKey))
+			{
+				WallJump();
+
+			}
 		}
+		
+
+	
 		else
 		{
 			movement.onWall = false;
 			fallingSpeed = 1f;
 		}
+
+        
+	}
+
+	private void WallJump()
+    {
+		Vector3 wallNormal = wallRight ? rightWallhit.normal : leftWallhit.normal;
+
+		Vector3 forceToApply = transform.up * jumpUpForce + wallNormal * jumpSideForce;
+
+		//adding force
+		rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+		rb.AddForce(forceToApply, ForceMode.Impulse);
+	
+
 	}
 }
 
