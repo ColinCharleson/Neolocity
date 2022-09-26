@@ -8,7 +8,7 @@ public class KasaAttack : MonoBehaviour
     public bool isAttacking = false;
     public bool canAttack = true;
     public float attackCooldown = 0.5f;
-    public float swingDamage = 10f;
+    public float swingDamage = 1f;
 
     public float timeSinceLastHit;
     public float lastAttack;
@@ -91,4 +91,6 @@ public class KasaAttack : MonoBehaviour
                 other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
         }
     }
+
+
 }

@@ -1221,6 +1221,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  knockBackForce: 4
   gliding: 0
   onWall: 0
   lastMission: 0
@@ -1293,9 +1294,6 @@ MonoBehaviour:
   wallRight: 0
   wallCheckDistance: 0.7
   jumpForce: 10
-  jumpUpForce: 80
-  jumpSideForce: 80
-  jumpKey: 32
   fallingSpeed: 0
   rb: {fileID: 652168842}
 --- !u!114 &652168844
@@ -1327,7 +1325,7 @@ MonoBehaviour:
   isAttacking: 0
   canAttack: 1
   attackCooldown: 0.1
-  swingDamage: 10
+  swingDamage: 0
   timeSinceLastHit: 0
   lastAttack: 0
   weaponHitBox: {fileID: 890904056}
@@ -1345,6 +1343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  thePlayer: {fileID: 652168838}
 --- !u!1 &669268076
 GameObject:
   m_ObjectHideFlags: 0
@@ -6754,8 +6753,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.053889, y: 1, z: 1.0852022}
-  m_Center: {x: -0.9072423, y: 1.3865542e-10, z: 0.042600885}
+  m_Size: {x: 5.053889, y: 1, z: 1.6741408}
+  m_Center: {x: -0.90724236, y: 6.169665e-11, z: 0.33706912}
 --- !u!23 &890904057
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7112,8 +7111,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.326788, y: 2, z: 1.192761}
-  m_Center: {x: 0.07594013, y: 0, z: -0.06897807}
+  m_Size: {x: 1.5106468, y: 2, z: 1.367434}
+  m_Center: {x: 0.094944, y: 0, z: 0.002821684}
 --- !u!1 &1051713544
 GameObject:
   m_ObjectHideFlags: 0

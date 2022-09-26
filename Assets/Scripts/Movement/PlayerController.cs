@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour
 	private float walkSpeed = 6f;
 	private float jumpForce = 1.5f;
 
+	//Knock back
+	
+	public float knockBackForce = 10;
+
+	
+
+
 	//Advanced movement variables
 	private Gliding glideScript;
 	public bool gliding;
@@ -60,23 +67,27 @@ public class PlayerController : MonoBehaviour
 
 	void Movement()
 	{
-		//Keyboard inputs
-		vertical = Input.GetAxis("Vertical") * currentSpeed;
-		horizontal = Input.GetAxis("Horizontal") * currentSpeed;
 
-		//Sprint input
-		if (Input.GetKey(KeyCode.LeftShift))
-			currentSpeed = sprintSpeed;     //Sprint Speed
-		else
-			currentSpeed = walkSpeed;       //Walk Speed
-											//Adjust velocity
-		body.velocity = (transform.forward * vertical) + (transform.right * horizontal) + (transform.up * body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed);
+		
+			//Keyboard inputs
+			vertical = Input.GetAxis("Vertical") * currentSpeed;
+			horizontal = Input.GetAxis("Horizontal") * currentSpeed;
 
-		//Jump input
-		if ((Input.GetAxis("Jump") > 0) && isGrounded)
-		{
-			body.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
-		}
+			//Sprint input
+			if (Input.GetKey(KeyCode.LeftShift))
+				currentSpeed = sprintSpeed;     //Sprint Speed
+			else
+				currentSpeed = walkSpeed;       //Walk Speed
+												//Adjust velocity
+			body.velocity = (transform.forward * vertical) + (transform.right * horizontal) + (transform.up * body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed);
+
+			//Jump input
+			if ((Input.GetAxis("Jump") > 0) && isGrounded)
+			{
+				body.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+			}
+		
+
 
 		// is grounded check
 		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -99,6 +110,16 @@ public class PlayerController : MonoBehaviour
 		// Set Rotation
 		cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
 		this.transform.Rotate(Vector3.up * mouseX);
+	}
+
+
+	public void KnockBack(Vector3 direction)
+    {
+		body.AddForce((transform.up * 3), ForceMode.Impulse);
+		body.AddForce((-transform.forward * 60), ForceMode.Impulse);
+		
+
+
 	}
 
 	void TalkToNPC()
