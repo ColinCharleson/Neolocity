@@ -147,8 +147,6 @@ public class PlayerController : MonoBehaviour
 		body.AddForce((transform.up * 3), ForceMode.Impulse);
 		body.AddForce((-transform.forward * 60), ForceMode.Impulse);
 
-
-
 	}
 
 	void TalkToNPC()

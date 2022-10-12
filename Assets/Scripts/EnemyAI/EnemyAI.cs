@@ -13,6 +13,9 @@ public class EnemyAI : MonoBehaviour
 
     public float health = 100f;
 
+
+    public Animator enemyAttack;
+
     //enemy pathing
 
     public Vector3 walkPoint;
@@ -20,9 +23,15 @@ public class EnemyAI : MonoBehaviour
     public float walkPointRange;
 
     //states
-    public float sightRange;
-    public bool playerInSightRange;
+    public float sightRange, attackRange;
+    public bool playerInSightRange, playerInAttackRange;
 
+
+   
+    //Attacking
+    public float timeBetweenAttacks;
+    bool alreadyAttacked;
+    public int damage = 1;
 
     private void Awake()
     {
@@ -33,15 +42,21 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange)
+        if (!playerInSightRange && !playerInAttackRange)
         {
             Patrolling();
         }
 
-        else if (playerInSightRange)
+        else if (playerInSightRange && !playerInAttackRange)
         {
             ChasePlayer();
+        }
+
+        if (playerInAttackRange && playerInSightRange)
+        {
+            AttackPlayer();
         }
     }
 
@@ -93,5 +108,39 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void AttackPlayer()
+    {
+        
+        
 
+        transform.LookAt(player);
+
+        if (!alreadyAttacked)
+        {
+
+            enemyAttack.SetTrigger("Enemy attack");
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+
+       
+    }
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+
+            Vector3 dmgDirection = collision.transform.position - transform.position;
+            dmgDirection = dmgDirection.normalized;
+
+
+            FindObjectOfType<PlayerHealth>().DamagePlayer(damage, dmgDirection);
+        }
+    }
 }

@@ -16,6 +16,9 @@ public class KasaAttack : MonoBehaviour
     private PlayerController movement;
     public BoxCollider weaponHitBox;
 
+    public Rigidbody enemy;
+
+
     private void Start()
     {
         movement = GetComponent<PlayerController>();
@@ -29,6 +32,7 @@ public class KasaAttack : MonoBehaviour
             if (canAttack && !movement.onWall && !movement.gliding)
             {
                 Attack();
+
             }
         }
     }
@@ -54,12 +58,14 @@ public class KasaAttack : MonoBehaviour
                 kasa.SetTrigger("Attack3");
                 lastAttack = 3;
                 attackCooldown = 2.0f;
+                
             }
             if (lastAttack == 1)
             {
                 kasa.SetTrigger("Attack2");
                 lastAttack = 2;
                 attackCooldown = 0.5f;
+               
             }
 
 		}
@@ -91,6 +97,7 @@ public class KasaAttack : MonoBehaviour
                 other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
         }
     }
+
 
 
 }
