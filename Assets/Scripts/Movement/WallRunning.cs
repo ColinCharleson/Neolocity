@@ -6,10 +6,11 @@ public class WallRunning : MonoBehaviour
 {
 	public LayerMask groundMask;
 
-	public  bool wallLeft;
+	public bool wallLeft;
 	public bool wallRight;
 	public float wallCheckDistance;
 	public float jumpForce = 10;
+	public float wallRunCoolDown;
 
 	private RaycastHit leftWallhit;
 	private RaycastHit rightWallhit;
@@ -18,15 +19,20 @@ public class WallRunning : MonoBehaviour
 
 	private Transform orientation;
 	private PlayerController movement;
-	private Camera cam;
-	public Rigidbody rb;
 	private void Start()
 	{
 		orientation = GetComponent<Transform>();
 		movement = GetComponent<PlayerController>();
-		cam = GetComponentInChildren<Camera>();
 	}
-	private void FixedUpdate()
+	private void Update()
+	{
+		WallRun();
+
+		if (wallRunCoolDown > 0)
+			CoolDown();
+	}
+
+	void WallRun()
 	{
 		//Check for wall
 		if (!movement.isGrounded && !movement.gliding)
@@ -40,22 +46,26 @@ public class WallRunning : MonoBehaviour
 			wallRight = false;
 		}
 
-		if (wallLeft|| wallRight)
+		if (wallLeft || wallRight)
 		{
-			fallingSpeed = 0.1f;
-			movement.onWall = true;
-			movement.gliding = false;
-
-			
+			if (wallRunCoolDown <= 0)
+			{
+				fallingSpeed = 0.1f;
+				movement.onWall = true;
+				movement.gliding = false;
+			}
 		}
 		else
 		{
 			movement.onWall = false;
 			fallingSpeed = 1f;
+
+
 		}
 	}
-
-
-	
+	void CoolDown()
+	{
+		wallRunCoolDown -= Time.deltaTime;
+	}
 }
 

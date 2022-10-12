@@ -17,17 +17,14 @@ public class PlayerController : MonoBehaviour
 	public LayerMask groundMask;
 
 	// Player movement stats
-	private float currentSpeed;
-	private float sprintSpeed = 9f;
-	private float walkSpeed = 6f;
-	private float jumpForce = 1.5f;
+	public float speed = 7f;
+	public float jumpForce = 1.5f;
+	public float groundDrag;
+	public float airMultiplier;
+	Vector3 moveDirection;
 
 	//Knock back
-	
 	public float knockBackForce = 10;
-
-	
-
 
 	//Advanced movement variables
 	private Gliding glideScript;
@@ -52,11 +49,17 @@ public class PlayerController : MonoBehaviour
 
 		Cursor.lockState = CursorLockMode.Locked;
 	}
-	private void FixedUpdate()
+	private void Update()
 	{
+		//temp animations
+		tempKasa.SetBool("Gliding", gliding);
+		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
+		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
+
 		if (Input.GetKey(KeyCode.R))
 			transform.position = new Vector3(26, 18, -1);
 
+		SpeedControl();
 		TalkToNPC();
 		if (!isTalking)
 		{
@@ -67,35 +70,61 @@ public class PlayerController : MonoBehaviour
 
 	void Movement()
 	{
+		//Keyboard inputs
+		vertical = Input.GetAxis("Vertical") * speed; 
+		horizontal = Input.GetAxis("Horizontal") * speed;
 
-		
-			//Keyboard inputs
-			vertical = Input.GetAxis("Vertical") * currentSpeed;
-			horizontal = Input.GetAxis("Horizontal") * currentSpeed;
 
-			//Sprint input
-			if (Input.GetKey(KeyCode.LeftShift))
-				currentSpeed = sprintSpeed;     //Sprint Speed
-			else
-				currentSpeed = walkSpeed;       //Walk Speed
-												//Adjust velocity
-			body.velocity = (transform.forward * vertical) + (transform.right * horizontal) + (transform.up * body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed);
+		// calculate movement direction
+		moveDirection = this.transform.forward * vertical + this.transform.right * horizontal;
 
-			//Jump input
-			if ((Input.GetAxis("Jump") > 0) && isGrounded)
+		if (isGrounded)
+			body.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Force);
+		else 
+			body.AddForce(moveDirection.normalized * speed * 10f * airMultiplier, ForceMode.Force);
+
+		body.velocity = new Vector3(body.velocity.x, body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed, body.velocity.z);
+
+		if ((Input.GetAxis("Jump") > 0))
+		{
+			if (isGrounded)
 			{
-				body.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+				body.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 			}
-		
 
+			if (onWall)
+			{
+				wallRunScript.wallRunCoolDown = 0.5f;
+
+				if (wallRunScript.wallLeft)
+					body.AddForce((transform.up * 5 + transform.right * 8) * jumpForce, ForceMode.Impulse);
+
+				if (wallRunScript.wallRight)
+					body.AddForce((transform.up * 5 + -transform.right * 8) * jumpForce, ForceMode.Impulse);
+			} 
+		}
+
+		// handle drag
+		if (isGrounded)
+		{
+			body.drag = groundDrag;
+		}
+		else
+			body.drag = 0;
 
 		// is grounded check
 		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+	}
+	private void SpeedControl()
+	{
+		Vector3 flatVel = new Vector3(body.velocity.x, 0f, body.velocity.z);
 
-		//temp animations
-		tempKasa.SetBool("Gliding", gliding);
-		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
-		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
+		// limit velocity if needed
+		if (flatVel.magnitude > speed)
+		{
+			Vector3 limitedVel = flatVel.normalized * speed;
+			body.velocity = new Vector3(limitedVel.x, body.velocity.y, limitedVel.z);
+		}
 	}
 
 	void Rotation()
@@ -114,10 +143,10 @@ public class PlayerController : MonoBehaviour
 
 
 	public void KnockBack(Vector3 direction)
-    {
+	{
 		body.AddForce((transform.up * 3), ForceMode.Impulse);
 		body.AddForce((-transform.forward * 60), ForceMode.Impulse);
-		
+
 
 
 	}
@@ -136,7 +165,7 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
-		if(isTalking)
+		if (isTalking)
 		{
 			if (Input.GetKey(KeyCode.Q))
 			{
