@@ -71,8 +71,8 @@ public class PlayerController : MonoBehaviour
 	void Movement()
 	{
 		//Keyboard inputs
-		vertical = Input.GetAxis("Vertical") * speed; 
-		horizontal = Input.GetAxis("Horizontal") * speed;
+		vertical = Input.GetAxisRaw("Vertical") * speed; 
+		horizontal = Input.GetAxisRaw("Horizontal") * speed;
 
 
 		// calculate movement direction
