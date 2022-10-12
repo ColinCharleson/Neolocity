@@ -94,6 +94,8 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
+
+        transform.LookAt(player);
         agent.SetDestination(player.position);
     }
 
@@ -118,7 +120,7 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
 
-            enemyAttack.SetTrigger("Enemy attack");
+            enemyAttack.SetTrigger("Attacking");
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -135,6 +137,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            enemyAttack.SetTrigger("Attacking");
 
             Vector3 dmgDirection = collision.transform.position - transform.position;
             dmgDirection = dmgDirection.normalized;
