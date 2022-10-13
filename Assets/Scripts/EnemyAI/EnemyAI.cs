@@ -27,7 +27,10 @@ public class EnemyAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
 
-   
+    //Rigid Body
+
+    public Rigidbody enemy;
+
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -102,8 +105,9 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(float damageTaken)
     {
         health -= damageTaken;
+        KockBack();
 
-    
+
         if (health <= 0)
         {
             Destroy(this.gameObject);
@@ -133,7 +137,7 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    /*private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -145,5 +149,11 @@ public class EnemyAI : MonoBehaviour
 
             FindObjectOfType<PlayerHealth>().DamagePlayer(damage, dmgDirection);
         }
+    }*/
+
+    private void KockBack()
+    {
+        enemy.AddForce((transform.up * 3), ForceMode.Impulse);
+        enemy.AddForce((-transform.forward * 60), ForceMode.Impulse);
     }
 }
