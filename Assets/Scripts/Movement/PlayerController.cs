@@ -75,6 +75,17 @@ public class PlayerController : MonoBehaviour
 			if (isGrounded)
 			{
 				transform.LookAt(enemy);
+
+
+				float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+				float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+				xRotation -= mouseY;
+				xRotation = Mathf.Clamp(xRotation, 0f, 0f);
+
+				// Set Rotation
+				cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+				this.transform.Rotate(Vector3.up * mouseX);
 			}
 		}
 
