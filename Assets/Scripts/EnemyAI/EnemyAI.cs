@@ -137,7 +137,7 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    /*private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -149,7 +149,7 @@ public class EnemyAI : MonoBehaviour
 
             FindObjectOfType<PlayerHealth>().DamagePlayer(damage, dmgDirection);
         }
-    }*/
+    }
 
     private void KockBack()
     {

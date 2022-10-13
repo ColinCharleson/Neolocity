@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
 	//Other components
 	public Rigidbody body;
+	public Transform enemy;
 	Camera cam;
 	public Animator tempKasa;
 	void Start()
@@ -59,7 +60,15 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey(KeyCode.R))
 			transform.position = new Vector3(26, 18, -1);
 
-		SpeedControl();
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
+			if (isGrounded)
+			{
+				transform.LookAt(enemy);
+			}
+		}
+
+			SpeedControl();
 		TalkToNPC();
 		if (!isTalking)
 		{
@@ -127,6 +136,9 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+
+
+
 	void Rotation()
 	{
 		// Get Inputs
@@ -148,6 +160,16 @@ public class PlayerController : MonoBehaviour
 		body.AddForce((-transform.forward * 60), ForceMode.Impulse);
 
 	}
+
+	private void LockOn()
+    {
+
+		if (isGrounded)
+		{
+			transform.LookAt(enemy);
+		}
+		
+    }
 
 	void TalkToNPC()
 	{
