@@ -26,6 +26,11 @@ public class PlayerController : MonoBehaviour
 	//Knock back
 	public float knockBackForce = 10;
 
+	//Lock On
+	public float sightRange;
+	public bool enemyInSightRange;
+	public LayerMask whatIsEnemy;
+
 	//Advanced movement variables
 	private Gliding glideScript;
 	public bool gliding;
@@ -43,6 +48,8 @@ public class PlayerController : MonoBehaviour
 	public Animator tempKasa;
 	void Start()
 	{
+		
+
 		glideScript = GetComponent<Gliding>();
 		wallRunScript = GetComponent<WallRunning>();
 		body = GetComponent<Rigidbody>();
@@ -52,6 +59,9 @@ public class PlayerController : MonoBehaviour
 	}
 	private void Update()
 	{
+
+		enemyInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsEnemy);
+
 		//temp animations
 		tempKasa.SetBool("Gliding", gliding);
 		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
@@ -60,7 +70,7 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey(KeyCode.R))
 			transform.position = new Vector3(26, 18, -1);
 
-		if (Input.GetKey(KeyCode.LeftShift))
+		if (enemyInSightRange && Input.GetKey(KeyCode.LeftShift))
 		{
 			if (isGrounded)
 			{
@@ -137,8 +147,6 @@ public class PlayerController : MonoBehaviour
 	}
 
 
-
-
 	void Rotation()
 	{
 		// Get Inputs
@@ -161,15 +169,6 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-	private void LockOn()
-    {
-
-		if (isGrounded)
-		{
-			transform.LookAt(enemy);
-		}
-		
-    }
 
 	void TalkToNPC()
 	{

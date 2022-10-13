@@ -1211,6 +1211,11 @@ MonoBehaviour:
   groundDrag: 5
   airMultiplier: 0.5
   knockBackForce: 4
+  sightRange: 10
+  enemyInSightRange: 0
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 64
   gliding: 0
   onWall: 0
   lastMission: 0
@@ -15095,6 +15100,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2321900514500720913, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2321900515168116833, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -15142,6 +15151,10 @@ PrefabInstance:
     - target: {fileID: 2321900515168116844, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321900515168116844, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2321900515168116845, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
       propertyPath: player
