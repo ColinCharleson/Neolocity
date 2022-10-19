@@ -70,25 +70,6 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey(KeyCode.R))
 			transform.position = new Vector3(26, 18, -1);
 
-		if (enemyInSightRange && Input.GetKey(KeyCode.LeftShift))
-		{
-			if (isGrounded)
-			{
-				transform.LookAt(enemy);
-
-
-				float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-				float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-				xRotation -= mouseY;
-				xRotation = Mathf.Clamp(xRotation, 0f, 0f);
-
-				// Set Rotation
-				cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-				this.transform.Rotate(Vector3.up * mouseX);
-			}
-		}
-
 			SpeedControl();
 		TalkToNPC();
 		if (!isTalking)
