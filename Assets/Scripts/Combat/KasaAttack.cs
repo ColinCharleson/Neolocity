@@ -14,10 +14,6 @@ public class KasaAttack : MonoBehaviour
     public float lastAttack;
 
     private PlayerController movement;
-    public BoxCollider weaponHitBox;
-
- 
-
 
     private void Start()
     {
@@ -93,11 +89,9 @@ public class KasaAttack : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy" && isAttacking)
         {
-          
+            if (isAttacking)
                 other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
         }
     }
-
-
 
 }
