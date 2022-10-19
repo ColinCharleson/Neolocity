@@ -1317,14 +1317,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kasa: {fileID: 625563193}
-  isAttacking: 0
+  isAttacking: 1
   canAttack: 1
   attackCooldown: 0.1
   swingDamage: 1
   timeSinceLastHit: 0
   lastAttack: 0
   weaponHitBox: {fileID: 890904059}
-  enemy: {fileID: 969719242}
 --- !u!114 &652168846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6730,7 +6729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890904054}
   m_LocalRotation: {x: -0, y: -0, z: 0.0032563529, w: 0.99999475}
-  m_LocalPosition: {x: 0.46899986, y: -0.1299992, z: 0.199}
+  m_LocalPosition: {x: 0.46899986, y: -0.1299992, z: -0.34}
   m_LocalScale: {x: 0.12582372, y: 0.12582372, z: 0.95149845}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6920,11 +6919,6 @@ Transform:
 --- !u!4 &969719241 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2321900515168116833, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
-  m_PrefabInstance: {fileID: 2321900514518293928}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &969719242 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 2321900515168116834, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
   m_PrefabInstance: {fileID: 2321900514518293928}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1051713544
