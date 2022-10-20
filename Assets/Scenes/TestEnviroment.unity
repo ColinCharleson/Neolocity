@@ -15178,6 +15178,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2321900515168116845, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321900515168116845, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 652168839}
