@@ -33,9 +33,9 @@ public class PlayerController : MonoBehaviour
 
 	//Advanced movement variables
 	private Gliding glideScript;
-	public bool gliding;
+	public bool gliding = false;
 	private WallRunning wallRunScript;
-	public bool onWall;
+	public bool onWall = false;
 
 	//Story Missions
 	public int lastMission = 0;

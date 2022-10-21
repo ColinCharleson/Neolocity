@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mai
   m_EditorClassIdentifier: 
   npcName: Mai
-  missionNumber: 1
+  missionNumber: 3
   notReadyMessage: Get better then u may return
   missionMessage: Hack the robot patrolling the street. The hacking software takes
     10 seconds

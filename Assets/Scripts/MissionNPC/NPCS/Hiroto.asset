@@ -16,7 +16,8 @@ MonoBehaviour:
   missionNumber: 2
   notReadyMessage: I need someone more experienced to help me with my mission. Come
     back when youre ready.
-  missionMessage: Go to the middle building
+  missionMessage: I need you to go to the center building to see if there are any
+    enemies patroling the area!
   finishedMessage: Thanks for helping me with my quest
   keepGoingMessage: What are you doing here? go to the middle building to complete
     your mission!
