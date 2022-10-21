@@ -1317,11 +1317,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kasa: {fileID: 625563193}
-  isAttacking: 1
+  isAttacking: 0
   canAttack: 1
   attackCooldown: 0.1
   swingDamage: 1
-  timeSinceLastHit: 0
+  timeSinceLastHit: 2
   lastAttack: 0
 --- !u!114 &652168846
 MonoBehaviour:

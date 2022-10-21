@@ -45,7 +45,6 @@ public class KasaAttack : MonoBehaviour
             kasa.SetTrigger("Attack");
             lastAttack = 1;
             attackCooldown = 0.5f;
-            
         }
         else
 		{
@@ -54,16 +53,13 @@ public class KasaAttack : MonoBehaviour
                 kasa.SetTrigger("Attack3");
                 lastAttack = 3;
                 attackCooldown = 2.0f;
-                
             }
             if (lastAttack == 1)
             {
                 kasa.SetTrigger("Attack2");
                 lastAttack = 2;
                 attackCooldown = 0.5f;
-               
             }
-
 		}
 
         timeSinceLastHit = 0;
