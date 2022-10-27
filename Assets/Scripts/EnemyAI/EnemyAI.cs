@@ -16,6 +16,8 @@ public class EnemyAI : MonoBehaviour
 
     public Animator enemyAttack;
 
+    public KasaAttack kasaAttack;
+
     //enemy pathing
 
     public Vector3 walkPoint;

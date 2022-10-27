@@ -43,12 +43,13 @@ public class KasaAttack : MonoBehaviour
             if(!movement.gliding)
             {
                 Block();
-              
+                canAttack = false;
             }
         }
         else
         {
             isBlocking = false;
+            canAttack = true;
         }
     }
 
@@ -113,6 +114,5 @@ public class KasaAttack : MonoBehaviour
     {
         canBlock = false;
         isBlocking = true;
-        canAttack = false;    
     }
 }
