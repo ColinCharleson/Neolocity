@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class KasaAttack : MonoBehaviour
 {
+
+    //Combat
     public Animator kasa;
     public bool isAttacking = false;
     public bool canAttack = true;
     public float attackCooldown = 0.5f;
     public float swingDamage = 1f;
-
     public float timeSinceLastHit;
     public float lastAttack;
+
+    //Blocking
+    public bool canBlock = true;
+    public bool isBlocking = false;
+    public int blockHealth = 3;
 
     private PlayerController movement;
 
@@ -22,14 +28,27 @@ public class KasaAttack : MonoBehaviour
 	void Update()
     {
         timeSinceLastHit += Time.deltaTime;
+        kasa.SetBool("Blocking", isBlocking);
 
         if (Input.GetMouseButtonDown(0))
         {
             if (canAttack && !movement.onWall && !movement.gliding)
             {
                 Attack();
-
             }
+        }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            if(!movement.gliding)
+            {
+                Block();
+              
+            }
+        }
+        else
+        {
+            isBlocking = false;
         }
     }
 
@@ -90,4 +109,10 @@ public class KasaAttack : MonoBehaviour
         }
     }
 
+    public void Block()
+    {
+        canBlock = false;
+        isBlocking = true;
+        canAttack = false;    
+    }
 }

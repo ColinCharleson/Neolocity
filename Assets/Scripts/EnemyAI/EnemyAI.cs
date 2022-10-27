@@ -105,7 +105,7 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(float damageTaken)
     {
         health -= damageTaken;
-        KockBack();
+        KnockBack();
 
 
         if (health <= 0)
@@ -123,7 +123,6 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-
             enemyAttack.SetTrigger("Attacking");
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -151,7 +150,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void KockBack()
+    private void KnockBack()
     {
         enemy.AddForce((transform.up * 3), ForceMode.Impulse);
         enemy.AddForce((-transform.forward * 60), ForceMode.Impulse);
