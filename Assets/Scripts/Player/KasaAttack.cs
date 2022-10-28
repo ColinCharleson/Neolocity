@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class KasaAttack : MonoBehaviour
 {
+    //Combat
     public Animator kasa;
     public bool isAttacking = false;
     public bool canAttack = true;
     public float attackCooldown = 0.5f;
     public float swingDamage = 1f;
-
     public float timeSinceLastHit;
     public float lastAttack;
+
+
+    //Blocking
+    public bool canBlock = true;
+    public bool isBlocking = false;
+    public int blockHealth = 3;
 
     private PlayerController movement;
 
@@ -19,9 +25,10 @@ public class KasaAttack : MonoBehaviour
     {
         movement = GetComponent<PlayerController>();
     }
-	void Update()
+    void Update()
     {
         timeSinceLastHit += Time.deltaTime;
+        kasa.SetBool("Blocking", isBlocking);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -31,6 +38,15 @@ public class KasaAttack : MonoBehaviour
             }
         }
 
+        if (Input.GetKey(KeyCode.Mouse1) && !movement.gliding)
+        { 
+                Block();
+        }
+        else
+        {
+            isBlocking = false;
+            canAttack = true;
+        }
     }
 
 
@@ -41,15 +57,15 @@ public class KasaAttack : MonoBehaviour
         isAttacking = true;
 
         if (timeSinceLastHit > 1.3f)
-		{
+        {
             kasa.SetTrigger("Attack");
             lastAttack = 1;
             attackCooldown = 0.5f;
         }
         else
-		{
-            if(lastAttack == 2)
-			{
+        {
+            if (lastAttack == 2)
+            {
                 kasa.SetTrigger("Attack3");
                 lastAttack = 3;
                 attackCooldown = 2.0f;
@@ -60,7 +76,7 @@ public class KasaAttack : MonoBehaviour
                 lastAttack = 2;
                 attackCooldown = 0.5f;
             }
-		}
+        }
 
         timeSinceLastHit = 0;
 
@@ -90,4 +106,10 @@ public class KasaAttack : MonoBehaviour
         }
     }
 
+    public void Block()
+    {
+        canBlock = false;
+        isBlocking = true;
+        canAttack = false;
+    }
 }
