@@ -28,24 +28,9 @@ public class KasaAttack : MonoBehaviour
             if (canAttack && !movement.onWall && !movement.gliding)
             {
                 Attack();
+            }
+        }
 
-<<<<<<< HEAD
-        if(Input.GetMouseButtonDown(1))
-        {
-            if(!movement.gliding)
-            {
-                Block();
-              
-            }
-        }
-        else
-        {
-            isBlocking = false;
-        }
-=======
-            }
-        }
->>>>>>> parent of 70d3d87 (shielding base(dosnt do anything rn))
     }
 
 
@@ -105,13 +90,4 @@ public class KasaAttack : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-    public void Block()
-    {
-        canBlock = false;
-        isBlocking = true;
-        canAttack = false;    
-    }
-=======
->>>>>>> parent of 70d3d87 (shielding base(dosnt do anything rn))
 }
