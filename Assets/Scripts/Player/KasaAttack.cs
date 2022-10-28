@@ -35,13 +35,12 @@ public class KasaAttack : MonoBehaviour
             if(!movement.gliding)
             {
                 Block();
-                canAttack = false;
+              
             }
         }
         else
         {
             isBlocking = false;
-            canAttack = true;
         }
 =======
             }
@@ -111,6 +110,7 @@ public class KasaAttack : MonoBehaviour
     {
         canBlock = false;
         isBlocking = true;
+        canAttack = false;    
     }
 =======
 >>>>>>> parent of 70d3d87 (shielding base(dosnt do anything rn))
