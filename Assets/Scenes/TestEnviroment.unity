@@ -1323,6 +1323,9 @@ MonoBehaviour:
   swingDamage: 1
   timeSinceLastHit: 2
   lastAttack: 0
+  canBlock: 1
+  isBlocking: 0
+  blockHealth: 3
 --- !u!114 &652168846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15185,6 +15188,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 652168839}
+    - target: {fileID: 2321900515168116845, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
+      propertyPath: playerRB
+      value: 
+      objectReference: {fileID: 652168842}
+    - target: {fileID: 2321900515168116845, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
+      propertyPath: kasaAttack
+      value: 
+      objectReference: {fileID: 652168845}
+    - target: {fileID: 2321900515168116845, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 652168838}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}

@@ -18,6 +18,7 @@ public class KasaAttack : MonoBehaviour
     public bool canBlock = true;
     public bool isBlocking = false;
     public int blockHealth = 3;
+    public float timeSinceBlockBroke;
 
     private PlayerController movement;
 
@@ -28,6 +29,7 @@ public class KasaAttack : MonoBehaviour
     void Update()
     {
         timeSinceLastHit += Time.deltaTime;
+        timeSinceBlockBroke += Time.deltaTime;
         kasa.SetBool("Blocking", isBlocking);
 
         if (Input.GetMouseButtonDown(0))
@@ -41,9 +43,11 @@ public class KasaAttack : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1) && !movement.gliding)
         { 
                 Block();
+            canAttack = false;
         }
         else
         {
+            canBlock = true;
             isBlocking = false;
             canAttack = true;
         }
@@ -99,17 +103,26 @@ public class KasaAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && isAttacking)
+        if(other.gameObject.tag == "Enemy" && isAttacking)
         {
-            if (isAttacking)
+            if(isAttacking)
                 other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
         }
     }
-
-    public void Block()
+   public void Block()
     {
         canBlock = false;
         isBlocking = true;
-        canAttack = false;
+
+        if(blockHealth == 0)
+        {
+            isBlocking = false;
+
+           if(timeSinceBlockBroke > 2f)
+           {
+                blockHealth += 3;
+           }
+        }
+        timeSinceBlockBroke = 0;
     }
 }

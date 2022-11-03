@@ -13,8 +13,11 @@ public class EnemyAI : MonoBehaviour
 
     public float health = 100f;
 
-
     public Animator enemyAttack;
+
+    //Block
+    public KasaAttack kasaAttack;
+    public PlayerController playerController;
 
     //enemy pathing
 
@@ -25,7 +28,6 @@ public class EnemyAI : MonoBehaviour
     //states
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-
 
     //Rigid Body
 
@@ -139,15 +141,18 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && !kasaAttack.isBlocking)
         {
             enemyAttack.SetTrigger("Attacking");
 
             Vector3 dmgDirection = collision.transform.position - transform.position;
             dmgDirection = dmgDirection.normalized;
 
-
             FindObjectOfType<PlayerHealth>().DamagePlayer(damage, dmgDirection);
+        }
+        if(collision.gameObject.tag == "Player" && kasaAttack.isBlocking)
+        {
+            kasaAttack.blockHealth -= 1; 
         }
     }
 

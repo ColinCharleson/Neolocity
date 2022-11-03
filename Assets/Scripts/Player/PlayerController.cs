@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
 	public float airMultiplier;
 	Vector3 moveDirection;
 
+	// Shiled
+
+
 	//Knock back
 	public float knockBackForce = 10;
 
