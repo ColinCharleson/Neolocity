@@ -1328,6 +1328,7 @@ MonoBehaviour:
   isBlocking: 0
   blockHealth: 3
   timeSinceBlockBroke: 0
+  blockingSpeed: 0
 --- !u!114 &652168846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15181,6 +15182,10 @@ PrefabInstance:
     - target: {fileID: 2321900515168116844, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321900515168116845, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
+      propertyPath: damage
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2321900515168116845, guid: 1ea5744a6de6c4743aaf4acf94d7caac, type: 3}
       propertyPath: health

@@ -14,7 +14,6 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
 
         thePlayer = FindObjectOfType<PlayerController>();
-
     }
 
     public void DamagePlayer(int damage, Vector3 direction)
@@ -22,5 +21,10 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
 
         thePlayer.KnockBack(direction);
+        if(health == 0)
+        {
+            this.transform.position = new Vector3(26, 18, -1);
+            health += 100;
+        }
     }
 }

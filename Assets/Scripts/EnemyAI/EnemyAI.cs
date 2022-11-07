@@ -36,7 +36,7 @@ public class EnemyAI : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public int damage = 1;
+    public int damage = 50;
 
     private void Awake()
     {
