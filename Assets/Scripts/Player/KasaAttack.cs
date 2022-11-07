@@ -19,6 +19,7 @@ public class KasaAttack : MonoBehaviour
     public bool isBlocking = false;
     public int blockHealth = 3;
     public float timeSinceBlockBroke;
+    public float blockingSpeed;
 
     private PlayerController movement;
 
@@ -113,6 +114,7 @@ public class KasaAttack : MonoBehaviour
     {
         canBlock = false;
         isBlocking = true;
+        blockingSpeed = 0.3f;
 
         if(blockHealth == 0)
         {

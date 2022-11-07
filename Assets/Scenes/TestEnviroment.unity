@@ -1210,6 +1210,7 @@ MonoBehaviour:
   jumpForce: 0.5
   groundDrag: 5
   airMultiplier: 0.5
+  kasaAttack: {fileID: 652168845}
   knockBackForce: 4
   sightRange: 10
   enemyInSightRange: 0
@@ -1326,6 +1327,7 @@ MonoBehaviour:
   canBlock: 1
   isBlocking: 0
   blockHealth: 3
+  timeSinceBlockBroke: 0
 --- !u!114 &652168846
 MonoBehaviour:
   m_ObjectHideFlags: 0

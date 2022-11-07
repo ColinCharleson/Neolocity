@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 	Vector3 moveDirection;
 
 	// Shiled
-
+	public KasaAttack kasaAttack;
 
 	//Knock back
 	public float knockBackForce = 10;
@@ -99,6 +99,10 @@ public class PlayerController : MonoBehaviour
 
 		body.velocity = new Vector3(body.velocity.x, body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed, body.velocity.z);
 
+		if(kasaAttack.isBlocking)
+        {
+			body.velocity = new Vector3(body.velocity.x * kasaAttack.blockingSpeed, body.velocity.y , body.velocity.z * kasaAttack.blockingSpeed);
+		}
 		if ((Input.GetAxis("Jump") > 0))
 		{
 			if (isGrounded)
