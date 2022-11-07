@@ -152,7 +152,8 @@ public class EnemyAI : MonoBehaviour
         }
         if(collision.gameObject.tag == "Player" && kasaAttack.isBlocking)
         {
-            kasaAttack.blockHealth -= 1; 
+            kasaAttack.blockHealth -= 1;
+            KnockBack();
         }
     }
 
