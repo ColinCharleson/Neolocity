@@ -61,9 +61,12 @@ public class MissionNPC : MonoBehaviour
 				missionBox.SetActive(true);
 				nameText.text = data.name;
 				messageText.text = data.finishedMessage;
+
 				MissionManager.instance.lastMission += 1;
 				MissionManager.instance.missionActive = false;
 				MissionManager.instance.currentMission = 0;
+				MissionManager.instance.currentObjective = null;
+
 				missionHandedIn = true;
 				missionStarted = false;
 			}
@@ -109,6 +112,7 @@ public class MissionNPC : MonoBehaviour
 		{
 			missionStarted = true;
 			missionEnd = Instantiate(missionGoTo.missionEnd, missionGoTo.missionEndLocation, Quaternion.Euler(Vector3.zero));
+			MissionManager.instance.currentObjective = missionEnd.transform;
 		}
 
 		if (missionPickUp != null && missionStarted == false)
@@ -116,6 +120,7 @@ public class MissionNPC : MonoBehaviour
 			missionStarted = true;
 			missionItem = Instantiate(missionPickUp.missionPickUp, missionPickUp.pickUpLocation, Quaternion.Euler(Vector3.zero));
 			Instantiate(missionPickUp.pickUpItem, missionItem.transform);
+			MissionManager.instance.currentObjective = missionItem.transform;
 		}
 
 		if (missionFollow != null && missionStarted == false)
@@ -123,6 +128,7 @@ public class MissionNPC : MonoBehaviour
 			missionStarted = true;
 			missionTarget = Instantiate(missionFollow.followTarget, missionFollow.startLocation, Quaternion.Euler(Vector3.zero));
 			missionTarget.GetComponent<FollowBot>().target = missionFollow.endLocation;
+			MissionManager.instance.currentObjective = missionTarget.transform;
 		}
 		
 		if (missionHack != null && missionStarted == false)
@@ -130,6 +136,7 @@ public class MissionNPC : MonoBehaviour
 			missionStarted = true;
 			missionTarget = Instantiate(missionHack.hackTarget, missionHack.startLocation, Quaternion.Euler(Vector3.zero));
 			missionTarget.GetComponent<FollowBot>().target = missionHack.endLocation;
+			MissionManager.instance.currentObjective = missionTarget.transform;
 		}
 	}
 	public void EndMission()
@@ -139,6 +146,7 @@ public class MissionNPC : MonoBehaviour
 			if (Vector3.Distance(player.transform.position, missionGoTo.missionEndLocation) < 5)
 			{
 				missionFinished = true;
+				MissionManager.instance.currentObjective = this.transform;
 				Destroy(GameObject.FindGameObjectWithTag("MissionEnd"));
 			}
 		}
@@ -148,6 +156,7 @@ public class MissionNPC : MonoBehaviour
 			if (Vector3.Distance(player.transform.position, missionPickUp.pickUpLocation) < 2)
 			{
 				missionFinished = true;
+				MissionManager.instance.currentObjective = this.transform;
 				Destroy(GameObject.FindGameObjectWithTag("MissionEnd"));
 			}
 		}
@@ -158,6 +167,7 @@ public class MissionNPC : MonoBehaviour
 			if (Vector3.Distance(player.transform.position, missionFollow.endLocation) < 5)
 			{
 				missionFinished = true;
+				MissionManager.instance.currentObjective = this.transform;
 			}
 
 			if (missionTarget.gameObject == null)
@@ -182,10 +192,10 @@ public class MissionNPC : MonoBehaviour
 		{
 			if (missionTarget.gameObject == null)
 			{
-				Debug.Log("End");
 				if (hackTime > missionHack.hackingTime)
 				{
 					missionFinished = true;
+					MissionManager.instance.currentObjective = this.transform;
 				}
 				else
 				{
@@ -203,7 +213,6 @@ public class MissionNPC : MonoBehaviour
 				else
 				{
 					hackTime += 1 * Time.deltaTime;
-					Debug.Log("Good");
 				}
 			}
 		}

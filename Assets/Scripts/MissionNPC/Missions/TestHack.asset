@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TestHack
   m_EditorClassIdentifier: 
   hackTarget: {fileID: 8485682886019510644, guid: d458e7b72227476448d80e671ff372ef, type: 3}
-  startLocation: {x: -42, y: 1, z: -5}
-  endLocation: {x: 34, y: 1, z: -24}
+  startLocation: {x: -40, y: 1, z: 5}
+  endLocation: {x: 32, y: 1, z: -32}
   hackingTime: 10

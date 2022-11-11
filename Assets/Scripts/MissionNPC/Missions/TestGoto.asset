@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: TestGoto
   m_EditorClassIdentifier: 
   missionEnd: {fileID: 7607393467671626182, guid: 7f16cddbf6d91c446ad024362c5acfce, type: 3}
-  missionEndLocation: {x: 5, y: 16, z: 0}
-  missionStarted: 0
-  missionFinished: 0
+  missionEndLocation: {x: -5, y: 0, z: -15}

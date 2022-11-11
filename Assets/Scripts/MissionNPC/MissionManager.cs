@@ -11,11 +11,30 @@ public class MissionManager : MonoBehaviour
     public bool missionActive;
     public int currentMission;
 
+    public Transform currentObjective;
+
     private void Awake()
     {
         if (!instance)
         {
             instance = this;
+        }
+    }
+	private void Update()
+	{
+        var objects = GameObject.FindGameObjectsWithTag("NPC");
+        var objectCount = objects.Length;
+
+        if (missionActive == false)
+		{
+            foreach (var obj in objects)
+            {
+                if(obj.GetComponent<MissionNPC>().data.missionNumber == lastMission + 1)
+				{
+                    currentObjective = obj.transform;
+				}
+            }
+
         }
     }
 }
