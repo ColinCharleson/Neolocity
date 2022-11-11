@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -11,9 +12,14 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public float health = 100f;
+    public float health;
+    public float maxHealth;
 
     public Animator enemyAttack;
+
+    //UI
+    public Slider slider;
+    public GameObject healthBarUi;
 
     //Block
     public KasaAttack kasaAttack;
@@ -42,6 +48,7 @@ public class EnemyAI : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        health = maxHealth;
     }
 
     private void Update()
@@ -104,23 +111,35 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
+
+
     public void TakeDamage(float damageTaken)
     {
         health -= damageTaken;
         KnockBack();
+        slider.value = HealthUi();
 
-
+        if (health < maxHealth)
+        {
+            healthBarUi.SetActive(true);
+        }
+        if (health >= maxHealth)
+        {
+            healthBarUi.SetActive(false);
+        }
         if (health <= 0)
         {
             Destroy(this.gameObject);
         }
     }
 
+    float HealthUi()
+    {
+        return health / maxHealth;
+    }
     private void AttackPlayer()
     {
-        
-        
-
+       
         transform.LookAt(player);
 
         if (!alreadyAttacked)

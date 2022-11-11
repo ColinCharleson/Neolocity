@@ -13,7 +13,6 @@ public class KasaAttack : MonoBehaviour
 	public float timeSinceLastHit;
 	public float lastAttack;
 
-
 	//Blocking
 	public bool canBlock = true;
 	public bool isBlocking = false;
@@ -72,7 +71,6 @@ public class KasaAttack : MonoBehaviour
 			canAttack = false;
 			isAttacking = true;
 			timeSinceLastHit = 0;
-
 		}
 		else
 		{
@@ -84,7 +82,6 @@ public class KasaAttack : MonoBehaviour
 				canAttack = false;
 				isAttacking = true;
 				timeSinceLastHit = 0;
-
 			}
 			if (lastAttack == 1)
 			{
@@ -94,7 +91,6 @@ public class KasaAttack : MonoBehaviour
 				canAttack = false;
 				isAttacking = true;
 				timeSinceLastHit = 0;
-
 			}
 		}
 
@@ -119,7 +115,6 @@ public class KasaAttack : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Enemy" && isAttacking)
 		{
-			if (isAttacking)
 				other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
 		}
 	}

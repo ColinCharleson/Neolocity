@@ -15,7 +15,5 @@ public class Compass : MonoBehaviour
 
 		if (Objective)
 			WaypointImage.uvRect = new Rect(angle / 360, 0, 1, 1);
-
-		Debug.Log(angle);
 	}
 }
