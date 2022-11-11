@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour
 	public bool onWall = false;
 
 	//Story Missions
-	public int lastMission = 0;
 	private bool isTalking;
 
 	//Other components
@@ -51,8 +50,6 @@ public class PlayerController : MonoBehaviour
 	public Animator tempKasa;
 	void Start()
 	{
-		
-
 		glideScript = GetComponent<Gliding>();
 		wallRunScript = GetComponent<WallRunning>();
 		body = GetComponent<Rigidbody>();
@@ -175,7 +172,7 @@ public class PlayerController : MonoBehaviour
 		{
 			if (Input.GetKey(KeyCode.E) && !isTalking)
 			{
-				hit.transform.gameObject.GetComponent<MissionNPC>().TalkToNPC(lastMission);
+				hit.transform.gameObject.GetComponent<MissionNPC>().TalkToNPC(MissionManager.instance.lastMission);
 				isTalking = true;
 				body.velocity = Vector3.zero;
 			}

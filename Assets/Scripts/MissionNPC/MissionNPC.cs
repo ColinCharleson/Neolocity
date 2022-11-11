@@ -61,7 +61,9 @@ public class MissionNPC : MonoBehaviour
 				missionBox.SetActive(true);
 				nameText.text = data.name;
 				messageText.text = data.finishedMessage;
-				player.GetComponent<PlayerController>().lastMission += 1;
+				MissionManager.instance.lastMission += 1;
+				MissionManager.instance.missionActive = false;
+				MissionManager.instance.currentMission = 0;
 				missionHandedIn = true;
 				missionStarted = false;
 			}
@@ -100,6 +102,9 @@ public class MissionNPC : MonoBehaviour
 
 	public void StartMission()
 	{
+		MissionManager.instance.missionActive = true;
+		MissionManager.instance.currentMission = MissionManager.instance.lastMission + 1;
+
 		if (missionGoTo != null && missionStarted == false)
 		{
 			missionStarted = true;
