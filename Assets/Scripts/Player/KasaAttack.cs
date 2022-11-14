@@ -13,6 +13,8 @@ public class KasaAttack : MonoBehaviour
 	public float timeSinceLastHit;
 	public float lastAttack;
 
+	public Material shieldMat;
+
 	//Blocking
 	public bool canBlock = true;
 	public bool isBlocking = false;
@@ -124,7 +126,30 @@ public class KasaAttack : MonoBehaviour
 		isBlocking = true;
 		blockingSpeed = 0.3f;
 
-		if (blockHealth == 0)
+
+		if (blockHealth == 3)
+		{
+			shieldMat.color = Color.magenta;
+			Color color = shieldMat.color;
+			color.a = 0.8f;
+			shieldMat.color = color;
+
+		}
+		else if (blockHealth == 2)
+        {
+			shieldMat.color = Color.yellow;
+			Color color = shieldMat.color;
+			color.a = 0.8f;
+			shieldMat.color = color;
+		}
+		else if (blockHealth == 1)
+		{
+			shieldMat.color = Color.red;
+			Color color = shieldMat.color;
+			color.a = 0.8f;
+			shieldMat.color = color;
+		}
+		else if (blockHealth == 0)
 		{
 			isBlocking = false;
 
