@@ -1,5 +1,4 @@
-using UnityEngine;
-
+using UnityEngine; 
 [CreateAssetMenu(fileName = "Hack Mission", menuName = "Mission/Hack Mission")]
 public class HackMission : ScriptableObject
 {
@@ -9,5 +8,4 @@ public class HackMission : ScriptableObject
 	public Vector3 endLocation;
 
 	public float hackingTime;
-
 }

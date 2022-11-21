@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MissionNPC : MonoBehaviour
 {
+	public Text missionProgressDisplay;
 	//Character Data
 	[Header("Character Data")]
 	public GameObject player;
@@ -22,7 +23,6 @@ public class MissionNPC : MonoBehaviour
 	private GameObject missionTarget;
 
 	public HackMission missionHack;
-	private GameObject missionHackable;
 	private float hackTime;
 
 	//public KillMissionData missionKill;
@@ -42,6 +42,7 @@ public class MissionNPC : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		missionProgressDisplay.enabled = false;
 		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
@@ -134,6 +135,7 @@ public class MissionNPC : MonoBehaviour
 		if (missionHack != null && missionStarted == false)
 		{
 			missionStarted = true;
+			missionProgressDisplay.enabled = true;
 			missionTarget = Instantiate(missionHack.hackTarget, missionHack.startLocation, Quaternion.Euler(Vector3.zero));
 			missionTarget.GetComponent<FollowBot>().target = missionHack.endLocation;
 			MissionManager.instance.currentObjective = missionTarget.transform;
@@ -195,6 +197,7 @@ public class MissionNPC : MonoBehaviour
 				if (hackTime > missionHack.hackingTime)
 				{
 					missionFinished = true;
+					missionProgressDisplay.enabled = false;
 					MissionManager.instance.currentObjective = this.transform;
 				}
 				else
@@ -204,15 +207,30 @@ public class MissionNPC : MonoBehaviour
 			}
 			else
 			{
-				if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
-				{// go closer
-				}
-				else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
-				{// go closer
+				if (100f > ((hackTime / missionHack.hackingTime) * 100))
+				{
+					if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
+					{
+						missionProgressDisplay.color = Color.red;
+						missionProgressDisplay.text = "SIGNAL WEAK: Get Closer";
+					}
+					else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
+					{
+						missionProgressDisplay.color = Color.red;
+						missionProgressDisplay.text = "SIGNAL WEAK: Too Close";
+					}
+					else
+					{
+						hackTime += 1 * Time.deltaTime;
+
+						missionProgressDisplay.color = Color.cyan;
+						missionProgressDisplay.text = "HACK PROGRESS: " + ((hackTime / missionHack.hackingTime) * 100).ToString("00") + "%";
+					}
 				}
 				else
 				{
-					hackTime += 1 * Time.deltaTime;
+					missionProgressDisplay.color = Color.green;
+					missionProgressDisplay.text = "HACK COMPLETED: Return To " + data.name + " With The Data";
 				}
 			}
 		}
