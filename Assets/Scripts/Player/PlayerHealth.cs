@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static PlayerHealth hp;
     public int maxHealth;
     public int health;
 
     public PlayerController thePlayer;
 
+    private void Awake()
+    {
+        if (!hp)
+        {
+            hp = this;
+        }
+    }
     void Start()
     {
         health = maxHealth;
