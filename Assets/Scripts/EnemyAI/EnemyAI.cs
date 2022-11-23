@@ -12,8 +12,10 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    //enemy health
     public float health;
     public float maxHealth;
+    public float healthRegeneration = 0.5f;
 
     public Animator enemyAttack;
 
@@ -53,15 +55,30 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+       
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange)
+        if (health > maxHealth)
         {
-            Patrolling();
+            health = 5;
         }
 
-        else if (playerInSightRange && !playerInAttackRange)
+        if (!playerInSightRange && !playerInAttackRange)
+        {
+            health += healthRegeneration * Time.deltaTime;
+            slider.value = health;
+
+            Patrolling();
+
+            if (health > maxHealth)
+            {
+                health = 5;
+            }
+            
+        }
+
+        if (playerInSightRange && !playerInAttackRange)
         {
             ChasePlayer();
         }
@@ -119,6 +136,10 @@ public class EnemyAI : MonoBehaviour
         KnockBack();
         slider.value = HealthUi();
 
+        if (health > maxHealth)
+        {
+            health = 5;
+        }
         if (health < maxHealth)
         {
             healthBarUi.SetActive(true);
@@ -137,6 +158,7 @@ public class EnemyAI : MonoBehaviour
     {
         return health / maxHealth;
     }
+
     private void AttackPlayer()
     {
        

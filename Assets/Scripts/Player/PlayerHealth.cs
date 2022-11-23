@@ -24,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
         thePlayer = FindObjectOfType<PlayerController>();
     }
 
+
     public void DamagePlayer(int damage, Vector3 direction)
     {
         health -= damage;
