@@ -13,7 +13,8 @@ public class KasaAttack : MonoBehaviour
 	public float timeSinceLastHit;
 	public float lastAttack;
 
-	public Material shieldMat;
+	//public Material shieldMat;
+	public GameObject uiSheild1, uiSheild2, uiSheild3;
 
 	//Blocking
 	public bool canBlock = true;
@@ -21,6 +22,7 @@ public class KasaAttack : MonoBehaviour
 	public int blockHealth = 3;
 	public float timeSinceBlockBroke;
 	public float blockingSpeed;
+	public float regenTimer;
 
 	private PlayerController movement;
 
@@ -58,6 +60,11 @@ public class KasaAttack : MonoBehaviour
 			canBlock = true;
 			isBlocking = false;
 			canAttack = true;
+		}
+
+		if (timeSinceBlockBroke > 2f)
+		{
+			BlockRegen();
 		}
 	}
 
@@ -117,47 +124,66 @@ public class KasaAttack : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Enemy" && isAttacking)
 		{
-				other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
+			other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
 		}
 	}
 	public void Block()
 	{
+		BlockUI();
 		canBlock = false;
 		isBlocking = true;
 		blockingSpeed = 0.3f;
 
-
-		if (blockHealth == 3)
-		{
-			shieldMat.color = Color.magenta;
-			Color color = shieldMat.color;
-			color.a = 0.8f;
-			shieldMat.color = color;
-
-		}
-		else if (blockHealth == 2)
-        {
-			shieldMat.color = Color.yellow;
-			Color color = shieldMat.color;
-			color.a = 0.8f;
-			shieldMat.color = color;
-		}
-		else if (blockHealth == 1)
-		{
-			shieldMat.color = Color.red;
-			Color color = shieldMat.color;
-			color.a = 0.8f;
-			shieldMat.color = color;
-		}
-		else if (blockHealth == 0)
-		{
+		if (blockHealth <= 0)
 			isBlocking = false;
 
-			if (timeSinceBlockBroke > 2f)
+		timeSinceBlockBroke = 0;
+	}
+	void BlockUI()
+	{
+		switch (blockHealth)
+		{
+			case 3:
+				uiSheild1.SetActive(true);
+				uiSheild2.SetActive(true);
+				uiSheild3.SetActive(true);
+				break;
+
+			case 2:
+				uiSheild1.SetActive(false);
+				uiSheild2.SetActive(true);
+				uiSheild3.SetActive(true);
+				break;
+
+			case 1:
+				uiSheild1.SetActive(false);
+				uiSheild2.SetActive(false);
+				uiSheild3.SetActive(true);
+				break;
+
+			case 0:
+				uiSheild1.SetActive(false);
+				uiSheild2.SetActive(false);
+				uiSheild3.SetActive(false);
+				break;
+			default:
+				break;
+		}
+	}
+	void BlockRegen()
+	{
+		if (blockHealth < 3)    //less than 3 health (not full)
+		{
+			if (regenTimer > 0)		// if regen timer is more than 0
 			{
-				blockHealth += 3;
+				regenTimer -= Time.deltaTime;
+			}
+			if (regenTimer <= 0)  // if timer is at 0 (or less than)
+			{
+				blockHealth += 1;
+				regenTimer = 1;
 			}
 		}
-		timeSinceBlockBroke = 0;
+		BlockUI();
 	}
 }

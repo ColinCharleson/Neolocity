@@ -16,10 +16,11 @@ public class UIManager : MonoBehaviour
         pauseUI.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = PlayerHealth.hp.health / PlayerHealth.hp.maxHealth;
+        float healthPercentage = PlayerHealth.hp.health / PlayerHealth.hp.maxHealth;
+        healthBar.fillAmount = healthPercentage;
+
         healthText.text = "Health: " + PlayerHealth.hp.health.ToString("000") + "/" + PlayerHealth.hp.maxHealth.ToString("000");
 
         if (Input.GetKeyDown(KeyCode.Escape))

@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth hp;
-    public int maxHealth;
-    public int health;
+    public float maxHealth;
+    public float health;
+
+    public float regenSpeed;
 
     public PlayerController thePlayer;
 
@@ -22,18 +25,31 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
 
         thePlayer = FindObjectOfType<PlayerController>();
+
     }
+	private void Update()
+    { 
 
+        if (health < maxHealth)
+            HealthRegen();
+    }
+	public void HealthRegen()
+	{
+        health += regenSpeed * Time.deltaTime;
 
+        if (health >= maxHealth)
+            health = maxHealth;
+
+    }
     public void DamagePlayer(int damage, Vector3 direction)
     {
         health -= damage;
 
         thePlayer.KnockBack(direction);
-        if(health == 0)
+        if(health <= 0)
         {
-            this.transform.position = new Vector3(26, 18, -1);
-            health += 100;
+            health = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
