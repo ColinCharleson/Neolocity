@@ -12,6 +12,8 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    public ParticleSystem yellowParticles, explodeParticles, lightParticles;
+   
     //enemy health
     public float health;
     public float maxHealth;
@@ -127,6 +129,10 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(float damageTaken)
     {
+
+        yellowParticles.Play();
+        explodeParticles.Play();
+        lightParticles.Play();
         health -= damageTaken;
         KnockBack();
         slider.value = HealthUi();
@@ -145,6 +151,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (health <= 0)
         {
+            lightParticles.Play();
             Destroy(this.gameObject);
         }
     }

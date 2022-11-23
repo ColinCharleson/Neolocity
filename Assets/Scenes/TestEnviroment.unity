@@ -2088,6 +2088,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 652168838}
+    - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
+      propertyPath: healthRegeneration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3247172003665246064, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2993,6 +2997,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 652168838}
+    - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
+      propertyPath: healthRegeneration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3247172003665246064, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6015,7 +6023,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652168837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26, y: 18, z: -1}
+  m_LocalPosition: {x: 33.07, y: 14.016, z: 1.348}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25251,6 +25259,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 652168838}
+    - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
+      propertyPath: healthRegeneration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3247172003665246064, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -26480,14 +26492,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1630308091}
     m_Modifications:
-    - target: {fileID: 2015166046624000569, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2015166046624000569, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2321900515168116833, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -26548,14 +26552,6 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 652168838}
-    - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
-      propertyPath: healthRegeneration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3247172003665246064, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
