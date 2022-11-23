@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     //enemy health
     public float health;
     public float maxHealth;
-    public float healthRegeneration = 0.5f;
+    public float healthRegeneration;
 
     public Animator enemyAttack;
 
@@ -59,15 +59,10 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (health > maxHealth)
-        {
-            health = 5;
-        }
-
         if (!playerInSightRange && !playerInAttackRange)
         {
             health += healthRegeneration * Time.deltaTime;
-            slider.value = health;
+            slider.value = HealthUi();
 
             Patrolling();
 

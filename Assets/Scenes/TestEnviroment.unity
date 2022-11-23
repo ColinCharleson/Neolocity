@@ -26551,6 +26551,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 652168838}
+    - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
+      propertyPath: healthRegeneration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3247172003665246064, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
