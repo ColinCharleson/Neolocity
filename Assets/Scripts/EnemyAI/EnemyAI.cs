@@ -163,10 +163,9 @@ public class EnemyAI : MonoBehaviour
             }
             if (health <= 0)
             {
-
-                enemy.velocity = new Vector3(0, 0, 0);
                 isAlive = false;
                 GetComponent<CapsuleCollider>().enabled = false;
+                GetComponent<NavMeshAgent>().enabled = false;
                 enemyAnims.SetTrigger("Die");
                 explodeParticles.Play();
                 lightParticles.Play();
