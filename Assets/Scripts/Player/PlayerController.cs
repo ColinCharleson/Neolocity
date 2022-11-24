@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
 	public void KnockBack(Vector3 direction)
 	{
 		body.AddForce((transform.up * 3), ForceMode.Impulse);
-		body.AddForce((-transform.forward * 60), ForceMode.Impulse);
+		body.AddForce((-transform.forward * 130), ForceMode.Impulse);
 	}
 
 	void TalkToNPC()

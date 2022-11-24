@@ -195,6 +195,7 @@ public class EnemyAI : MonoBehaviour
         }
         if(collision.gameObject.tag == "Player" && kasaAttack.isBlocking)
         {
+            yellowParticles.Play();
             kasaAttack.blockHealth -= 1;
             KnockBack();
         }

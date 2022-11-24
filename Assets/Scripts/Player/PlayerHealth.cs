@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth hp;
     public float maxHealth;
     public float health;
+    public ParticleSystem knockBackEffect;
 
     public float regenSpeed;
 
@@ -43,6 +44,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void DamagePlayer(int damage, Vector3 direction)
     {
+        knockBackEffect.Play();
         health -= damage;
 
         thePlayer.KnockBack(direction);
