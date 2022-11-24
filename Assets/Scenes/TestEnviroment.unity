@@ -5993,6 +5993,8 @@ MonoBehaviour:
   airMultiplier: 0.5
   kasaAttack: {fileID: 652168845}
   knockBackForce: 4
+  minFall: 4
+  playerHealth: {fileID: 652168846}
   sightRange: 10
   enemyInSightRange: 0
   whatIsEnemy:
