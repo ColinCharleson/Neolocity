@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
 		{
 			tempKasa.SetTrigger("Shake");
 			Debug.Log("You fell " + fallDistance);
-			playerHealth.health -= 25;
+			playerHealth.health -= fallDistance * 3;
 
 			if (playerHealth.health <= 0)
 			{

@@ -2124,6 +2124,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
+      propertyPath: damage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 652168839}
@@ -2986,6 +2990,10 @@ PrefabInstance:
     - target: {fileID: 2321900515168116844, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
+      propertyPath: damage
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: player
@@ -30408,6 +30416,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
+      propertyPath: damage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 652168839}
@@ -31754,6 +31766,10 @@ PrefabInstance:
     - target: {fileID: 2321900515168116844, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
+      propertyPath: damage
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2321900515168116845, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: player
