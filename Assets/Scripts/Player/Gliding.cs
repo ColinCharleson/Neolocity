@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Gliding : MonoBehaviour
 {
+    public float min = 0.5f;
+    public float max =1;
+
     public float glidePower = 1;
 
     private Rigidbody body;
@@ -22,12 +25,12 @@ public class Gliding : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) && !movement.onWall)
 		{
             movement.gliding = true;
-            glidePower = 0.5f;
+            glidePower = min;
 		}
         else
         {
             movement.gliding = false;
-            glidePower = 1f;
+            glidePower = max;
 		}
     }
 }
