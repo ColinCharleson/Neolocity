@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
 
     public Image healthBar;
     public Text healthText;
+
+    public Image staminaBar;
+
+    public PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +22,11 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        //stamina
+        float staminaPercentage =  player.stamina / 100;
+        staminaBar.fillAmount = staminaPercentage;
+
+        //health
         float healthPercentage = PlayerHealth.hp.health / PlayerHealth.hp.maxHealth;
         healthBar.fillAmount = healthPercentage;
 
