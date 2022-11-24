@@ -73,10 +73,11 @@ public class PlayerController : MonoBehaviour
 		//checking if take fall damage
 		GroundCheck();
 
-		if (gliding)
+		if (gliding || onWall)
         {
 			startOfFalling = transform.position.y;
 		}
+
 		if (!wasFalling && isFalling)
 		{
 			startOfFalling = transform.position.y;
