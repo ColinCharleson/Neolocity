@@ -6,6 +6,7 @@ public class JumpBoost : MonoBehaviour
 {
     PlayerController player;
     public GameObject jumpBoostIcon;
+    public ParticleSystem boostEffect;
 
     public bool canJumpBoost;
 
@@ -32,6 +33,7 @@ public class JumpBoost : MonoBehaviour
                 player.body.velocity = Vector3.zero;
                 player.gliding = false;
                 player.onWall = false;
+                boostEffect.Play();
 
                 player.body.AddForce(transform.up * boostForce, ForceMode.Impulse);
                 timeLeft = cooldownLength;
