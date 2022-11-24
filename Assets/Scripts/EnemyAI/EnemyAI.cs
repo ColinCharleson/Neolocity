@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     public float maxHealth;
     public float healthRegeneration;
 
-    public Animator enemyAttack;
+    public Animator enemyAnims;
 
     //UI
     public Slider slider;
@@ -151,7 +151,9 @@ public class EnemyAI : MonoBehaviour
         }
         if (health <= 0)
         {
-            lightParticles.Play();
+            enemyAnims.SetTrigger("Die");
+            playerInAttackRange = false;
+            playerInSightRange = false;
             Destroy(this.gameObject);
         }
     }
@@ -169,7 +171,7 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
 
-            enemyAttack.SetTrigger("Attacking");
+            enemyAnims.SetTrigger("Attacking");
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -186,7 +188,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && !kasaAttack.isBlocking)
         {
-            enemyAttack.SetTrigger("Attacking");
+            enemyAnims.SetTrigger("Attacking");
 
             Vector3 dmgDirection = collision.transform.position - transform.position;
             dmgDirection = dmgDirection.normalized;
