@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class UIManager : MonoBehaviour
 {
-    public Canvas gameUI, pauseUI;
+    public Canvas gameUI, pauseUI, deathUI;
 
     public Image healthBar;
     public Text healthText;
@@ -38,7 +40,7 @@ public class UIManager : MonoBehaviour
             pauseUI.enabled = !pauseUI.enabled;
         }
 
-        if(pauseUI.enabled == true)
+        if(pauseUI.enabled)
 		{
             Time.timeScale = 0;
 		}
@@ -46,5 +48,24 @@ public class UIManager : MonoBehaviour
 		{
             Time.timeScale = 1;
 		}
+
+        if(PlayerHealth.hp.health == 0)
+		{
+            StartCoroutine(GameReset());
+		}
+    }
+
+    IEnumerator GameReset()
+    {
+        deathUI.enabled = true;
+        pauseUI.enabled = false;
+        gameUI.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        player.tempKasa.SetTrigger("Dead");
+        player.isAlive = false;
+
+        yield return new WaitForSeconds(5);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

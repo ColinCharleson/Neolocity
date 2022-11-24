@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 	public float airMultiplier;
 	Vector3 moveDirection;
 
+	public bool isAlive = true;
+
 	// Shiled
 	public KasaAttack kasaAttack;
 
@@ -112,8 +114,11 @@ public class PlayerController : MonoBehaviour
 		TalkToNPC();
 		if (!isTalking)
 		{
-			Movement();
-			Rotation();
+			if (isAlive)
+			{
+				Movement();
+				Rotation();
+			}
 		}
 	}
 
@@ -210,7 +215,6 @@ public class PlayerController : MonoBehaviour
 			if (playerHealth.health <= 0)
 			{
 				playerHealth.health = 0;
-				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			}
 		}
     }
