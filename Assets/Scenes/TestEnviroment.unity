@@ -6073,7 +6073,6 @@ MonoBehaviour:
     m_Bits: 8
   speed: 4
   stamina: 100
-  staminaDrain: 5
   jumpForce: 0.5
   groundDrag: 5
   airMultiplier: 0.5
@@ -6902,7 +6901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -710.28, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &715919358
@@ -25562,7 +25561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -459.08}
+  m_AnchoredPosition: {x: -709.87, y: -459.08}
   m_SizeDelta: {x: 300, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1330747085
@@ -27635,7 +27634,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Q To Continue
+  m_Text: Press X To Continue
 --- !u!222 &1621629701
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36520,8 +36519,8 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: c2c4bd40f3eb6334281bfbf3d8a0d372, type: 2}
   missionGoTo: {fileID: 0}
   missionPickUp: {fileID: 0}
-  missionFollow: {fileID: 0}
-  missionHack: {fileID: 11400000, guid: 024de26ad5013a44f8459ac234733d96, type: 2}
+  missionFollow: {fileID: 11400000, guid: f5ebb353fef2ded448c2437ee3dd0f24, type: 2}
+  missionHack: {fileID: 0}
   missionStarted: 0
   missionFinished: 0
   missionHandedIn: 0
