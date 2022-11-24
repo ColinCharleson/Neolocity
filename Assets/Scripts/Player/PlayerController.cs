@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
 	public LayerMask groundMask;
 
 	// Player movement stats
-	public float speed = 7f;
+	public float speed = 4f;
+	public float stamina = 100f;
+	private float staminaDrain = 5f;
 	public float jumpForce = 1.5f;
 	public float groundDrag;
 	public float airMultiplier;
@@ -136,6 +138,19 @@ public class PlayerController : MonoBehaviour
         {
 			body.velocity = new Vector3(body.velocity.x * kasaAttack.blockingSpeed, body.velocity.y , body.velocity.z * kasaAttack.blockingSpeed);
 		}
+
+		if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && isGrounded)
+		{
+			speed = 7f;
+			stamina -= staminaDrain * Time.deltaTime;
+		}
+		else
+		{
+			speed = 4f;
+			if(stamina < 100)
+			stamina += Time.deltaTime;
+		}
+
 		if ((Input.GetAxis("Jump") > 0))
 		{
 			if (isGrounded)
