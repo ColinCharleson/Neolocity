@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +30,14 @@ public class PlayerController : MonoBehaviour
 	//Knock back
 	public float knockBackForce = 10;
 
+	//Fall Damage
+	bool wasGrounded;
+	bool wasFalling;
+	float startOfFalling;
+	public float minFall = 4f;
+
+	public PlayerHealth playerHealth;
+
 	//Lock On
 	public float sightRange;
 	public bool enemyInSightRange;
@@ -48,6 +57,7 @@ public class PlayerController : MonoBehaviour
 	public Transform enemy;
 	Camera cam;
 	public Animator tempKasa;
+
 	void Start()
 	{
 		glideScript = GetComponent<Gliding>();
@@ -57,9 +67,32 @@ public class PlayerController : MonoBehaviour
 
 		Cursor.lockState = CursorLockMode.Locked;
 	}
+
+	private void FixedUpdate()
+    {
+		//checking if take fall damage
+		GroundCheck();
+
+		if (gliding)
+        {
+			startOfFalling = transform.position.y;
+		}
+		if (!wasFalling && isFalling)
+		{
+			startOfFalling = transform.position.y;
+		}
+
+		if(!wasGrounded && isGrounded && !gliding)
+        {
+			TakeDamage();
+		}
+
+		wasGrounded = isGrounded;
+		wasFalling = isFalling;
+	}
+
 	private void Update()
 	{
-
 		enemyInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsEnemy);
 
 		//temp animations
@@ -142,6 +175,35 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	void GroundCheck()
+    {
+		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    }
+
+	void TakeDamage()
+    {
+		float fallDistance = startOfFalling - transform.position.y;
+
+		if (fallDistance > minFall)
+		{
+			Debug.Log("You fell " + fallDistance);
+			playerHealth.health -= 25;
+
+			if (playerHealth.health <= 0)
+			{
+				playerHealth.health = 0;
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			}
+		}
+    }
+
+	bool isFalling 
+	{ 
+		get
+		{
+			return (!isGrounded && body.velocity.y < 0);
+		} 
+	}
 
 	void Rotation()
 	{
