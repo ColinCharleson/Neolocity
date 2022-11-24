@@ -5,6 +5,7 @@ using UnityEngine;
 public class JumpBoost : MonoBehaviour
 {
     PlayerController player;
+    public GameObject jumpBoostIcon;
 
     public bool canJumpBoost;
 
@@ -19,10 +20,10 @@ public class JumpBoost : MonoBehaviour
 	}
 	void Update()
     {
-        /*if(player.isGrounded)
-		{
-            canJumpBoost = true;
-		}*/
+        if(canJumpBoost)
+            jumpBoostIcon.SetActive(true);
+        else
+            jumpBoostIcon.SetActive(false);
 
         if(canJumpBoost)
         {
