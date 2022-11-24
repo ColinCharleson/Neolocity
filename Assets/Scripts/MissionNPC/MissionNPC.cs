@@ -62,6 +62,7 @@ public class MissionNPC : MonoBehaviour
 				missionBox.SetActive(true);
 				nameText.text = data.name;
 				messageText.text = data.finishedMessage;
+				missionProgressDisplay.enabled = false;
 
 				MissionManager.instance.lastMission += 1;
 				MissionManager.instance.missionActive = false;
@@ -127,6 +128,7 @@ public class MissionNPC : MonoBehaviour
 		if (missionFollow != null && missionStarted == false)
 		{
 			missionStarted = true;
+			missionProgressDisplay.enabled = true;
 			missionTarget = Instantiate(missionFollow.followTarget, missionFollow.startLocation, Quaternion.Euler(Vector3.zero));
 			missionTarget.GetComponent<FollowBot>().target = missionFollow.endLocation;
 			MissionManager.instance.currentObjective = missionTarget.transform;
@@ -166,10 +168,13 @@ public class MissionNPC : MonoBehaviour
 		if (missionFollow != null && missionStarted == true) //Follow mission
 		{
 
-			if (Vector3.Distance(player.transform.position, missionFollow.endLocation) < 5)
+			if (Vector3.Distance(player.transform.position, missionFollow.endLocation) < 10)
 			{
 				missionFinished = true;
 				MissionManager.instance.currentObjective = this.transform;
+
+				missionProgressDisplay.color = Color.green;
+				missionProgressDisplay.text = "LOCATION DISCOVERED: Return To " + data.name + " With The Location";
 			}
 
 			if (missionTarget.gameObject == null)
@@ -182,10 +187,19 @@ public class MissionNPC : MonoBehaviour
 			else
 			{
 				if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
-				{// go closer
+				{
+					missionProgressDisplay.color = Color.red;
+					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Youre Losing Them";
 				}
 				else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
-				{// go closer
+				{
+					missionProgressDisplay.color = Color.red;
+					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Presence Detected, Back Up";
+				}
+				else
+				{
+					missionProgressDisplay.color = Color.cyan;
+					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Follow Them";
 				}
 			}
 		}
@@ -197,7 +211,8 @@ public class MissionNPC : MonoBehaviour
 				if (hackTime > missionHack.hackingTime)
 				{
 					missionFinished = true;
-					missionProgressDisplay.enabled = false;
+					missionProgressDisplay.color = Color.green;
+					missionProgressDisplay.text = "HACK COMPLETED: Return To " + data.name + " With The Data";
 					MissionManager.instance.currentObjective = this.transform;
 				}
 				else
@@ -217,7 +232,7 @@ public class MissionNPC : MonoBehaviour
 					else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
 					{
 						missionProgressDisplay.color = Color.red;
-						missionProgressDisplay.text = "SIGNAL WEAK: Too Close";
+						missionProgressDisplay.text = "PRESENCE DETECTED: Too Close";
 					}
 					else
 					{
@@ -237,7 +252,7 @@ public class MissionNPC : MonoBehaviour
 	}
 	public void DisableTextBox()
 	{
-		if (Input.GetKey(KeyCode.Q))
+		if (Input.GetKey(KeyCode.X))
 		{
 			missionBox.SetActive(false);
 			nameText.text = null;

@@ -28,7 +28,7 @@ public class JumpBoost : MonoBehaviour
 
         if(canJumpBoost)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.Q))
 			{
                 player.body.velocity = Vector3.zero;
                 player.gliding = false;
