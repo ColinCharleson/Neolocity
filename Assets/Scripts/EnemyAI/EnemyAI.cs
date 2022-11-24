@@ -40,13 +40,15 @@ public class EnemyAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
     //Rigid Body
-
     public Rigidbody enemy;
 
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public int damage = 50;
+    bool isAlive = true;
+    public float deathtimer = 0;
+
 
     private void Awake()
     {
@@ -57,155 +59,181 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-       
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
-        if (!playerInSightRange && !playerInAttackRange)
+        if (isAlive == true)
         {
-            health += healthRegeneration * Time.deltaTime;
-            slider.value = HealthUi();
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-            Patrolling();
-
-            if (health > maxHealth)
+            if (!playerInSightRange && !playerInAttackRange)
             {
-                health = 5;
+                health += healthRegeneration * Time.deltaTime;
+                slider.value = HealthUi();
+
+                Patrolling();
+
+                if (health > maxHealth)
+                {
+                    health = 5;
+                }
             }
-            
-        }
 
-        if (playerInSightRange && !playerInAttackRange)
-        {
-            ChasePlayer();
-        }
+            if (playerInSightRange && !playerInAttackRange)
+            {
+                ChasePlayer();
+            }
 
-        if (playerInAttackRange && playerInSightRange)
-        {
-            AttackPlayer();
+            if (playerInAttackRange && playerInSightRange)
+            {
+                AttackPlayer();
+            }
         }
     }
 
 
     private void Patrolling()
     {
-        if (!walkPointSet) SearchWalkPoint();
-
-        if (walkPointSet)
+        if (isAlive == true)
         {
-            agent.SetDestination(walkPoint);
-        }
-        Vector3 distanceTowalkPoint = transform.position - walkPoint;
+            if (!walkPointSet) SearchWalkPoint();
 
-        //if walkpoint reached
-        if (distanceTowalkPoint.magnitude < 1f)
-            walkPointSet = false;
+            if (walkPointSet)
+            {
+                agent.SetDestination(walkPoint);
+            }
+            Vector3 distanceTowalkPoint = transform.position - walkPoint;
+
+            //if walkpoint reached
+            if (distanceTowalkPoint.magnitude < 1f)
+                walkPointSet = false;
+        }
     }
 
 
     void SearchWalkPoint()
     {
-        //caculating random point in range
-        float randZ = Random.Range(-walkPointRange, walkPointRange);
-        float randX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randX, transform.position.y, transform.position.z + randZ);
-
-        //Make sure enemy dosnt walk off map using raycast
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (isAlive == true)
         {
-            walkPointSet = true;
+            //caculating random point in range
+            float randZ = Random.Range(-walkPointRange, walkPointRange);
+            float randX = Random.Range(-walkPointRange, walkPointRange);
+
+            walkPoint = new Vector3(transform.position.x + randX, transform.position.y, transform.position.z + randZ);
+
+            //Make sure enemy dosnt walk off map using raycast
+            if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+            {
+                walkPointSet = true;
+            }
         }
     }
 
     private void ChasePlayer()
     {
-
-        transform.LookAt(new Vector3(player.position.x, transform.position.y ,player.position.z));
-        agent.SetDestination(player.position);
+        if (isAlive == true)
+        {
+            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+            agent.SetDestination(player.position);
+        }
     }
 
 
 
     public void TakeDamage(float damageTaken)
     {
+        if (isAlive == true)
+        {
+            yellowParticles.Play();
+            explodeParticles.Play();
+            lightParticles.Play();
+            health -= damageTaken;
+            KnockBack();
+            slider.value = HealthUi();
 
-        yellowParticles.Play();
-        explodeParticles.Play();
-        lightParticles.Play();
-        health -= damageTaken;
-        KnockBack();
-        slider.value = HealthUi();
+            if (health > maxHealth)
+            {
+                health = 5;
+            }
+            if (health < maxHealth)
+            {
+                healthBarUi.SetActive(true);
+            }
+            if (health >= maxHealth)
+            {
+                healthBarUi.SetActive(false);
+            }
+            if (health <= 0)
+            {
 
-        if (health > maxHealth)
-        {
-            health = 5;
-        }
-        if (health < maxHealth)
-        {
-            healthBarUi.SetActive(true);
-        }
-        if (health >= maxHealth)
-        {
-            healthBarUi.SetActive(false);
-        }
-        if (health <= 0)
-        {
-            enemyAnims.SetTrigger("Die");
-            playerInAttackRange = false;
-            playerInSightRange = false;
-            Destroy(this.gameObject);
+                enemy.velocity = new Vector3(0, 0, 0);
+                isAlive = false;
+                GetComponent<CapsuleCollider>().enabled = false;
+                enemyAnims.SetTrigger("Die");
+                explodeParticles.Play();
+                lightParticles.Play();
+
+                Destroy(gameObject, 2);
+            }
         }
     }
 
     float HealthUi()
     {
-        return health / maxHealth;
+            return health / maxHealth;
     }
 
     private void AttackPlayer()
     {
-       
-        transform.LookAt(player);
-
-        if (!alreadyAttacked)
+        if (isAlive == true)
         {
+            transform.LookAt(player);
 
-            enemyAnims.SetTrigger("Attacking");
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            if (!alreadyAttacked)
+            {
+
+                enemyAnims.SetTrigger("Attacking");
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            }
         }
-
        
     }
     private void ResetAttack()
     {
-        alreadyAttacked = false;
+        if (isAlive == true)
+        {
+            alreadyAttacked = false;
+        }
     }
 
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player" && !kasaAttack.isBlocking)
+        if (isAlive == true)
         {
-            enemyAnims.SetTrigger("Attacking");
+            if (collision.gameObject.tag == "Player" && !kasaAttack.isBlocking)
+            {
+                enemyAnims.SetTrigger("Attacking");
 
-            Vector3 dmgDirection = collision.transform.position - transform.position;
-            dmgDirection = dmgDirection.normalized;
+                Vector3 dmgDirection = collision.transform.position - transform.position;
+                dmgDirection = dmgDirection.normalized;
 
-            FindObjectOfType<PlayerHealth>().DamagePlayer(damage, dmgDirection);
-        }
-        if(collision.gameObject.tag == "Player" && kasaAttack.isBlocking)
-        {
-            yellowParticles.Play();
-            kasaAttack.blockHealth -= 1;
-            KnockBack();
+                FindObjectOfType<PlayerHealth>().DamagePlayer(damage, dmgDirection);
+            }
+            if (collision.gameObject.tag == "Player" && kasaAttack.isBlocking)
+            {
+                yellowParticles.Play();
+                kasaAttack.blockHealth -= 1;
+                KnockBack();
+            }
         }
     }
 
     private void KnockBack()
     {
-        enemy.AddForce((transform.up * 3), ForceMode.Impulse);
-        enemy.AddForce((-transform.forward * 60), ForceMode.Impulse);
+        if (isAlive == true)
+        {
+            enemy.AddForce((transform.up * 3), ForceMode.Impulse);
+            enemy.AddForce((-transform.forward * 60), ForceMode.Impulse);
+        }
     }
 }

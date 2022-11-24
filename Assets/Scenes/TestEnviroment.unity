@@ -6073,7 +6073,6 @@ MonoBehaviour:
     m_Bits: 8
   speed: 4
   stamina: 100
-  staminaDrain: 5
   jumpForce: 0.5
   groundDrag: 5
   airMultiplier: 0.5
@@ -36809,6 +36808,10 @@ PrefabInstance:
     - target: {fileID: 2321900515168116833, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321900515168116834, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2321900515168116844, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
       propertyPath: m_Name

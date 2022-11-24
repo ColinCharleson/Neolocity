@@ -317,7 +317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2321900514500720913}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.5209999, y: 0.16499996, z: 0.3579998}
+  m_LocalPosition: {x: -0.5209999, y: 0.165, z: 0.3579998}
   m_LocalScale: {x: 1.4886868, y: 0.17287253, z: 0.17287251}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -416,8 +416,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2321900515168116844}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.460648, y: 10.390585, z: -2.9320698}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 34.46065, y: 10.390585, z: -2.9320698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -481,6 +481,7 @@ MonoBehaviour:
   enemy: {fileID: 2321900515168116834}
   timeBetweenAttacks: 0
   damage: 30
+  deathtimer: 0
 --- !u!54 &2321900515168116834
 Rigidbody:
   m_ObjectHideFlags: 0
