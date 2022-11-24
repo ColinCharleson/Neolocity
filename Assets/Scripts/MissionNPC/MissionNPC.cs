@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MissionNPC : MonoBehaviour
 {
 	public Text missionProgressDisplay;
+	public Image missionProgressBack;
 	//Character Data
 	[Header("Character Data")]
 	public GameObject player;
@@ -32,6 +33,7 @@ public class MissionNPC : MonoBehaviour
 	public bool missionStarted;
 	public bool missionFinished;
 	public bool missionHandedIn;
+	bool tempFinish = false;
 
 	[Header("Text Box Data")]
 	//Text Box
@@ -49,6 +51,11 @@ public class MissionNPC : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (missionProgressDisplay.enabled)
+			missionProgressBack.enabled = true;
+		else
+			missionProgressBack.enabled = false;
+
 		DisableTextBox();
 		EndMission();
 	}
@@ -107,12 +114,14 @@ public class MissionNPC : MonoBehaviour
 
 	public void StartMission()
 	{
+		tempFinish = false;
 		MissionManager.instance.missionActive = true;
 		MissionManager.instance.currentMission = MissionManager.instance.lastMission + 1;
 
 		if (missionGoTo != null && missionStarted == false)
 		{
 			missionStarted = true;
+			missionProgressDisplay.enabled = true;
 			missionEnd = Instantiate(missionGoTo.missionEnd, missionGoTo.missionEndLocation, Quaternion.Euler(Vector3.zero));
 			MissionManager.instance.currentObjective = missionEnd.transform;
 		}
@@ -120,6 +129,7 @@ public class MissionNPC : MonoBehaviour
 		if (missionPickUp != null && missionStarted == false)
 		{
 			missionStarted = true;
+			missionProgressDisplay.enabled = true;
 			missionItem = Instantiate(missionPickUp.missionPickUp, missionPickUp.pickUpLocation, Quaternion.Euler(Vector3.zero));
 			Instantiate(missionPickUp.pickUpItem, missionItem.transform);
 			MissionManager.instance.currentObjective = missionItem.transform;
@@ -149,9 +159,22 @@ public class MissionNPC : MonoBehaviour
 		{
 			if (Vector3.Distance(player.transform.position, missionGoTo.missionEndLocation) < 5)
 			{
+				tempFinish = true;
+			}
+
+			if (tempFinish == true)
+			{
 				missionFinished = true;
 				MissionManager.instance.currentObjective = this.transform;
 				Destroy(GameObject.FindGameObjectWithTag("MissionEnd"));
+				missionProgressDisplay.color = Color.green;
+				missionProgressDisplay.text = "LOCATION DISCOVERED: Return to " + data.name + " with the information about the location";
+			}
+			else
+			{
+				missionProgressDisplay.color = Color.cyan;
+				missionProgressDisplay.text = "GO TO THE LOCATION: " +
+				Vector3.Distance(player.transform.position, GameObject.FindGameObjectWithTag("MissionEnd").transform.position).ToString("00") + " m";
 			}
 		}
 
@@ -159,9 +182,23 @@ public class MissionNPC : MonoBehaviour
 		{
 			if (Vector3.Distance(player.transform.position, missionPickUp.pickUpLocation) < 2)
 			{
+				tempFinish = true;
+			}
+
+			if(tempFinish == true)
+			{
 				missionFinished = true;
 				MissionManager.instance.currentObjective = this.transform;
 				Destroy(GameObject.FindGameObjectWithTag("MissionEnd"));
+
+				missionProgressDisplay.color = Color.green;
+				missionProgressDisplay.text = "PACKAGE RECEIVED: Return to " + data.name + " with the package";
+			}
+			else
+			{
+				missionProgressDisplay.color = Color.cyan;
+				missionProgressDisplay.text = "PICK UP THE PACKAGE: " + 
+				Vector3.Distance(player.transform.position, GameObject.FindGameObjectWithTag("MissionEnd").transform.position).ToString("00") + " m";
 			}
 		}
 
@@ -174,7 +211,7 @@ public class MissionNPC : MonoBehaviour
 				MissionManager.instance.currentObjective = this.transform;
 
 				missionProgressDisplay.color = Color.green;
-				missionProgressDisplay.text = "LOCATION DISCOVERED: Return To " + data.name + " With The Location";
+				missionProgressDisplay.text = "LOCATION DISCOVERED: Return to " + data.name + " with the location";
 			}
 
 			if (missionTarget.gameObject == null)
@@ -189,17 +226,17 @@ public class MissionNPC : MonoBehaviour
 				if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
 				{
 					missionProgressDisplay.color = Color.red;
-					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Youre Losing Them";
+					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Youre losing them";
 				}
 				else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
 				{
 					missionProgressDisplay.color = Color.red;
-					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Presence Detected, Back Up";
+					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Presence detected, back up";
 				}
 				else
 				{
 					missionProgressDisplay.color = Color.cyan;
-					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Follow Them";
+					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Follow them";
 				}
 			}
 		}
@@ -212,7 +249,7 @@ public class MissionNPC : MonoBehaviour
 				{
 					missionFinished = true;
 					missionProgressDisplay.color = Color.green;
-					missionProgressDisplay.text = "HACK COMPLETED: Return To " + data.name + " With The Data";
+					missionProgressDisplay.text = "HACK COMPLETED: Return to " + data.name + " with the data";
 					MissionManager.instance.currentObjective = this.transform;
 				}
 				else
@@ -227,12 +264,12 @@ public class MissionNPC : MonoBehaviour
 					if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
 					{
 						missionProgressDisplay.color = Color.red;
-						missionProgressDisplay.text = "SIGNAL WEAK: Get Closer";
+						missionProgressDisplay.text = "SIGNAL WEAK: Get closer";
 					}
 					else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
 					{
 						missionProgressDisplay.color = Color.red;
-						missionProgressDisplay.text = "PRESENCE DETECTED: Too Close";
+						missionProgressDisplay.text = "PRESENCE DETECTED: Too close";
 					}
 					else
 					{
@@ -252,7 +289,7 @@ public class MissionNPC : MonoBehaviour
 	}
 	public void DisableTextBox()
 	{
-		if (Input.GetKey(KeyCode.X))
+		if (Input.GetKey(KeyCode.Q))
 		{
 			missionBox.SetActive(false);
 			nameText.text = null;

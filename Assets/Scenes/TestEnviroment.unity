@@ -2569,7 +2569,7 @@ GameObject:
   - component: {fileID: 286037325}
   - component: {fileID: 286037326}
   m_Layer: 5
-  m_Name: Compas
+  m_Name: Compass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18812,7 +18812,7 @@ GameObject:
   - component: {fileID: 1047951236}
   - component: {fileID: 1047951235}
   m_Layer: 5
-  m_Name: HackProgress
+  m_Name: Progress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18835,8 +18835,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 950, y: -130}
-  m_SizeDelta: {x: 1875, y: 200}
+  m_AnchoredPosition: {x: 311.8, y: -186.6}
+  m_SizeDelta: {x: 599.7, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1047951235
 MonoBehaviour:
@@ -18845,7 +18845,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047951233}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -18865,13 +18865,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 126
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HACK PROGRESS: 00%'
+  m_Text: 'LOCATION DISCOVERED: Return to  Mark with the information about the location'
 --- !u!222 &1047951236
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24401,6 +24401,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1508262590}
   - {fileID: 1047951234}
   m_Father: {fileID: 765312032}
   m_RootOrder: -1
@@ -24597,6 +24598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionProgressDisplay: {fileID: 1047951235}
+  missionProgressBack: {fileID: 1508262591}
   player: {fileID: 0}
   data: {fileID: 11400000, guid: 28a08d00eaa52de4fa92d7bde7692ce0, type: 2}
   missionGoTo: {fileID: 11400000, guid: c18fefd25a2ebbe448f6443ef65872e1, type: 2}
@@ -24675,6 +24677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionProgressDisplay: {fileID: 1047951235}
+  missionProgressBack: {fileID: 1508262591}
   player: {fileID: 0}
   data: {fileID: 11400000, guid: 09c49a6c1070cd842a7c20dae49705e3, type: 2}
   missionGoTo: {fileID: 0}
@@ -26510,6 +26513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionProgressDisplay: {fileID: 1047951235}
+  missionProgressBack: {fileID: 1508262591}
   player: {fileID: 0}
   data: {fileID: 11400000, guid: 908b09dd3df3d1f4d8a21af06915f585, type: 2}
   missionGoTo: {fileID: 0}
@@ -27102,6 +27106,82 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501649485}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1508262589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1508262590}
+  - component: {fileID: 1508262592}
+  - component: {fileID: 1508262591}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1508262590
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508262589}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1188279922}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -657.015, y: 425.86502}
+  m_SizeDelta: {x: -1314.0297, y: -1018.07007}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1508262591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508262589}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.40392157}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1508262592
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508262589}
+  m_CullTransparentMesh: 1
 --- !u!65 &1527639898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27634,7 +27714,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press X To Continue
+  m_Text: Press Q To Continue
 --- !u!222 &1621629701
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36515,11 +36595,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionProgressDisplay: {fileID: 1047951235}
+  missionProgressBack: {fileID: 1508262591}
   player: {fileID: 0}
   data: {fileID: 11400000, guid: c2c4bd40f3eb6334281bfbf3d8a0d372, type: 2}
   missionGoTo: {fileID: 0}
-  missionPickUp: {fileID: 0}
-  missionFollow: {fileID: 11400000, guid: f5ebb353fef2ded448c2437ee3dd0f24, type: 2}
+  missionPickUp: {fileID: 11400000, guid: ec6e0279597f90945a7abc1e29f42673, type: 2}
+  missionFollow: {fileID: 0}
   missionHack: {fileID: 0}
   missionStarted: 0
   missionFinished: 0
