@@ -99,6 +99,8 @@ public class PlayerController : MonoBehaviour
 		tempKasa.SetBool("Gliding", gliding);
 		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
 		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
+		
+
 
 		if (Input.GetKey(KeyCode.R))
 			transform.position = new Vector3(26, 18, -1);
@@ -186,6 +188,7 @@ public class PlayerController : MonoBehaviour
 
 		if (fallDistance > minFall)
 		{
+			tempKasa.SetTrigger("Shake");
 			Debug.Log("You fell " + fallDistance);
 			playerHealth.health -= 25;
 
