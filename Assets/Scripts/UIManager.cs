@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
         pauseUI.enabled = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //stamina
         float staminaPercentage =  player.stamina / 100;

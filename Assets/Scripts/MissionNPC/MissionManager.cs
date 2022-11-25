@@ -20,7 +20,7 @@ public class MissionManager : MonoBehaviour
             instance = this;
         }
     }
-	private void Update()
+	private void FixedUpdate()
 	{
         var objects = GameObject.FindGameObjectsWithTag("NPC");
         var objectCount = objects.Length;

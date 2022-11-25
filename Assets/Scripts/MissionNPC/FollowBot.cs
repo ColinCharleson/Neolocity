@@ -7,7 +7,7 @@ public class FollowBot : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Vector3 target;
-    void Update()
+    void FixedUpdate()
     {
         agent.SetDestination(target);
 

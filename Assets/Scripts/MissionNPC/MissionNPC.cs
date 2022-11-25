@@ -49,7 +49,7 @@ public class MissionNPC : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
 	{
 		if (missionProgressDisplay.enabled)
 			missionProgressBack.enabled = true;

@@ -94,10 +94,6 @@ public class PlayerController : MonoBehaviour
 
 		wasGrounded = isGrounded;
 		wasFalling = isFalling;
-	}
-
-	private void Update()
-	{
 		enemyInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsEnemy);
 
 		//temp animations

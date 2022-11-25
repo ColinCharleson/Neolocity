@@ -57,7 +57,7 @@ public class EnemyAI : MonoBehaviour
         health = maxHealth;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isAlive == true)
         {

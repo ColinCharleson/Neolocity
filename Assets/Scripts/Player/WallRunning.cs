@@ -24,7 +24,7 @@ public class WallRunning : MonoBehaviour
 		orientation = GetComponent<Transform>();
 		movement = GetComponent<PlayerController>();
 	}
-	private void Update()
+	private void FixedUpdate()
 	{
 		WallRun();
 

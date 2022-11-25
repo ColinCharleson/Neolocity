@@ -6262,8 +6262,8 @@ MonoBehaviour:
     m_Bits: 8
   speed: 4
   stamina: 100
-  jumpForce: 0.5
-  groundDrag: 5
+  jumpForce: 3
+  groundDrag: 3
   airMultiplier: 0.5
   isAlive: 1
   kasaAttack: {fileID: 652168845}
@@ -6363,7 +6363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ab2af5c308cad4b9bf0657a877c010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: 0.95
+  min: 0.8
   max: 1
   glidePower: 1
 --- !u!114 &652168845

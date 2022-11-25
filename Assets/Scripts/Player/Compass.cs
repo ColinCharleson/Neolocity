@@ -12,7 +12,7 @@ public class Compass : MonoBehaviour
 	{
 		units = CompassImage.rectTransform.rect.width / 360;
 	}
-	public void Update()
+	public void FixedUpdate()
 	{
 		Objective = MissionManager.instance.currentObjective;
 

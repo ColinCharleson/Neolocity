@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
         thePlayer = FindObjectOfType<PlayerController>();
 
     }
-	private void Update()
+	private void FixedUpdate()
     { 
 
         if (health < maxHealth)
