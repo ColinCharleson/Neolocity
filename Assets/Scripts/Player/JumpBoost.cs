@@ -19,7 +19,7 @@ public class JumpBoost : MonoBehaviour
 	{
         player = GetComponent<PlayerController>();
 	}
-	void FixedUpdate()
+	void Update()
     {
         if(canJumpBoost)
             jumpBoostIcon.SetActive(true);
