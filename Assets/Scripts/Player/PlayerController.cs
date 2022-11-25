@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
 	public LayerMask groundMask;
 
 	// Player movement stats
-	public float speed = 4f;
+	private float speed;
+	public float sprintSpeed = 7f;
+	public float walkSpeed = 5f;
 	public float stamina = 100f;
 	private float staminaDrain = 5f;
 	public float jumpForce = 1.5f;
@@ -142,12 +144,12 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && isGrounded)
 		{
-			speed = 7f;
+			speed = sprintSpeed;
 			stamina -= staminaDrain * Time.deltaTime;
 		}
 		else
 		{
-			speed = 4f;
+			speed = walkSpeed;
 			if(stamina < 100)
 			stamina += Time.deltaTime;
 		}
