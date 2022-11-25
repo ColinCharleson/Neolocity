@@ -41,7 +41,7 @@ public class KasaAttack : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			if (canAttack && !movement.onWall && !movement.gliding)
+			if (canAttack && !movement.onWall && !movement.gliding && timeSinceLastHit > 0.5f)
 			{
 				if (lastAttack == 3)
 				{
