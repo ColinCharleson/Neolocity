@@ -33,7 +33,7 @@ public class KasaAttack : MonoBehaviour
 	{
 		movement = GetComponent<PlayerController>();
 	}
-	void FixedUpdate()
+	void Update()
 	{
 		timeSinceLastHit += Time.deltaTime;
 		timeSinceBlockBroke += Time.deltaTime;
