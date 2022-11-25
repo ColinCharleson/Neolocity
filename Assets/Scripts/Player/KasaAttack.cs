@@ -24,6 +24,9 @@ public class KasaAttack : MonoBehaviour
 	public float blockingSpeed;
 	public float regenTimer;
 
+	//Trail Effect
+	public GameObject trail;
+
 	private PlayerController movement;
 
 	private void Start()
@@ -71,9 +74,9 @@ public class KasaAttack : MonoBehaviour
 
 	public void Attack()
 	{
-
 		if (timeSinceLastHit > 1.3f)
 		{
+			trail.SetActive(true);
 			kasa.SetTrigger("Attack");
 			lastAttack = 1;
 			attackCooldown = 0.5f;
@@ -85,6 +88,7 @@ public class KasaAttack : MonoBehaviour
 		{
 			if (lastAttack == 2)
 			{
+				trail.SetActive(true);
 				kasa.SetTrigger("Attack3");
 				lastAttack = 3;
 				attackCooldown = 4.0f;
@@ -94,6 +98,7 @@ public class KasaAttack : MonoBehaviour
 			}
 			if (lastAttack == 1)
 			{
+				trail.SetActive(true);
 				kasa.SetTrigger("Attack2");
 				lastAttack = 2;
 				attackCooldown = 0.5f;
@@ -102,7 +107,7 @@ public class KasaAttack : MonoBehaviour
 				timeSinceLastHit = 0;
 			}
 		}
-
+ 
 		StartCoroutine(AttackCooldownReset());
 	}
 
@@ -115,9 +120,9 @@ public class KasaAttack : MonoBehaviour
 
 	IEnumerator ResetAttack()
 	{
-
 		yield return new WaitForSeconds(0.5f);
 		isAttacking = false;
+		trail.SetActive(false);
 	}
 
 	private void OnTriggerEnter(Collider other)
