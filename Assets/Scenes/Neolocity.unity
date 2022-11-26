@@ -159,6 +159,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  knockBackEffect: {fileID: 0}
+  regenSpeed: 0
   thePlayer: {fileID: 0}
 --- !u!114 &28262542
 MonoBehaviour:
@@ -179,7 +181,16 @@ MonoBehaviour:
   swingDamage: 10
   timeSinceLastHit: 0
   lastAttack: 0
-  weaponHitBox: {fileID: 2106672607}
+  uiSheild1: {fileID: 0}
+  uiSheild2: {fileID: 0}
+  uiSheild3: {fileID: 0}
+  canBlock: 1
+  isBlocking: 0
+  blockHealth: 3
+  timeSinceBlockBroke: 0
+  blockingSpeed: 0
+  regenTimer: 0
+  trail: {fileID: 0}
 --- !u!54 &28262544
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,8 +226,8 @@ MonoBehaviour:
   wallRight: 0
   wallCheckDistance: 0.7
   jumpForce: 10
+  wallRunCoolDown: 0
   fallingSpeed: 0
-  rb: {fileID: 28262544}
 --- !u!114 &28262546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ab2af5c308cad4b9bf0657a877c010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  min: 0.5
+  max: 1
   glidePower: 1
 --- !u!114 &28262547
 MonoBehaviour:
@@ -248,11 +261,26 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  sprintSpeed: 7
+  walkSpeed: 5
+  stamina: 100
+  jumpForce: 1.5
+  groundDrag: 0
+  airMultiplier: 0
+  isAlive: 1
+  kasaAttack: {fileID: 0}
   knockBackForce: 10
+  minFall: 4
+  playerHealth: {fileID: 0}
+  sightRange: 0
+  enemyInSightRange: 0
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 0
   gliding: 0
   onWall: 0
-  lastMission: 0
   body: {fileID: 0}
+  enemy: {fileID: 0}
   tempKasa: {fileID: 1511815562}
 --- !u!4 &28262548
 Transform:
