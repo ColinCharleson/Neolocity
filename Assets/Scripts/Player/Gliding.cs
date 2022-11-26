@@ -11,11 +11,13 @@ public class Gliding : MonoBehaviour
 
     private Rigidbody body;
     private PlayerController movement;
+    private FallDamage fallDamage;
 
     void Start()
     {
         body = GetComponent<Rigidbody>();
         movement = GetComponent<PlayerController>();
+        fallDamage = GetComponent<FallDamage>();
     }
 
     // Update is called once per frame
@@ -25,11 +27,13 @@ public class Gliding : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) && !movement.onWall)
 		{
             movement.gliding = true;
+            fallDamage.gliding = true;
             glidePower = min;
 		}
         else
         {
             movement.gliding = false;
+            fallDamage.gliding = false;
             glidePower = max;
 		}
     }

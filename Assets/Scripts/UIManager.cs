@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
         pauseUI.enabled = false;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         //stamina
         float staminaPercentage =  player.stamina / 100;
@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
             gameUI.enabled = !gameUI.enabled;
             pauseUI.enabled = !pauseUI.enabled;
         }
-
         if(pauseUI.enabled)
 		{
             Time.timeScale = 0;
@@ -66,6 +65,7 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(5);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
     }
 }

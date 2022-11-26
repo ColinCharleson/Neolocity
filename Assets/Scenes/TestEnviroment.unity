@@ -6235,6 +6235,7 @@ GameObject:
   - component: {fileID: 652168845}
   - component: {fileID: 652168846}
   - component: {fileID: 652168847}
+  - component: {fileID: 652168848}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -6278,6 +6279,7 @@ MonoBehaviour:
     m_Bits: 64
   gliding: 0
   onWall: 0
+  fallDamageScript: {fileID: 652168848}
   body: {fileID: 652168842}
   enemy: {fileID: 969719241}
   tempKasa: {fileID: 625563193}
@@ -6431,6 +6433,28 @@ MonoBehaviour:
   cooldownLength: 5
   timeLeft: 0
   boostForce: 30
+--- !u!114 &652168848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652168837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958dfd9260c7dd54cac503753a47f705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGrounded: 0
+  groundCheck: {fileID: 938198246}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  startOfFalling: 0
+  minFall: 4
+  tempKasa: {fileID: 625563193}
+  body: {fileID: 652168842}
+  playerHealth: {fileID: 652168846}
 --- !u!65 &654345636
 BoxCollider:
   m_ObjectHideFlags: 0

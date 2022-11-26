@@ -19,10 +19,13 @@ public class WallRunning : MonoBehaviour
 
 	private Transform orientation;
 	private PlayerController movement;
+	private FallDamage fallDamage;
+
 	private void Start()
 	{
 		orientation = GetComponent<Transform>();
 		movement = GetComponent<PlayerController>();
+		fallDamage = GetComponent<FallDamage>();
 	}
 	private void FixedUpdate()
 	{
@@ -53,11 +56,13 @@ public class WallRunning : MonoBehaviour
 				fallingSpeed = 0.1f;
 				movement.onWall = true;
 				movement.gliding = false;
+				fallDamage.onWall = true;
 			}
 		}
 		else
 		{
 			movement.onWall = false;
+			fallDamage.onWall = false;
 			fallingSpeed = 1f;
 
 

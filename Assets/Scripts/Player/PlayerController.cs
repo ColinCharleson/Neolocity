@@ -42,8 +42,6 @@ public class PlayerController : MonoBehaviour
 	float startOfFalling;
 	public float minFall = 4f;
 
-	public PlayerHealth playerHealth;
-
 	//Lock On
 	public float sightRange;
 	public bool enemyInSightRange;
@@ -76,28 +74,6 @@ public class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
     {
-		//checking if take fall damage
-		GroundCheck();
-
-		if (gliding || onWall)
-        {
-			startOfFalling = transform.position.y;
-		}
-
-		if (!wasFalling && isFalling)
-		{
-			startOfFalling = transform.position.y;
-		}
-
-		if(!wasGrounded && isGrounded && !gliding)
-        {
-			TakeDamage();
-		}
-
-		wasGrounded = isGrounded;
-		wasFalling = isFalling;
-		enemyInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsEnemy);
-
 		//temp animations
 		tempKasa.SetBool("Gliding", gliding);
 		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
@@ -196,34 +172,6 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void GroundCheck()
-    {
-		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-    }
-
-	void TakeDamage()
-    {
-		float fallDistance = startOfFalling - transform.position.y;
-
-		if (fallDistance > minFall)
-		{
-			tempKasa.SetTrigger("Shake");
-			playerHealth.health -= fallDistance * 3;
-
-			if (playerHealth.health <= 0)
-			{
-				playerHealth.health = 0;
-			}
-		}
-    }
-
-	bool isFalling 
-	{ 
-		get
-		{
-			return (!isGrounded && body.velocity.y < 0);
-		} 
-	}
 
 	void Rotation()
 	{
