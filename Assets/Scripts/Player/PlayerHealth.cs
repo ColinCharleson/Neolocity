@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
 	private void FixedUpdate()
     { 
 
-        if (health < maxHealth)
+        if (health < maxHealth && health > 0)
             HealthRegen();
     }
 	public void HealthRegen()

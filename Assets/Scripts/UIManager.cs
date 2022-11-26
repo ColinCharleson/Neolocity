@@ -34,19 +34,22 @@ public class UIManager : MonoBehaviour
 
         healthText.text = "Health: " + PlayerHealth.hp.health.ToString("000") + "/" + PlayerHealth.hp.maxHealth.ToString("000");
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && PlayerHealth.hp.health > 0)
 		{
             gameUI.enabled = !gameUI.enabled;
             pauseUI.enabled = !pauseUI.enabled;
         }
+
         if(pauseUI.enabled)
 		{
             Time.timeScale = 0;
-		}
+            Cursor.lockState = CursorLockMode.None;
+        }
 		else
 		{
             Time.timeScale = 1;
-		}
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
         if(PlayerHealth.hp.health == 0)
 		{
