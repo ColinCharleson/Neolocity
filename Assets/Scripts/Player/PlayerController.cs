@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
 	Camera cam;
 	public Animator tempKasa;
 
+	//Footsteps
+	public AudioSource footstepsSource;
+
 	void Start()
 	{
 		glideScript = GetComponent<Gliding>();
@@ -79,7 +82,20 @@ public class PlayerController : MonoBehaviour
 		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
 		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
 		
-
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
+		{
+			if (isGrounded == true)
+            {
+				footstepsSource.enabled = true;
+            }else
+            {
+				footstepsSource.enabled = false;
+            }
+		}
+		else
+		{
+			footstepsSource.enabled = false;
+		}
 
 		if (Input.GetKey(KeyCode.R))
 			transform.position = new Vector3(26, 18, -1);
@@ -94,6 +110,7 @@ public class PlayerController : MonoBehaviour
 				Rotation();
 			}
 		}
+		
 	}
 
 	void Movement()
