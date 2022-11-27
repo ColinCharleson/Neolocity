@@ -9946,6 +9946,7 @@ MonoBehaviour:
   jumpForce: 3
   groundDrag: 5
   airMultiplier: 0.2
+  isSprinting: 0
   isAlive: 1
   kasaAttack: {fileID: 652168845}
   knockBackForce: 4

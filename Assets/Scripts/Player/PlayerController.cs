@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce = 1.5f;
 	public float groundDrag;
 	public float airMultiplier;
+	public bool isSprinting = false;
 	Vector3 moveDirection;
 
 	public bool isAlive = true;
@@ -92,31 +93,37 @@ public class PlayerController : MonoBehaviour
 		tempKasa.SetBool("Gliding", gliding);
 		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
 		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
-		
+		tempKasa.SetBool("Sprint", isSprinting);
+
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
 		{
-			if (isGrounded == true)
+			if (isGrounded == true && !gliding && !onWall)
             {
 				if (Input.GetKey(KeyCode.LeftShift))
                 {
 					footstepsSource.enabled = false;
 					sprintSource.enabled = true;
-                }
+					isSprinting = true;
+
+				}
                 else
                 {
 					footstepsSource.enabled = true;
 					sprintSource.enabled = false;
+					isSprinting = false;
 				}
             }else
             {
 				footstepsSource.enabled = false;
 				sprintSource.enabled = false;
+				isSprinting = false;
 			}
 		}
 		else
 		{
 			footstepsSource.enabled = false;
 			sprintSource.enabled = false;
+			isSprinting = false;
 		}
 
 		if (Input.GetKey(KeyCode.R))
