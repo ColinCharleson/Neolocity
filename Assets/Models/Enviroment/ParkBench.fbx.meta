@@ -3,7 +3,12 @@ guid: ee917fd8337be57419e163462817f827
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cussion
+    second: {fileID: 2100000, guid: 4aa6066c0a553884aa81374f74e68707, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

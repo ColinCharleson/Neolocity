@@ -3,7 +3,42 @@ guid: d2707302f5f367348811dda7e0f41199
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete
+    second: {fileID: 2100000, guid: a529a63684c243a43a0eab27d15374db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dirt
+    second: {fileID: 2100000, guid: a27efa0f636dea741b95c90f82114643, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: b24f112ca826ec84d8e3fb6608211831, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal Bar
+    second: {fileID: 2100000, guid: 793bda7e3c4438a4d953e1c1654daa82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof Concrete
+    second: {fileID: 2100000, guid: bad77d3aeca73b5458cea517006ed081, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Smooth Concrete
+    second: {fileID: 2100000, guid: b85314a63b605eb4e94c0bacebaa0fae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White Concrete
+    second: {fileID: 2100000, guid: b85314a63b605eb4e94c0bacebaa0fae, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
