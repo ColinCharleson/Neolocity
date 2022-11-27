@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class UIManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class UIManager : MonoBehaviour
     public Canvas gameUI, pauseUI, deathUI;
 
     public Image healthBar;
-    public Text healthText;
+    public TextMeshProUGUI healthText;
 
     public Image staminaBar;
 

@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MissionNPC : MonoBehaviour
 {
-	public Text missionProgressDisplay;
+	public TextMeshProUGUI missionProgressDisplay;
 	public Image missionProgressBack;
 	//Character Data
 	[Header("Character Data")]
@@ -38,8 +39,8 @@ public class MissionNPC : MonoBehaviour
 	[Header("Text Box Data")]
 	//Text Box
 	public GameObject missionBox;
-	public Text nameText;
-	public Text messageText;
+	public TextMeshProUGUI nameText;
+	public TextMeshProUGUI messageText;
 
 	// Start is called before the first frame update
 	void Start()
