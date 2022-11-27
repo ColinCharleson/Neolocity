@@ -101,11 +101,13 @@ public class PlayerController : MonoBehaviour
             }else
             {
 				footstepsSource.enabled = false;
-            }
+				sprintSource.enabled = false;
+			}
 		}
 		else
 		{
 			footstepsSource.enabled = false;
+			sprintSource.enabled = false;
 		}
 
 		if (Input.GetKey(KeyCode.R))
