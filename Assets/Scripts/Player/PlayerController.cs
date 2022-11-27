@@ -193,6 +193,10 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	public void ChangeSensitivity(float sensi)
+    {
+		mouseSensitivity = sensi;
+	}
 
 	void Rotation()
 	{
