@@ -923,10 +923,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 632344948}
   m_HandleRect: {fileID: 910936476}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 700
+  m_MinValue: 10
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 356
+  m_Value: 23.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -9934,7 +9934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db7d8adc579b9844a3fa53fd9e98788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 700
+  mouseSensitivity: 400
   isGrounded: 0
   groundCheck: {fileID: 938198246}
   groundMask:
@@ -9962,6 +9962,7 @@ MonoBehaviour:
   body: {fileID: 652168842}
   enemy: {fileID: 969719241}
   tempKasa: {fileID: 625563193}
+  slider: {fileID: 61463581}
   footstepsSource: {fileID: 652168850}
   sprintSource: {fileID: 360758051}
 --- !u!4 &652168839

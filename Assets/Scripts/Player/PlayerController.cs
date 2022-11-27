@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
 	// Movement and Rotation
 	float vertical;
 	float horizontal;
-	public float mouseSensitivity;
+	public float mouseSensitivity = 100;
 	float xRotation;
 
 	//Ground Check
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
 	public Transform enemy;
 	Camera cam;
 	public Animator tempKasa;
+	public Slider slider;
 
 	//Footsteps
 	public AudioSource footstepsSource, sprintSource;
@@ -75,7 +77,14 @@ public class PlayerController : MonoBehaviour
 		cam = GetComponentInChildren<Camera>();
 
 		Cursor.lockState = CursorLockMode.Locked;
+		mouseSensitivity = PlayerPrefs.GetFloat("CurrentSens", 100);
+		slider.value = mouseSensitivity / 10;
 	}
+
+	void Update()
+    {
+		PlayerPrefs.SetFloat("CurrentSens", mouseSensitivity);
+    }
 
 	private void FixedUpdate()
     {
@@ -206,7 +215,7 @@ public class PlayerController : MonoBehaviour
 
 	public void ChangeSensitivity(float sensi)
     {
-		mouseSensitivity = sensi;
+		mouseSensitivity = sensi * 10;
 	}
 
 	void Rotation()
