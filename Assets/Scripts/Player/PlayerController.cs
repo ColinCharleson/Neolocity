@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 	public Animator tempKasa;
 
 	//Footsteps
-	public AudioSource footstepsSource;
+	public AudioSource footstepsSource, sprintSource;
 
 	void Start()
 	{
@@ -88,7 +88,16 @@ public class PlayerController : MonoBehaviour
 		{
 			if (isGrounded == true)
             {
-				footstepsSource.enabled = true;
+				if (Input.GetKey(KeyCode.LeftShift))
+                {
+					footstepsSource.enabled = false;
+					sprintSource.enabled = true;
+                }
+                else
+                {
+					footstepsSource.enabled = true;
+					sprintSource.enabled = false;
+				}
             }else
             {
 				footstepsSource.enabled = false;
