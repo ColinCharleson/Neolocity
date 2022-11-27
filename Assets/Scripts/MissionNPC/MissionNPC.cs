@@ -18,7 +18,7 @@ public class MissionNPC : MonoBehaviour
 	private GameObject missionEnd;
 
 	public PickUpMission missionPickUp;
-	private GameObject missionItem;
+	public GameObject missionItem;
 
 	public FollowMission missionFollow;
 	private GameObject missionTarget;
@@ -180,7 +180,7 @@ public class MissionNPC : MonoBehaviour
 
 		if (missionPickUp != null && missionStarted == true) //Pick Up mission
 		{
-			if (Vector3.Distance(player.transform.position, missionPickUp.pickUpLocation) < 2)
+			if (missionItem == null)
 			{
 				tempFinish = true;
 			}

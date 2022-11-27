@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
 	//Story Missions
 	private bool isTalking;
 	public GameObject speakInteractBox;
+	public GameObject grabInteractBox;
 
 	//Other components
 	public Rigidbody body;
@@ -103,6 +104,8 @@ public class PlayerController : MonoBehaviour
 
 			SpeedControl();
 		TalkToNPC();
+		PickingUp();
+
 		if (!isTalking)
 		{
 			if (isAlive)
@@ -236,5 +239,19 @@ public class PlayerController : MonoBehaviour
 				isTalking = false;
 			}
 		}
+	}
+	void PickingUp()
+	{
+		RaycastHit hit;
+		if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4) && hit.collider.gameObject.CompareTag("MissionEnd"))
+		{
+			grabInteractBox.SetActive(true);
+			if (Input.GetKey(KeyCode.E))
+			{
+				Destroy(hit.transform.parent.parent.gameObject);
+			}
+		}
+		else
+			grabInteractBox.SetActive(false);
 	}
 }

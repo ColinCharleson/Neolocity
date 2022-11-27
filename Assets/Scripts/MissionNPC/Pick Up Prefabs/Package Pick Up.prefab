@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8937543023664058709}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: MissionEnd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 5614506368499339287}
   m_Layer: 0
   m_Name: Package Pick Up
-  m_TagString: Untagged
+  m_TagString: MissionEnd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
