@@ -27,6 +27,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Sign
+    second: {fileID: 2100000, guid: f2bf01750586e204ba78531a004f19cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: lines
     second: {fileID: 2100000, guid: 1847b81498cab344f8000ba1eee92ddd, type: 2}
   - first:

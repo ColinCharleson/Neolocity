@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Concrete
-    second: {fileID: 2100000, guid: b85314a63b605eb4e94c0bacebaa0fae, type: 2}
+    second: {fileID: 2100000, guid: 78a8d504e12ef8149b94e34c2bccee95, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
