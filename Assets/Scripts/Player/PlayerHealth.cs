@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth hp;
-    public float maxHealth;
-    public float health;
+    public float maxHealth = 100;
+    public float health = 100;
     public ParticleSystem knockBackEffect;
 
     public float regenSpeed;
@@ -22,7 +22,6 @@ public class PlayerHealth : MonoBehaviour
     }
     void Start()
     {
-        health = maxHealth;
 
         thePlayer = FindObjectOfType<PlayerController>();
 

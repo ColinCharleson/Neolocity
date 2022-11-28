@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 		Cursor.lockState = CursorLockMode.Locked;
 		mouseSensitivity = PlayerPrefs.GetFloat("CurrentSens", 100);
 		slider.value = mouseSensitivity / 10;
+
 	}
 
 	void Update()
