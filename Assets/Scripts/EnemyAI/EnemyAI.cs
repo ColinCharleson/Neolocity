@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
 
     public ParticleSystem yellowParticles, explodeParticles, lightParticles;
-   
+
     //enemy health
     public float health;
     public float maxHealth;
@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
     public PlayerController playerController;
 
     //enemy pathing
-
+    private EnemyState enemyState = EnemyState.patrol;
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
@@ -64,27 +64,60 @@ public class EnemyAI : MonoBehaviour
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-            if (!playerInSightRange && !playerInAttackRange)
+            switch (enemyState)
             {
-                health += healthRegeneration * Time.deltaTime;
-                slider.value = HealthUi();
+                case EnemyState.patrol:
+                    health += healthRegeneration * Time.deltaTime;
+                    slider.value = HealthUi();
+                    Patrolling();
 
-                Patrolling();
+                    if (health > maxHealth)
+                    {
+                        health = 5;
+                    }
 
-                if (health > maxHealth)
-                {
-                    health = 5;
-                }
-            }
+                    if (playerInSightRange && !playerInAttackRange)
+                    {
+                        enemyState = EnemyState.chase;
+                    }
 
-            if (playerInSightRange && !playerInAttackRange)
-            {
-                ChasePlayer();
-            }
+                    if (!playerInSightRange && playerInAttackRange)
+                    {
+                        enemyState = EnemyState.attack;
+                    }
+                    break;
 
-            if (playerInAttackRange && playerInSightRange)
-            {
-                AttackPlayer();
+                case EnemyState.chase:
+                    ChasePlayer();
+                    if (!playerInSightRange && !playerInAttackRange)
+                    {
+                        enemyState = EnemyState.patrol;
+                    }
+
+                    if (!playerInSightRange && playerInAttackRange)
+                    {
+                        enemyState = EnemyState.attack;
+                    }
+
+                    break;
+
+                case EnemyState.attack:
+                    AttackPlayer();
+
+                    if (!playerInSightRange && !playerInAttackRange)
+                    {
+                        enemyState = EnemyState.patrol;
+                    }
+                    else if (playerInSightRange && !playerInAttackRange)
+                    {
+                        enemyState = EnemyState.chase;
+                    }
+
+                    break;
+
+                default:
+
+                    break;
             }
         }
     }
@@ -234,5 +267,12 @@ public class EnemyAI : MonoBehaviour
             enemy.AddForce((transform.up * 3), ForceMode.Impulse);
             enemy.AddForce((-transform.forward * 60), ForceMode.Impulse);
         }
+    }
+
+    public enum EnemyState
+    {
+        chase,
+        attack,
+        patrol
     }
 }
