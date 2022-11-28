@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
 	Camera cam;
 	public Animator tempKasa;
 	public Slider slider;
+	public Text sensText;
 
 	//Footsteps
 	public AudioSource footstepsSource, sprintSource;
@@ -174,7 +175,7 @@ public class PlayerController : MonoBehaviour
 		else
 		{
 			speed = walkSpeed;
-			if(stamina < 100)
+			if (stamina < 100)
 			stamina += Time.deltaTime;
 		}
 
@@ -223,6 +224,7 @@ public class PlayerController : MonoBehaviour
 	public void ChangeSensitivity(float sensi)
     {
 		mouseSensitivity = sensi * 10;
+		sensText.text = mouseSensitivity.ToString("F0");
 	}
 
 	void Rotation()
