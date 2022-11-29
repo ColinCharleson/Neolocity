@@ -895,6 +895,9 @@ MonoBehaviour:
   musicSource: {fileID: 1830854480}
   sfxSource: {fileID: 1927027058}
   ambientSource: {fileID: 1234118649}
+  _musicSlider: {fileID: 143530886}
+  _ambientSlider: {fileID: 1420974221}
+  _sfxSlider: {fileID: 1103801719}
 --- !u!4 &39637084
 Transform:
   m_ObjectHideFlags: 0
@@ -2851,17 +2854,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 362935134}
   m_HandleRect: {fileID: 1337662198}
   m_Direction: 0
-  m_MinValue: 60
+  m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 60
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ChangeFov
-        m_Mode: 0
+      - m_Target: {fileID: 39637083}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: MusicVolume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -35656,17 +35659,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 1349109218}
   m_HandleRect: {fileID: 636604325}
   m_Direction: 0
-  m_MinValue: 10
+  m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Senestivity
-        m_Mode: 0
+      - m_Target: {fileID: 39637083}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: SFXVolume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -42168,17 +42171,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 2095260313}
   m_HandleRect: {fileID: 108363257}
   m_Direction: 0
-  m_MinValue: 10
+  m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Senestivity
-        m_Mode: 0
+      - m_Target: {fileID: 39637083}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: AmbientVolume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

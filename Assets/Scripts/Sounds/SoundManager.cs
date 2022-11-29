@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class SoundManager : MonoBehaviour
 
     public Sound[] music, sfx, ambient;
     public AudioSource musicSource, sfxSource, ambientSource;
+
+    public Slider _musicSlider, _ambientSlider, _sfxSlider;
 
     public void Awake()
     {
@@ -28,7 +31,22 @@ public class SoundManager : MonoBehaviour
         PlayMusic("BackgroundMusic");
         PlayAmbient("Rain");
     }
+    
 
+    //Sound Sliders and Toggles
+   
+    public void MusicVolume()
+    {
+        SoundManager.Instance.MusicVolume(_musicSlider.value);
+    }
+    public void AmbientVolume()
+    {
+        SoundManager.Instance.AmbientVolume(_ambientSlider.value);
+    }
+    public void SFXVolume()
+    {
+        SoundManager.Instance.SFXVolume(_sfxSlider.value);
+    }
     public void PlayMusic(string name)
     {
         Sound soundArray = Array.Find(music, x => x.name == name);
@@ -69,5 +87,30 @@ public class SoundManager : MonoBehaviour
         {
             sfxSource.PlayOneShot(soundArray.clip);
         }
+    }
+
+    public void ToggleMusic()
+    {
+        musicSource.mute = !musicSource.mute;
+    }
+    public void ToggleAmbient()
+    {
+        ambientSource.mute = !ambientSource.mute;
+    }
+    public void ToggleSFX()
+    {
+        sfxSource.mute = !sfxSource.mute;
+    }
+    public void MusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+    public void AmbientVolume(float volume)
+    {
+        ambientSource.volume = volume;
+    }
+    public void SFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
     }
 }
