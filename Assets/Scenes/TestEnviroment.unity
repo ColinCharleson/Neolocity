@@ -14928,6 +14928,7 @@ RectTransform:
   - {fileID: 417674050}
   - {fileID: 1231230845}
   - {fileID: 1810393729}
+  - {fileID: 1503304093}
   m_Father: {fileID: 726541687}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35802,7 +35803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1111033872}
   m_Layer: 5
-  m_Name: OptionButtons
+  m_Name: MenuButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35821,7 +35822,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2030766990}
-  - {fileID: 1503304093}
   - {fileID: 1996249087}
   - {fileID: 1190892102}
   - {fileID: 815956329}
@@ -44116,17 +44116,17 @@ RectTransform:
   m_GameObject: {fileID: 1503304092}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25389242, y: 0.14033797, z: 0.3490767}
+  m_LocalScale: {x: 0.15975973, y: 0.15975973, z: 0.15975973}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1516032730}
-  m_Father: {fileID: 1111033872}
+  m_Father: {fileID: 728744837}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.031875003, y: 0.70077777}
   m_AnchorMax: {x: 0.18354166, y: 0.8056297}
-  m_AnchoredPosition: {x: -29.7, y: 3.1}
-  m_SizeDelta: {x: 366.01938, y: 97.23073}
+  m_AnchoredPosition: {x: 21, y: -74.7}
+  m_SizeDelta: {x: 201.32802, y: 59.12909}
   m_Pivot: {x: -0.28029633, y: 1.6636486}
 --- !u!114 &1503304094
 MonoBehaviour:
@@ -44184,7 +44184,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1111033871}
+      - m_Target: {fileID: 728744836}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -44441,7 +44441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -11, y: -2.894371}
+  m_AnchoredPosition: {x: -5, y: 27}
   m_SizeDelta: {x: 34.6635, y: 6.4123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1516032731
@@ -44491,15 +44491,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 84
-  m_fontSizeBase: 84
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -47613,7 +47613,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1111033871}
+      - m_Target: {fileID: 728744836}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -54462,8 +54462,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.031875003, y: 0.70077777}
   m_AnchorMax: {x: 0.18354166, y: 0.8056297}
-  m_AnchoredPosition: {x: 3.2699, y: -41.5}
-  m_SizeDelta: {x: 240.30382, y: 97.264366}
+  m_AnchoredPosition: {x: 19.2, y: -58}
+  m_SizeDelta: {x: 147.5977, y: 36.44914}
   m_Pivot: {x: -0.28029633, y: 1.6636486}
 --- !u!114 &1810393730
 MonoBehaviour:
@@ -60091,7 +60091,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 37, y: 5}
+  m_AnchoredPosition: {x: 27, y: 17}
   m_SizeDelta: {x: -23.7282, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2099631079
@@ -60141,15 +60141,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 84
-  m_fontSizeBase: 84
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
