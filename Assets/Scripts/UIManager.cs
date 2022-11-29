@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public Image staminaBar;
 
     public PlayerController player;
+
+    public GameObject load;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,17 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        //load
+        string filePath = Application.dataPath + "/save.txt";
+        if (System.IO.File.Exists(filePath))
+        {
+            load.SetActive(true);
+        }
+        else
+        {
+            load.SetActive(false);
+        }
+
         //stamina
         float staminaPercentage =  player.stamina / 100;
         staminaBar.fillAmount = staminaPercentage;

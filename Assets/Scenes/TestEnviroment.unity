@@ -8470,6 +8470,7 @@ MonoBehaviour:
   healthText: {fileID: 1762851242}
   staminaBar: {fileID: 715919358}
   player: {fileID: 652168838}
+  load: {fileID: 1190892101}
 --- !u!114 &486879566
 MonoBehaviour:
   m_ObjectHideFlags: 0
