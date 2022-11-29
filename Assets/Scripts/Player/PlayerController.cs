@@ -67,6 +67,9 @@ public class PlayerController : MonoBehaviour
 	public Animator tempKasa;
 	public Slider slider;
 	public Text sensText;
+	public Slider fovSlider;
+	public Text fovText;
+	public float fov = 60;
 
 	//Footsteps
 	public AudioSource footstepsSource, sprintSource;
@@ -77,15 +80,17 @@ public class PlayerController : MonoBehaviour
 		wallRunScript = GetComponent<WallRunning>();
 		body = GetComponent<Rigidbody>();
 		cam = GetComponentInChildren<Camera>();
-
 		Cursor.lockState = CursorLockMode.Locked;
 		mouseSensitivity = PlayerPrefs.GetFloat("CurrentSens", 100);
 		slider.value = mouseSensitivity / 10;
-
+		fov = PlayerPrefs.GetFloat("CurrentFov", 60);
+		fovSlider.value = fov;
 	}
 
 	void Update()
     {
+		cam.fieldOfView = fov;
+		PlayerPrefs.SetFloat("CurrentFov", fov);
 		PlayerPrefs.SetFloat("CurrentSens", mouseSensitivity);
     }
 
@@ -226,6 +231,12 @@ public class PlayerController : MonoBehaviour
     {
 		mouseSensitivity = sensi * 10;
 		sensText.text = mouseSensitivity.ToString("F0");
+	}
+
+	public void ChangeFov(float foV)
+	{
+		fov = foV;
+		fovText.text = fov.ToString("F0");
 	}
 
 	void Rotation()

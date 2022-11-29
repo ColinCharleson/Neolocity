@@ -7108,7 +7108,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '0
+  m_Text: '100
 
 '
 --- !u!222 &527656637
@@ -9723,6 +9723,9 @@ MonoBehaviour:
   resume: {fileID: 902062366}
   sensText: {fileID: 527656636}
   sensSlider: {fileID: 178082782}
+  fovText: {fileID: 1647268265}
+  fovSlider: {fileID: 1654566355}
+  fieldOV: 0
   sens: 0
   player: {fileID: 5731900430905596951, guid: e07b203ea1e57ef4d994cbe7d79bbbba, type: 3}
 --- !u!1 &832481173
@@ -14080,6 +14083,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645083255}
   m_CullTransparentMesh: 1
+--- !u!1 &1647268263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1647268264}
+  - component: {fileID: 1647268266}
+  - component: {fileID: 1647268265}
+  m_Layer: 5
+  m_Name: FovCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1647268264
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647268263}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.22510651, y: 0.13244507, z: 0.13244507}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2126130986}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -104.89365, y: 8.1}
+  m_SizeDelta: {x: 130.6637, y: 50.60175}
+  m_Pivot: {x: -2.9167876, y: -0.4961379}
+--- !u!114 &1647268265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647268263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.99607843, g: 0, b: 0.80718017, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 5e482f32ef9e0b74a8d219648e1fd4b3, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 210
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '60
+
+'
+--- !u!222 &1647268266
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647268263}
+  m_CullTransparentMesh: 1
 --- !u!4 &1654560327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ee917fd8337be57419e163462817f827, type: 3}
@@ -14096,7 +14181,7 @@ GameObject:
   - component: {fileID: 1654566354}
   - component: {fileID: 1654566355}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: FovSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14122,7 +14207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.9295826, y: 17.468178}
+  m_AnchoredPosition: {x: -6.9295826, y: 20.1}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1654566355
@@ -14169,13 +14254,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1465607016}
   m_HandleRect: {fileID: 1179892973}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 60
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 60
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 832141733}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: ChangeFov
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1669156731
 GameObject:
   m_ObjectHideFlags: 0
@@ -15279,7 +15376,7 @@ GameObject:
   - component: {fileID: 1850911425}
   - component: {fileID: 1850911424}
   m_Layer: 5
-  m_Name: Volume Text
+  m_Name: 'Fov '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15302,7 +15399,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.629591, y: 26.068188}
+  m_AnchoredPosition: {x: -20.6, y: 27.9}
   m_SizeDelta: {x: -2.5876465, y: 4.1063843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850911424
@@ -15325,7 +15422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Volume
+  m_text: FIeld Of View
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eea1690c7e228b34eaa990e2be9c79e5, type: 2}
   m_sharedMaterial: {fileID: -7939020327684146714, guid: eea1690c7e228b34eaa990e2be9c79e5, type: 2}
@@ -15388,7 +15485,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -15.193695, y: 0, z: -27.52597, w: -49.45027}
+  m_margin: {x: -15.193695, y: 0, z: -266.39807, w: 8.559265}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -22175,6 +22272,7 @@ RectTransform:
   - {fileID: 2003374974}
   - {fileID: 1850911423}
   - {fileID: 1654566354}
+  - {fileID: 1647268264}
   - {fileID: 664814075}
   - {fileID: 1805264256}
   - {fileID: 178082781}
