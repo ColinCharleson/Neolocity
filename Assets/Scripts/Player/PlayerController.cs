@@ -288,7 +288,7 @@ public class PlayerController : MonoBehaviour
 	void PickingUp()
 	{
 		RaycastHit hit;
-		if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4) && hit.collider.gameObject.CompareTag("MissionEnd"))
+		if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4) && hit.collider.gameObject.CompareTag("Grabbable"))
 		{
 			grabInteractBox.SetActive(true);
 			if (Input.GetKey(KeyCode.E))

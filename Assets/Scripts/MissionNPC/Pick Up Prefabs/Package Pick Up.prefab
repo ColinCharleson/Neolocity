@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8937543023664058709}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: MissionEnd
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 5614506368499339287}
   m_Layer: 0
   m_Name: Package Pick Up
-  m_TagString: MissionEnd
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,5 +128,5 @@ Transform:
   m_Children:
   - {fileID: 5965232368195627527}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
