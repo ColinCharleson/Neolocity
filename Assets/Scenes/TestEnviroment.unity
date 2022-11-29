@@ -977,6 +977,9 @@ MonoBehaviour:
   _musicSlider: {fileID: 143530886}
   _ambientSlider: {fileID: 1420974221}
   _sfxSlider: {fileID: 1103801719}
+  _musicText: {fileID: 760293217}
+  _ambientText: {fileID: 533031700}
+  _sfxText: {fileID: 724563855}
 --- !u!4 &39637084
 Transform:
   m_ObjectHideFlags: 0

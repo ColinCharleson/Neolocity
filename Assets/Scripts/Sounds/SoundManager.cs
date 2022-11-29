@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource walkSource, runSoruce;
 
     public Slider _musicSlider, _ambientSlider, _sfxSlider;
+    public Text _musicText, _ambientText, _sfxText;
 
     public void Awake()
     {
@@ -32,10 +33,8 @@ public class SoundManager : MonoBehaviour
         PlayMusic("BackgroundMusic");
         PlayAmbient("Rain");
     }
-    
 
-    //Sound Sliders and Toggles
-   
+    //Sound Sliders and Toggles 
     public void MusicVolume()
     {
         SoundManager.Instance.MusicVolume(_musicSlider.value);
@@ -105,14 +104,19 @@ public class SoundManager : MonoBehaviour
     public void MusicVolume(float volume)
     {
         musicSource.volume = volume;
+        _musicText.text = musicSource.volume.ToString("F0");
+
     }
     public void AmbientVolume(float volume)
     {
         ambientSource.volume = volume;
+        _ambientText.text = ambientSource.volume.ToString("F0");
     }
     public void SFXVolume(float volume)
     {
         walkSource.volume = volume;
         runSoruce.volume = volume;
+
+        _sfxText.text = sfxSource.volume.ToString("F0");
     }
 }
