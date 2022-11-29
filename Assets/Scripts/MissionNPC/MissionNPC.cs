@@ -13,7 +13,7 @@ public class MissionNPC : MonoBehaviour
 	public GameObject player;
 	public DataNPC data;
 
-	[Header ("Mission Types")]
+	[Header("Mission Types")]
 	//Mission Types
 	public GoToMissionData missionGoTo;
 	private GameObject missionEnd;
@@ -35,6 +35,7 @@ public class MissionNPC : MonoBehaviour
 	public bool missionFinished;
 	public bool missionHandedIn;
 	bool tempFinish = false;
+	float timer, failTime;
 
 	[Header("Text Box Data")]
 	//Text Box
@@ -65,7 +66,7 @@ public class MissionNPC : MonoBehaviour
 	{
 		if (missionStarted == true) // if the player is on the given mission
 		{
-			if(missionFinished == true) // if they finished it
+			if (missionFinished == true) // if they finished it
 			{
 				missionBox.SetActive(true);
 				nameText.text = data.name;
@@ -117,6 +118,8 @@ public class MissionNPC : MonoBehaviour
 
 	public void StartMission()
 	{
+		timer = 0;
+		hackTime = 0;
 		tempFinish = false;
 		MissionManager.instance.missionActive = true;
 		MissionManager.instance.currentMission = MissionManager.instance.lastMission + 1;
@@ -146,7 +149,7 @@ public class MissionNPC : MonoBehaviour
 			missionTarget.GetComponent<FollowBot>().target = missionFollow.endLocation;
 			MissionManager.instance.currentObjective = missionTarget.transform;
 		}
-		
+
 		if (missionHack != null && missionStarted == false)
 		{
 			missionStarted = true;
@@ -188,7 +191,7 @@ public class MissionNPC : MonoBehaviour
 				tempFinish = true;
 			}
 
-			if(tempFinish == true)
+			if (tempFinish == true)
 			{
 				missionFinished = true;
 				MissionManager.instance.currentObjective = this.transform;
@@ -200,53 +203,69 @@ public class MissionNPC : MonoBehaviour
 			else
 			{
 				missionProgressDisplay.color = Color.cyan;
-				missionProgressDisplay.text = "PICK UP THE PACKAGE: " + 
+				missionProgressDisplay.text = "PICK UP THE PACKAGE: " +
 				Vector3.Distance(player.transform.position, GameObject.FindGameObjectWithTag("MissionEnd").transform.position).ToString("00") + " m";
 			}
 		}
 
 		if (missionFollow != null && missionStarted == true) //Follow mission
 		{
-
-			if (Vector3.Distance(player.transform.position, missionFollow.endLocation) < 10)
+			failTime = 3;
+			if (timer < failTime)
 			{
-				missionFinished = true;
-				MissionManager.instance.currentObjective = this.transform;
-
-				missionProgressDisplay.color = Color.green;
-				missionProgressDisplay.text = "LOCATION DISCOVERED: Return to " + data.name + " with the location";
-			}
-
-			if (missionTarget.gameObject == null)
-			{
-				if(missionFinished == false)
+				if (Vector3.Distance(player.transform.position, missionFollow.endLocation) < 10)
 				{
-					missionStarted = false;
+					missionFinished = true;
+					MissionManager.instance.currentObjective = this.transform;
+
+					missionProgressDisplay.color = Color.green;
+					missionProgressDisplay.text = "LOCATION DISCOVERED: Return to " + data.name + " with the location";
+				}
+
+				if (missionTarget.gameObject == null)
+				{
+					if (missionFinished == false)
+					{
+						missionStarted = false;
+						missionProgressDisplay.color = Color.red;
+						missionProgressDisplay.text = "YOU FAILED: Return to " + data.name + " to try again";
+						MissionManager.instance.currentObjective = this.transform;
+					}
+				}
+				else
+				{
+					if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
+					{
+						missionProgressDisplay.color = Color.red;
+						missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Youre losing them";
+					}
+					else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
+					{
+						missionProgressDisplay.color = Color.red;
+						missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Presence detected, back up";
+						timer += Time.deltaTime;
+					}
+					else
+					{
+						missionProgressDisplay.color = Color.cyan;
+						missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Follow them";
+						timer = 0;
+					}
 				}
 			}
 			else
 			{
-				if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
-				{
-					missionProgressDisplay.color = Color.red;
-					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Youre losing them";
-				}
-				else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
-				{
-					missionProgressDisplay.color = Color.red;
-					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Presence detected, back up";
-				}
-				else
-				{
-					missionProgressDisplay.color = Color.cyan;
-					missionProgressDisplay.text = "DISCOVER ENEMIES DESTINATION: Follow them";
-				}
+				missionStarted = false;
+				missionProgressDisplay.color = Color.red;
+				missionProgressDisplay.text = "THEY SPOTTED YOU: Return to " + data.name + " to try again";
+				MissionManager.instance.currentObjective = this.transform;
 			}
 		}
 
 		if (missionHack != null && missionStarted == true) //Hack mission
 		{
-			if (missionTarget.gameObject == null)
+			failTime = 3;
+			if (timer < failTime)
 			{
 				if (hackTime > missionHack.hackingTime)
 				{
@@ -255,38 +274,51 @@ public class MissionNPC : MonoBehaviour
 					missionProgressDisplay.text = "HACK COMPLETED: Return to " + data.name + " with the data";
 					MissionManager.instance.currentObjective = this.transform;
 				}
+				if (missionTarget.gameObject == null)
+				{
+					if (hackTime <= missionHack.hackingTime)
+					{
+						missionStarted = false;
+						missionProgressDisplay.text = "YOU FAILED: Return to " + data.name + " to try again";
+					}
+				}
 				else
 				{
-					missionStarted = false;
+					if (100f > ((hackTime / missionHack.hackingTime) * 100))
+					{
+						if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
+						{
+							missionProgressDisplay.color = Color.red;
+							missionProgressDisplay.text = "SIGNAL WEAK: Get closer";
+						}
+						else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
+						{
+							missionProgressDisplay.color = Color.red;
+							missionProgressDisplay.text = "PRESENCE DETECTED: Too close";
+							timer += Time.deltaTime;
+						}
+						else
+						{
+							hackTime += 1 * Time.deltaTime;
+
+							missionProgressDisplay.color = Color.cyan;
+							missionProgressDisplay.text = "HACK PROGRESS: " + ((hackTime / missionHack.hackingTime) * 100).ToString("00") + "%";
+							timer = 0;
+						}
+					}
+					else
+					{
+						missionProgressDisplay.color = Color.green;
+						missionProgressDisplay.text = "HACK COMPLETED: Return To " + data.name + " With The Data";
+					}
 				}
 			}
 			else
 			{
-				if (100f > ((hackTime / missionHack.hackingTime) * 100))
-				{
-					if (Vector3.Distance(player.transform.position, missionTarget.transform.position) > 20)
-					{
-						missionProgressDisplay.color = Color.red;
-						missionProgressDisplay.text = "SIGNAL WEAK: Get closer";
-					}
-					else if (Vector3.Distance(player.transform.position, missionTarget.transform.position) < 5)
-					{
-						missionProgressDisplay.color = Color.red;
-						missionProgressDisplay.text = "PRESENCE DETECTED: Too close";
-					}
-					else
-					{
-						hackTime += 1 * Time.deltaTime;
-
-						missionProgressDisplay.color = Color.cyan;
-						missionProgressDisplay.text = "HACK PROGRESS: " + ((hackTime / missionHack.hackingTime) * 100).ToString("00") + "%";
-					}
-				}
-				else
-				{
-					missionProgressDisplay.color = Color.green;
-					missionProgressDisplay.text = "HACK COMPLETED: Return To " + data.name + " With The Data";
-				}
+				missionStarted = false;
+				missionProgressDisplay.color = Color.red;
+				missionProgressDisplay.text = "THEY SPOTTED YOU: Return to " + data.name + " to try again";
+				MissionManager.instance.currentObjective = this.transform;
 			}
 		}
 	}
