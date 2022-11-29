@@ -53,7 +53,7 @@ public class KasaAttack : MonoBehaviour
 			}
 		}
 
-		if (Input.GetKey(KeyCode.Mouse1) && !movement.gliding)
+		if (Input.GetKey(KeyCode.Mouse1) && !movement.gliding && !movement.isSprinting && !movement.onWall)
 		{
 			Block();
 			canAttack = false;
