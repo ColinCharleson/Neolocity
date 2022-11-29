@@ -18,11 +18,14 @@ public class LoadPlugin : MonoBehaviour
 	{
 		fn = Application.dataPath + "/save.txt";
 
-		if (IsLoadingGame.instance.load)
+		//if (!Application.isEditor)
 		{
-			LoadPosition();
+			if (IsLoadingGame.instance.load)
+			{
+				LoadPosition();
+			}
+			Destroy(IsLoadingGame.instance.gameObject);
 		}
-		Destroy(IsLoadingGame.instance.gameObject);
 	}
 
 	public void LoadPosition()
