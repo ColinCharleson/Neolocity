@@ -77,6 +77,8 @@ public class MissionNPC : MonoBehaviour
 				MissionManager.instance.currentMission = 0;
 				MissionManager.instance.currentObjective = null;
 
+				MissionManager.instance.gameObject.GetComponent<SavePlugin>().SavePosition();
+
 				missionHandedIn = true;
 				missionStarted = false;
 			}
