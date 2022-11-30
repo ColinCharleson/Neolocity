@@ -8417,6 +8417,9 @@ MonoBehaviour:
   block: 324
   cancelTalk: 113
   pause: 27
+  grabText: {fileID: 0}
+  speakText: {fileID: 0}
+  leaveText: {fileID: 0}
 --- !u!4 &532548474
 Transform:
   m_ObjectHideFlags: 0
@@ -11360,7 +11363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &812864416
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11685,7 +11688,21 @@ MonoBehaviour:
   fovSlider: {fileID: 1654566355}
   fieldOV: 0
   sens: 0
+  musicText: {fileID: 701119745}
+  musicSlider: {fileID: 935704499}
+  ambientText: {fileID: 108335604}
+  ambientlider: {fileID: 1087518769}
+  sfxText: {fileID: 1540565760}
+  sfxSlider: {fileID: 1677485211}
   player: {fileID: 5731900430905596951, guid: e07b203ea1e57ef4d994cbe7d79bbbba, type: 3}
+  sfx: 0
+  ambient: 0
+  music: 0
+  musicSource: {fileID: 0}
+  sfxSource: {fileID: 0}
+  ambientSource: {fileID: 0}
+  walkSource: {fileID: 0}
+  runSoruce: {fileID: 0}
 --- !u!1 &832481173
 GameObject:
   m_ObjectHideFlags: 0
@@ -12424,7 +12441,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 832141733}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ChangeMusic
+        m_MethodName: MusicVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13487,7 +13504,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 832141733}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: AmbientVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1090374092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7900aee3e336c5e418ef830ededdec71, type: 3}
@@ -18191,7 +18220,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 832141733}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: SFXVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1689964235
 GameObject:
   m_ObjectHideFlags: 0
