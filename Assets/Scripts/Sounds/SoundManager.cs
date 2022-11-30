@@ -107,17 +107,17 @@ public class SoundManager : MonoBehaviour
     public void MusicVolume(float volume)
     {
         musicVolume = volume;
-        _musicText.text = musicVolume.ToString("F0");
+        _musicText.text = (musicVolume*100).ToString("0");
 
     }
     public void AmbientVolume(float volume)
     {
         ambientVolume = volume;
-        _ambientText.text = ambientVolume.ToString("F0");
+        _ambientText.text = (ambientVolume *100).ToString("0");
     }
     public void SFXVolume(float volume)
     {
         sfxVolume = volume;
-        _sfxText.text = sfxVolume.ToString("F0");
+        _sfxText.text = (sfxVolume*100).ToString("0");
     }
 }

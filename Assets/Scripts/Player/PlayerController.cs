@@ -133,6 +133,7 @@ public class PlayerController : MonoBehaviour
 			isSprinting = false;
 		}
 
+		if (Application.isEditor)
 		if (Input.GetKey(KeyCode.R))
 			transform.position = new Vector3(26, 18, -1);
 
