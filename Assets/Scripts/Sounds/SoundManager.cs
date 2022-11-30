@@ -14,17 +14,15 @@ public class SoundManager : MonoBehaviour
 
     public Slider _musicSlider, _ambientSlider, _sfxSlider;
     public Text _musicText, _ambientText, _sfxText;
+    private float musicVolume = 1f;
+    private float ambientVolume = 1f;
+    private float sfxVolume = 1f;
 
     public void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -32,21 +30,38 @@ public class SoundManager : MonoBehaviour
     {
         PlayMusic("BackgroundMusic");
         PlayAmbient("Rain");
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+        musicSource.volume = musicVolume;
+        _musicSlider.value = musicVolume;
+
+        ambientVolume = PlayerPrefs.GetFloat("AmbientVolume");
+        ambientSource.volume = ambientVolume;
+        _ambientSlider.value = ambientVolume;
+
+        sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
+        walkSource.volume = sfxVolume;
+        runSoruce.volume = sfxVolume;
+        _sfxSlider.value = sfxVolume;
     }
 
-    //Sound Sliders and Toggles 
-    public void MusicVolume()
+    private void Update()
     {
-        SoundManager.Instance.MusicVolume(_musicSlider.value);
+        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+        musicSource.volume = musicVolume;
+
+        PlayerPrefs.SetFloat("AmbientVolume", ambientVolume);
+        ambientSource.volume = ambientVolume;
+
+        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
+        walkSource.volume = sfxVolume;
+        runSoruce.volume = sfxVolume;
     }
-    public void AmbientVolume()
-    {
-        SoundManager.Instance.AmbientVolume(_ambientSlider.value);
-    }
+
     public void SFXVolume()
     {
         SoundManager.Instance.SFXVolume(_sfxSlider.value);
     }
+
     public void PlayMusic(string name)
     {
         Sound soundArray = Array.Find(music, x => x.name == name);
@@ -89,34 +104,20 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void ToggleMusic()
-    {
-        musicSource.mute = !musicSource.mute;
-    }
-    public void ToggleAmbient()
-    {
-        ambientSource.mute = !ambientSource.mute;
-    }
-    public void ToggleSFX()
-    {
-        sfxSource.mute = !sfxSource.mute;
-    }
     public void MusicVolume(float volume)
     {
-        musicSource.volume = volume;
-        _musicText.text = musicSource.volume.ToString("F0");
+        musicVolume = volume;
+        _musicText.text = musicVolume.ToString("F0");
 
     }
     public void AmbientVolume(float volume)
     {
-        ambientSource.volume = volume;
-        _ambientText.text = ambientSource.volume.ToString("F0");
+        ambientVolume = volume;
+        _ambientText.text = ambientVolume.ToString("F0");
     }
     public void SFXVolume(float volume)
     {
-        walkSource.volume = volume;
-        runSoruce.volume = volume;
-
-        _sfxText.text = sfxSource.volume.ToString("F0");
+        sfxVolume = volume;
+        _sfxText.text = sfxVolume.ToString("F0");
     }
 }
