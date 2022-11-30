@@ -14966,6 +14966,8 @@ MonoBehaviour:
   staminaBar: {fileID: 715919358}
   player: {fileID: 652168838}
   load: {fileID: 1190892101}
+  footstepsSource: {fileID: 282733750}
+  sprintSource: {fileID: 360758051}
 --- !u!114 &486879566
 MonoBehaviour:
   m_ObjectHideFlags: 0

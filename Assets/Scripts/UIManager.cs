@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject load;
 
+    public AudioSource footstepsSource, sprintSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,8 @@ public class UIManager : MonoBehaviour
 		{
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
+            footstepsSource.enabled = false;
+            sprintSource.enabled = false;
         }
 		else
 		{
