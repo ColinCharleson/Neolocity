@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
 		{
 			if (isGrounded == true && !gliding && !onWall)
             {
-				if (Input.GetKey(KeyCode.LeftShift))
+				if (Input.GetKey(InputSystem.key.sprint))
                 {
 					footstepsSource.enabled = false;
 					sprintSource.enabled = true;
@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
 			body.velocity = new Vector3(body.velocity.x * kasaAttack.blockingSpeed, body.velocity.y , body.velocity.z * kasaAttack.blockingSpeed);
 		}
 
-		if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && isGrounded)
+		if (Input.GetKey(InputSystem.key.sprint) && stamina > 0 && isGrounded)
 		{
 			speed = sprintSpeed;
 			stamina -= staminaDrain * Time.deltaTime;
@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour
 		if (Physics.Raycast(cam.transform.position, transform.forward, out hit, 3) && hit.collider.gameObject.CompareTag("NPC") && !isTalking)
 		{
 			speakInteractBox.SetActive(true);
-			if (Input.GetKey(KeyCode.E) && !isTalking)
+			if (Input.GetKey(InputSystem.key.interact) && !isTalking)
 			{
 				hit.transform.gameObject.GetComponent<MissionNPC>().TalkToNPC(MissionManager.instance.lastMission);
 				isTalking = true;
@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour
 
 		if (isTalking)
 		{
-			if (Input.GetKey(KeyCode.Q))
+			if (Input.GetKey(InputSystem.key.cancelTalk))
 			{
 				isTalking = false;
 			}
@@ -291,7 +291,7 @@ public class PlayerController : MonoBehaviour
 		if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4) && hit.collider.gameObject.CompareTag("Grabbable"))
 		{
 			grabInteractBox.SetActive(true);
-			if (Input.GetKey(KeyCode.E))
+			if (Input.GetKey(InputSystem.key.interact))
 			{
 				Destroy(hit.transform.parent.parent.gameObject);
 			}

@@ -24,7 +24,7 @@ public class Gliding : MonoBehaviour
     void FixedUpdate()
     {
         //Glide input
-        if (Input.GetKey(KeyCode.LeftControl) && !movement.onWall)
+        if (Input.GetKey(InputSystem.key.glide) && !movement.onWall)
 		{
             movement.gliding = true;
             fallDamage.gliding = true;

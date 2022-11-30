@@ -39,7 +39,7 @@ public class KasaAttack : MonoBehaviour
 		timeSinceBlockBroke += Time.deltaTime;
 		kasa.SetBool("Blocking", isBlocking);
 
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetKeyDown(InputSystem.key.attack))
 		{
 			if (canAttack && !movement.onWall && !movement.gliding && timeSinceLastHit > 0.5f)
 			{
@@ -53,7 +53,7 @@ public class KasaAttack : MonoBehaviour
 			}
 		}
 
-		if (Input.GetKey(KeyCode.Mouse1) && !movement.gliding && !movement.isSprinting && !movement.onWall)
+		if (Input.GetKey(InputSystem.key.block) && !movement.gliding && !movement.isSprinting && !movement.onWall)
 		{
 			Block();
 			canAttack = false;

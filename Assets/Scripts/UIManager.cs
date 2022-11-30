@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
 
         healthText.text = "Health: " + PlayerHealth.hp.health.ToString("000") + "/" + PlayerHealth.hp.maxHealth.ToString("000");
 
-        if (Input.GetKeyDown(KeyCode.Escape) && PlayerHealth.hp.health > 0)
+        if (Input.GetKeyDown(InputSystem.key.pause) && PlayerHealth.hp.health > 0)
 		{
             gameUI.enabled = !gameUI.enabled;
             pauseUI.enabled = !pauseUI.enabled;

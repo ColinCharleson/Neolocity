@@ -324,7 +324,7 @@ public class MissionNPC : MonoBehaviour
 	}
 	public void DisableTextBox()
 	{
-		if (Input.GetKey(KeyCode.Q))
+		if (Input.GetKey(InputSystem.key.cancelTalk))
 		{
 			missionBox.SetActive(false);
 			nameText.text = null;
