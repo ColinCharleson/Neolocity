@@ -20385,17 +20385,10 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  sprintSpeed: 8
-  walkSpeed: 6
   stamina: 100
-  jumpForce: 3
-  groundDrag: 5
-  airMultiplier: 0.2
   isSprinting: 0
   isAlive: 1
   kasaAttack: {fileID: 652168845}
-  knockBackForce: 4
-  minFall: 4
   sightRange: 10
   enemyInSightRange: 0
   whatIsEnemy:
