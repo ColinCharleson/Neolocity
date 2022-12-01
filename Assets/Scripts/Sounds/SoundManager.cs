@@ -120,4 +120,11 @@ public class SoundManager : MonoBehaviour
         sfxVolume = volume;
         _sfxText.text = (sfxVolume*100).ToString("0");
     }
+
+    public void SetVolumeSliders()
+    {
+        _sfxText.text = (sfxVolume * 100).ToString("0");
+        _ambientText.text = (ambientVolume * 100).ToString("0");
+        _musicText.text = (musicVolume * 100).ToString("0");
+    }
 }

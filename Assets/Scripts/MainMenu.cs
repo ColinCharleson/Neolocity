@@ -82,6 +82,12 @@ public class MainMenu : MonoBehaviour
         sfx = volume;
         sfxText.text = (sfx * 100).ToString("0");
     }
+    public void SetVolumeSliders()
+    {
+        sfxText.text = (sfx * 100).ToString("0");
+        ambientText.text = (ambient * 100).ToString("0");
+        musicText.text = (music * 100).ToString("0");
+    }
 
     public void PlayGame()
     {
