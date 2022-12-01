@@ -21,10 +21,9 @@ public class MainMenu : MonoBehaviour
     public Text sfxText;
     public Slider sfxSlider;
     public GameObject player;
- /*   public float sfx, ambient , music;
-   private AudioSource musicSource, sfxSource, ambientSource;
-    private AudioSource walkSource, runSoruce;*/
-
+    public GameObject soundManager;
+    public float sfx, ambient , music;
+ 
 
     void Start()
     {
@@ -36,32 +35,25 @@ public class MainMenu : MonoBehaviour
         fieldOV = PlayerPrefs.GetFloat("CurrentFov", 60);
         fovSlider.value = fieldOV;
 
-      /*  music = PlayerPrefs.GetFloat("MusicVolume");
-        musicSource.volume = music;
+        soundManager.GetComponent<SoundManager>().musicVolume = music;
+        music = PlayerPrefs.GetFloat("MusicVolume");
         musicSlider.value = music;
 
+        soundManager.GetComponent<SoundManager>().ambientVolume = ambient;
         ambient = PlayerPrefs.GetFloat("AmbientVolume");
-        ambientSource.volume = ambient;
         ambientlider.value = ambient;
 
+        soundManager.GetComponent<SoundManager>().sfxVolume = sfx;
         sfx = PlayerPrefs.GetFloat("SFXVolume");
-        walkSource.volume = sfx;
-        runSoruce.volume = sfx;
-        sfxSlider.value = sfx;*/
+        sfxSlider.value = sfx;
     }
     private void Update()
 	{
         PlayerPrefs.SetFloat("CurrentFov", fieldOV);
         PlayerPrefs.SetFloat("CurrentSens", sens);
-        /*      PlayerPrefs.SetFloat("MusicVolume", music);
-              musicSource.volume = music;
-
-              PlayerPrefs.SetFloat("AmbientVolume", ambient);
-              ambientSource.volume = ambient;
-
-              PlayerPrefs.SetFloat("SFXVolume", sfx);
-              walkSource.volume = sfx;
-              runSoruce.volume = sfx;*/
+        PlayerPrefs.SetFloat("MusicVolume", music);
+        PlayerPrefs.SetFloat("AmbientVolume", ambient);
+        PlayerPrefs.SetFloat("SFXVolume", sfx);
 
         string filePath = Application.dataPath + "/save.txt";
         if (System.IO.File.Exists(filePath))
@@ -73,22 +65,23 @@ public class MainMenu : MonoBehaviour
             resume.SetActive(false);
         }
 	}
-/*
+
     public void MusicVolume(float volume)
     {
         music = volume;
-        musicText.text = music.ToString("F0");
+        musicText.text = (music * 100).ToString("0");
+
     }
     public void AmbientVolume(float volume)
     {
         ambient = volume;
-        ambientText.text = ambient.ToString("F0");
+        ambientText.text = (ambient * 100).ToString("0");
     }
     public void SFXVolume(float volume)
     {
         sfx = volume;
-        sfxText.text = sfx.ToString("F0");
-    }*/
+        sfxText.text = (sfx * 100).ToString("0");
+    }
 
     public void PlayGame()
     {

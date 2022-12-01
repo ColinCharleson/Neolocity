@@ -14,9 +14,9 @@ public class SoundManager : MonoBehaviour
 
     public Slider _musicSlider, _ambientSlider, _sfxSlider;
     public Text _musicText, _ambientText, _sfxText;
-    private float musicVolume = 1f;
-    private float ambientVolume = 1f;
-    private float sfxVolume = 1f;
+    public float musicVolume = 1f;
+    public float ambientVolume = 1f;
+    public float sfxVolume = 1f;
 
     public void Awake()
     {
@@ -33,7 +33,7 @@ public class SoundManager : MonoBehaviour
         musicVolume = PlayerPrefs.GetFloat("MusicVolume");
         musicSource.volume = musicVolume;
         _musicSlider.value = musicVolume;
-
+     
         ambientVolume = PlayerPrefs.GetFloat("AmbientVolume");
         ambientSource.volume = ambientVolume;
         _ambientSlider.value = ambientVolume;

@@ -11363,7 +11363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &812864416
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11695,14 +11695,10 @@ MonoBehaviour:
   sfxText: {fileID: 1540565760}
   sfxSlider: {fileID: 1677485211}
   player: {fileID: 5731900430905596951, guid: e07b203ea1e57ef4d994cbe7d79bbbba, type: 3}
+  soundManager: {fileID: 1449669657826476432, guid: ca2c40575ebc3d743960367d2460b766, type: 3}
   sfx: 0
   ambient: 0
   music: 0
-  musicSource: {fileID: 0}
-  sfxSource: {fileID: 0}
-  ambientSource: {fileID: 0}
-  walkSource: {fileID: 0}
-  runSoruce: {fileID: 0}
 --- !u!1 &832481173
 GameObject:
   m_ObjectHideFlags: 0
