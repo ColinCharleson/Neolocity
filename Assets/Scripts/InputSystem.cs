@@ -53,7 +53,9 @@ public class InputSystem : MonoBehaviour
 			if (kc.ToString() == PlayerPrefs.GetString("InteractKey"))
 			{
 				interact = kc;
+				if(grabText)
 				grabText.text = "Press " + kc.ToString() + " To Grab";
+				if(speakText)
 				speakText.text = "Press " + kc.ToString() + " To Speak";
 			}
 			if (kc.ToString() == PlayerPrefs.GetString("AttackKey"))
@@ -63,6 +65,7 @@ public class InputSystem : MonoBehaviour
 			if (kc.ToString() == PlayerPrefs.GetString("CancelTalkKey"))
 			{
 				cancelTalk = kc;
+				if(leaveText)
 				leaveText.text = "Press " + kc.ToString() + " To Continue";
 			}
 			if (kc.ToString() == PlayerPrefs.GetString("PauseKey"))
@@ -104,7 +107,9 @@ public class InputSystem : MonoBehaviour
 						case "interact":
 							interact = kc;
 							PlayerPrefs.SetString("InteractKey", kc.ToString());
+							if(grabText)
 							grabText.text = "Press " + kc.ToString() + " To Grab";
+							if(speakText)
 							speakText.text = "Press " + kc.ToString() + " To Speak";
 							break;
 						case "attack":
@@ -118,6 +123,7 @@ public class InputSystem : MonoBehaviour
 						case "cancelTalk":
 							cancelTalk = kc;
 							PlayerPrefs.SetString("CancelTalkKey", kc.ToString());
+							if(leaveText)
 							leaveText.text = "Press " + kc.ToString() + " To Continue";
 							break;
 						case "pause":

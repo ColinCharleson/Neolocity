@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
 			stamina += Time.deltaTime;
 		}
 
-		if ((Input.GetAxis("Jump") > 0))
+		if (Input.GetKey(InputSystem.key.jump))
 		{
 			if (isGrounded)
 			{
