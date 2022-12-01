@@ -19,6 +19,10 @@ public class PlayerHealth : MonoBehaviour
         {
             hp = this;
         }
+		else
+		{
+            Destroy(gameObject);
+		}
     }
     void Start()
     {
