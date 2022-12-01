@@ -14,8 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Togashi
   missionNumber: 4
-  notReadyMessage: "Ur bad\t"
-  missionMessage: Follow orange guy
-  finishedMessage: Good job
-  keepGoingMessage: Youre supposed to be following
-  allDoneMessage: Ur the best yay
+  notReadyMessage: We dont have enough information to find this hideout, go complete
+    some missions to help gather intel.
+  missionMessage: We found the route of a guard heading back to the hideout. You
+    need to follow him to find the location. Keep your distance or else they will
+    catch on to our plan.
+  finishedMessage: 'Nice work. Now that we found the hideout we can progress with
+    our plan.
+
+    (Thats the end of the beta, thank you for playing.)'
+  keepGoingMessage: We set the compass to track that guard, follow his path to find
+    the hide out.
+  allDoneMessage: Thanks again for all the help.

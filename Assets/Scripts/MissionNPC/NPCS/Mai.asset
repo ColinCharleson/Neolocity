@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Mai
   missionNumber: 3
-  notReadyMessage: Get better then u may return
-  missionMessage: Hack the robot patrolling the street. The hacking software takes
-    10 seconds
-  finishedMessage: Thank you for hacking
-  keepGoingMessage: Youre supposed to be hacking tight now go quickly
-  allDoneMessage: Thank you so much
+  notReadyMessage: Im still working on a plan. Come back here in the future.
+  missionMessage: Okay I got a plan. To track down this government hide out we need
+    to get some data. There should be a patrol drone roaming the streets stay within
+    range and the hacking device will get the data.
+  finishedMessage: Okay we got the data. Togashi will guide you for the next mission,
+    follow the compass to find him.
+  keepGoingMessage: The patrol drone is getting away. Follow the compass to find
+    him, we need that data.
+  allDoneMessage: Great job getting the data earlier! We need to find that hideout.

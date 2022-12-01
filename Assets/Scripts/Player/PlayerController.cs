@@ -20,14 +20,15 @@ public class PlayerController : MonoBehaviour
 
 	// Player movement stats
 	private float speed;
-	public float sprintSpeed = 7f;
-	public float walkSpeed = 5f;
+	private float sprintSpeed = 8f;
+	private float walkSpeed = 6f;
 	public float stamina = 100f;
 	private float staminaDrain = 5f;
-	public float jumpForce = 1.5f;
-	public float groundDrag;
-	public float airMultiplier;
+	private float jumpForce = 3f;
+	private float groundDrag = 5f;
+	private float airMultiplier = 0.2f;
 	public bool isSprinting = false;
+	private bool sprintLock = false;
 	Vector3 moveDirection;
 
 	public bool isAlive = true;
@@ -36,13 +37,7 @@ public class PlayerController : MonoBehaviour
 	public KasaAttack kasaAttack;
 
 	//Knock back
-	public float knockBackForce = 10;
-
-	//Fall Damage
-	bool wasGrounded;
-	bool wasFalling;
-	float startOfFalling;
-	public float minFall = 4f;
+	private float knockBackForce = 10;
 
 	//Lock On
 	public float sightRange;
@@ -102,37 +97,6 @@ public class PlayerController : MonoBehaviour
 		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
 		tempKasa.SetBool("Sprint", isSprinting);
 
-		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
-		{
-			if (isGrounded == true && !gliding && !onWall)
-            {
-				if (Input.GetKey(InputSystem.key.sprint))
-                {
-					footstepsSource.enabled = false;
-					sprintSource.enabled = true;
-					isSprinting = true;
-
-				}
-                else
-                {
-					footstepsSource.enabled = true;
-					sprintSource.enabled = false;
-					isSprinting = false;
-				}
-            }else
-            {
-				footstepsSource.enabled = false;
-				sprintSource.enabled = false;
-				isSprinting = false;
-			}
-		}
-		else
-		{
-			footstepsSource.enabled = false;
-			sprintSource.enabled = false;
-			isSprinting = false;
-		}
-
 		if (Application.isEditor)
 		if (Input.GetKey(KeyCode.R))
 			transform.position = new Vector3(26, 18, -1);
@@ -174,16 +138,55 @@ public class PlayerController : MonoBehaviour
 			body.velocity = new Vector3(body.velocity.x * kasaAttack.blockingSpeed, body.velocity.y , body.velocity.z * kasaAttack.blockingSpeed);
 		}
 
-		if (Input.GetKey(InputSystem.key.sprint) && stamina > 0 && isGrounded)
+		if (Input.GetKey(InputSystem.key.sprint) && stamina > 0 && isGrounded && !sprintLock)
 		{
+			isSprinting = true;
 			speed = sprintSpeed;
 			stamina -= staminaDrain * Time.deltaTime;
 		}
 		else
 		{
+			isSprinting = false;
 			speed = walkSpeed;
 			if (stamina < 100)
-			stamina += Time.deltaTime;
+			stamina += 7 * Time.deltaTime;
+		}
+
+		if(stamina <= 0)
+		{
+			sprintLock = true;
+		}
+		if(stamina >= 100)
+		{
+			sprintLock = false;
+		}
+
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
+		{
+			if (isGrounded == true && !gliding && !onWall)
+			{
+				if (Input.GetKey(InputSystem.key.sprint))
+				{
+					footstepsSource.enabled = false;
+					sprintSource.enabled = true;
+
+				}
+				else
+				{
+					footstepsSource.enabled = true;
+					sprintSource.enabled = false;
+				}
+			}
+			else
+			{
+				footstepsSource.enabled = false;
+				sprintSource.enabled = false;
+			}
+		}
+		else
+		{
+			footstepsSource.enabled = false;
+			sprintSource.enabled = false;
 		}
 
 		if (Input.GetKey(InputSystem.key.jump))

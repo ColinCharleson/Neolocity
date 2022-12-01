@@ -16,9 +16,11 @@ MonoBehaviour:
   missionNumber: 2
   notReadyMessage: I need someone more experienced to help me with my mission. Come
     back when youre ready.
-  missionMessage: I need you to go to the center building to see if there are any
-    enemies patroling the area!
-  finishedMessage: Thanks for helping me with my quest
-  keepGoingMessage: What are you doing here? go to the middle building to complete
-    your mission!
-  allDoneMessage: You already did this mission go help someone else
+  missionMessage: I need you to scope out a building for me. There is a construction
+    building just west of this one. I heard the government had a secret hide out
+    over there!
+  finishedMessage: Dang our intel must be off. Thanks for scoping it out. I hear
+    Mai has a back up plan, go ask her about it when youre ready.
+  keepGoingMessage: You need to go scope out the building! Follow the compass to
+    help find it.
+  allDoneMessage: 'Thanks again for scoping out the building. '

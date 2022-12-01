@@ -15,8 +15,10 @@ MonoBehaviour:
   npcName: Kojima
   missionNumber: 1
   notReadyMessage: Finish some other missions then come back to me
-  missionMessage: Go to the alley way across the street, I need you to pick up a
-    package for me
-  finishedMessage: Thank you so much
-  keepGoingMessage: You still havent finished my mission, go to the alley
-  allDoneMessage: 'You already finished this quest '
+  missionMessage: I need your help! You need to retrive a package for me. Head to
+    the South West construciton builing, you should find it there.
+  finishedMessage: Thank you, but youre not done yet! Hiroto needs your help, follow
+    the compass and help him quickly.
+  keepGoingMessage: What are you doing here. Come back when you have picked up the
+    package. Your compass will guide you.
+  allDoneMessage: Youve already helped me! There are many others in need of assistance.

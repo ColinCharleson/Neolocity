@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestFollow
   m_EditorClassIdentifier: 
   followTarget: {fileID: 8485682886019510644, guid: d458e7b72227476448d80e671ff372ef, type: 3}
-  startLocation: {x: 50, y: 1, z: -14}
-  endLocation: {x: -30, y: 1, z: 14}
+  startLocation: {x: 85, y: 1, z: 0}
+  endLocation: {x: -119, y: 1, z: 20}

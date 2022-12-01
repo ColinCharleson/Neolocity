@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionPickUp: {fileID: 7607393467671626182, guid: facedec816230f547b253068dfafc465, type: 3}
   pickUpItem: {fileID: 8379607875837278684, guid: 3deb8b7189a3d394a95d75d0779b5db5, type: 3}
-  pickUpLocation: {x: -17, y: 0, z: 9}
+  pickUpLocation: {x: -65, y: 15.317, z: -28}
