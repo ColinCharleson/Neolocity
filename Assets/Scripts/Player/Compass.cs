@@ -3,7 +3,10 @@ using UnityEngine;
 public class Compass : MonoBehaviour
 {
 	public RawImage CompassImage;
+
 	public RawImage WaypointImage;
+	public Texture onLevel, offLevel;
+
 	public Transform Player;
 	public Transform Objective;
 
@@ -35,6 +38,21 @@ public class Compass : MonoBehaviour
 			else// if (MissionManager.instance.currentObjective.gameObject.tag == "Mission End")
 			{
 				WaypointImage.color = new Color32(0, 255, 255, 255);
+			}
+
+			if (Player.position.y > Objective.position.y + 1) // too low
+			{
+				WaypointImage.texture = offLevel;
+				WaypointImage.transform.rotation = Quaternion.Euler(0, 0, 180);
+			}
+			else if (Player.position.y < Objective.position.y - 1)// too high
+			{
+				WaypointImage.texture = offLevel;
+				WaypointImage.transform.rotation = Quaternion.Euler(0, 0, 0);
+			}
+			else //just right
+			{
+				WaypointImage.texture = onLevel;
 			}
 		}
 	}
