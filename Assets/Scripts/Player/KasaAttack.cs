@@ -20,6 +20,9 @@ public class KasaAttack : MonoBehaviour
 	//public Material shieldMat;
 	public GameObject uiSheild1, uiSheild2, uiSheild3;
 
+	//Umbrella Cooldown UI 
+	public GameObject umbrellaUI;
+
 	//Blocking
 	public bool canBlock = true;
 	public bool isBlocking = false;
@@ -88,6 +91,7 @@ public class KasaAttack : MonoBehaviour
 			canAttack = false;
 			isAttacking = true;
 			timeSinceLastHit = 0;
+			movement.stamina -= 10;
 		}
 		else
 		{
@@ -100,6 +104,8 @@ public class KasaAttack : MonoBehaviour
 				canAttack = false;
 				isAttacking = true;
 				timeSinceLastHit = 0;
+				movement.stamina -= 30;
+				umbrellaUI.SetActive(true);
 			}
 			if (lastAttack == 1)
 			{
@@ -110,6 +116,7 @@ public class KasaAttack : MonoBehaviour
 				canAttack = false;
 				isAttacking = true;
 				timeSinceLastHit = 0;
+				movement.stamina -= 20;
 			}
 		}
  
@@ -121,6 +128,7 @@ public class KasaAttack : MonoBehaviour
 		StartCoroutine(ResetAttack());
 		yield return new WaitForSeconds(attackCooldown);
 		canAttack = true;
+		umbrellaUI.SetActive(false);
 	}
 
 	IEnumerator ResetAttack()

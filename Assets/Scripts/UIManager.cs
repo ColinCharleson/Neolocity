@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
 
         //stamina
         float staminaPercentage =  player.stamina / 100;
+     
         staminaBar.fillAmount = staminaPercentage;
 
         //health
