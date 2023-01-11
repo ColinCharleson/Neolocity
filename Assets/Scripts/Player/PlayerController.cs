@@ -36,9 +36,6 @@ public class PlayerController : MonoBehaviour
 	// Shiled
 	public KasaAttack kasaAttack;
 
-	//Knock back
-	private float knockBackForce = 10;
-
 	//Lock On
 	public float sightRange;
 	public bool enemyInSightRange;
