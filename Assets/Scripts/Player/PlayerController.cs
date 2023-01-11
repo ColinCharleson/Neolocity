@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 	private float groundDrag = 5f;
 	private float airMultiplier = 0.2f;
 	public bool isSprinting = false;
-	private bool sprintLock = false;
+	public  bool sprintLock = false;
 	Vector3 moveDirection;
 
 	public bool isAlive = true;
@@ -62,12 +62,16 @@ public class PlayerController : MonoBehaviour
 	public Slider fovSlider;
 	public Text fovText;
 	public float fov = 60;
+	public KasaAttack attack;
 
 	//Footsteps
 	public AudioSource footstepsSource, sprintSource;
 
+
+
 	void Start()
 	{
+		attack = GetComponent<KasaAttack>();
 		glideScript = GetComponent<Gliding>();
 		wallRunScript = GetComponent<WallRunning>();
 		body = GetComponent<Rigidbody>();
@@ -133,7 +137,7 @@ public class PlayerController : MonoBehaviour
 			body.velocity = new Vector3(body.velocity.x * kasaAttack.blockingSpeed, body.velocity.y , body.velocity.z * kasaAttack.blockingSpeed);
 		}
 
-		if (Input.GetKey(InputSystem.key.sprint) && stamina > 0 && isGrounded && !sprintLock)
+		if (Input.GetKey(InputSystem.key.sprint) && stamina > 0 && isGrounded && !sprintLock && !attack.attackLock)
 		{
 			cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov + 10, 10f * Time.deltaTime);
 			isSprinting = true;
@@ -146,7 +150,7 @@ public class PlayerController : MonoBehaviour
 			isSprinting = false;
 			speed = walkSpeed;
 			if (stamina < 100)
-			stamina += 7 * Time.deltaTime;
+			stamina += 10 * Time.deltaTime;
 		}
 
 		if(stamina <= 0)

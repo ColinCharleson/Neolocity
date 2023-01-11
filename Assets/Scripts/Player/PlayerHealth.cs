@@ -26,9 +26,7 @@ public class PlayerHealth : MonoBehaviour
     }
     void Start()
     {
-
         thePlayer = FindObjectOfType<PlayerController>();
-
     }
 	private void FixedUpdate()
     { 

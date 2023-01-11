@@ -12,6 +12,8 @@ public class KasaAttack : MonoBehaviour
 	public float swingDamage = 1f;
 	public float timeSinceLastHit;
 	public float lastAttack;
+	public bool attackLock = false;
+
 
 	//enemy damage cooldown
 	public float timeSinceHit;
@@ -49,7 +51,8 @@ public class KasaAttack : MonoBehaviour
 
 		if (Input.GetKeyDown(InputSystem.key.attack))
 		{
-			if (canAttack && !movement.onWall && !movement.gliding && timeSinceLastHit > 0.5f && movement.stamina >= 0)
+			
+			if (canAttack && !movement.onWall && !movement.gliding && timeSinceLastHit > 0.5f && movement.stamina >= 0 && !attackLock && !movement.sprintLock)
 			{
 				if (lastAttack == 3)
 				{
@@ -58,6 +61,18 @@ public class KasaAttack : MonoBehaviour
 				}
 				else
 					Attack();
+			}
+
+			if(movement.stamina <= 0)
+            {
+				attackLock = true;
+				umbrellaUI.SetActive(false);
+			}
+
+			if (movement.stamina >= 100)
+			{
+				attackLock = false;
+				umbrellaUI.SetActive(true);
 			}
 		}
 
