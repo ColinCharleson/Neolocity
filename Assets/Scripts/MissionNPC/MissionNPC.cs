@@ -18,6 +18,8 @@ public class MissionNPC : MonoBehaviour
 	public GoToMissionData missionGoTo;
 	private GameObject missionEnd;
 
+	public KillMissionData missionKill;
+
 	public PickUpMission missionPickUp;
 	public GameObject missionItem;
 
@@ -71,6 +73,7 @@ public class MissionNPC : MonoBehaviour
 				missionBox.SetActive(true);
 				nameText.text = data.name;
 				messageText.text = data.finishedMessage;
+				Destroy(GameObject.FindGameObjectWithTag("MissionEnd"));
 				missionProgressDisplay.enabled = false;
 
 				MissionManager.instance.lastMission += 1;
@@ -156,6 +159,14 @@ public class MissionNPC : MonoBehaviour
 			missionProgressDisplay.enabled = true;
 			missionTarget = Instantiate(missionHack.hackTarget, missionHack.startLocation, Quaternion.Euler(Vector3.zero));
 			missionTarget.GetComponent<FollowBot>().target = missionHack.endLocation;
+			MissionManager.instance.currentObjective = missionTarget.transform;
+		}
+
+		if (missionKill != null && missionStarted == false)
+		{
+			missionStarted = true;
+			missionProgressDisplay.enabled = true;
+			missionTarget = Instantiate(missionKill.battlePrefab, missionKill.spawnArea, Quaternion.Euler(Vector3.zero));
 			MissionManager.instance.currentObjective = missionTarget.transform;
 		}
 	}
@@ -319,6 +330,28 @@ public class MissionNPC : MonoBehaviour
 				missionProgressDisplay.color = Color.red;
 				missionProgressDisplay.text = "THEY SPOTTED YOU: Return to " + data.name + " to try again";
 				MissionManager.instance.currentObjective = this.transform;
+			}
+		}
+
+		if (missionKill != null && missionStarted == true) //Kill mission
+		{
+			if(missionTarget.transform.childCount <= 0)
+			{
+				tempFinish = true;
+			}
+
+			if (tempFinish == true)
+			{
+				missionFinished = true;
+				MissionManager.instance.currentObjective = this.transform;
+
+				missionProgressDisplay.color = Color.green;
+				missionProgressDisplay.text = "ENEMIES ELIMINATED: Return to " + data.name + "";
+			}
+			else
+			{
+				missionProgressDisplay.color = Color.cyan;
+				missionProgressDisplay.text = "ELIMINATE RED ROBOTS: " + missionTarget.transform.childCount + " left";
 			}
 		}
 	}
