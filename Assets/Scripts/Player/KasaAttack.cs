@@ -13,6 +13,10 @@ public class KasaAttack : MonoBehaviour
 	public float timeSinceLastHit;
 	public float lastAttack;
 
+	//enemy damage cooldown
+	public float timeSinceHit;
+	public bool enemyTakeDmg = true;
+
 	//public Material shieldMat;
 	public GameObject uiSheild1, uiSheild2, uiSheild3;
 
@@ -37,6 +41,7 @@ public class KasaAttack : MonoBehaviour
 	{
 		timeSinceLastHit += Time.deltaTime;
 		timeSinceBlockBroke += Time.deltaTime;
+		timeSinceHit += Time.deltaTime;
 		kasa.SetBool("Blocking", isBlocking);
 
 		if (Input.GetKeyDown(InputSystem.key.attack))
@@ -127,10 +132,19 @@ public class KasaAttack : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "Enemy" && isAttacking)
+		if (other.gameObject.tag == "Enemy" && isAttacking && enemyTakeDmg)
 		{
 			other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
+			enemyTakeDmg = false;
 		}
+		StartCoroutine(CanAttackEnenmy());
+	}
+
+	IEnumerator CanAttackEnenmy()
+	{
+		yield return new WaitForSeconds(0.5f);
+		enemyTakeDmg = true;
+
 	}
 	public void Block()
 	{
