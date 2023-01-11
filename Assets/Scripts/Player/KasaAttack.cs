@@ -49,7 +49,7 @@ public class KasaAttack : MonoBehaviour
 
 		if (Input.GetKeyDown(InputSystem.key.attack))
 		{
-			if (canAttack && !movement.onWall && !movement.gliding && timeSinceLastHit > 0.5f)
+			if (canAttack && !movement.onWall && !movement.gliding && timeSinceLastHit > 0.5f && movement.stamina >= 0)
 			{
 				if (lastAttack == 3)
 				{
