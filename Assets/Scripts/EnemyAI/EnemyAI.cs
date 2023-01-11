@@ -53,6 +53,8 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
+        kasaAttack = player.GetComponent<KasaAttack>();
+        playerController = player.GetComponent<PlayerController>();
         agent = GetComponent<NavMeshAgent>();
         health = maxHealth;
     }
