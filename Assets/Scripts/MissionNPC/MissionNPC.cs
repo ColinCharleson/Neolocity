@@ -213,7 +213,7 @@ public class MissionNPC : MonoBehaviour
 			failTime = 3;
 			if (timer < failTime)
 			{
-				if (Vector3.Distance(player.transform.position, missionFollow.endLocation) < 10)
+				if (Vector3.Distance(player.transform.position, missionFollow.endLocation) < 20)
 				{
 					missionFinished = true;
 					MissionManager.instance.currentObjective = this.transform;
