@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
     {
+		cam.fieldOfView = fov;
+		PlayerPrefs.SetFloat("CurrentFov", fov);
 		PlayerPrefs.SetFloat("CurrentSens", mouseSensitivity);
     }
 
@@ -138,15 +140,12 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKey(InputSystem.key.sprint) && stamina > 0 && isGrounded && !sprintLock)
 		{
-
-			cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov + 10, 10f * Time.deltaTime);
 			isSprinting = true;
 			speed = sprintSpeed;
 			stamina -= staminaDrain * Time.deltaTime;
 		}
 		else
 		{
-			cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, 10f * Time.deltaTime);
 			isSprinting = false;
 			speed = walkSpeed;
 			if (stamina < 100)
@@ -240,8 +239,6 @@ public class PlayerController : MonoBehaviour
 
 	public void ChangeFov(float foV)
 	{
-		cam.fieldOfView = fov;
-		PlayerPrefs.SetFloat("CurrentFov", fov);
 		fov = foV;
 		fovText.text = fov.ToString("F0");
 	}

@@ -20604,8 +20604,6 @@ MonoBehaviour:
   swingDamage: 1
   timeSinceLastHit: 2
   lastAttack: 0
-  timeSinceHit: 0
-  enemyTakeDmg: 1
   uiSheild1: {fileID: 660877759}
   uiSheild2: {fileID: 803226379}
   uiSheild3: {fileID: 2106869841}
