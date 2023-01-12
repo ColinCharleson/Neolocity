@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 public class MainMenu : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class MainMenu : MonoBehaviour
         ambientlider.value = ambient;
 
         brightnesS.GetComponent<Brightness>().brightnessPref = brightness;
-        brightness = PlayerPrefs.GetFloat("Currentbrightness");
+        brightness = PlayerPrefs.GetFloat("Currentbrightness", 1);
         brightnessSlider.value = brightness;
 
         soundManager.GetComponent<SoundManager>().sfxVolume = sfx;
@@ -110,8 +111,9 @@ public class MainMenu : MonoBehaviour
 
     public void ChangeBrightness(float value)
     {
+        brightnesS.GetComponent<Brightness>().brightnessPref = brightness;
         brightness = value;
-        brightnessText.text = brightness.ToString("F0");
+        brightnessText.text = (brightness * 10).ToString("F0");
     }
     public void ChangeFov(float fOV)
     {
