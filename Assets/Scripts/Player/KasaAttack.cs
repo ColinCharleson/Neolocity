@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KasaAttack : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class KasaAttack : MonoBehaviour
 	public bool enemyTakeDmg = true;
 
 	//public Material shieldMat;
-	public GameObject uiSheild1, uiSheild2, uiSheild3;
+	public GameObject uiSheild1, uiSheild2, uiSheild3, AttackUI;
 
 	//Umbrella Cooldown UI 
 	public GameObject umbrellaUI;
@@ -120,8 +121,7 @@ public class KasaAttack : MonoBehaviour
 				isAttacking = true;
 				timeSinceLastHit = 0;
 				movement.stamina -= 30;
-				umbrellaUI.SetActive(true);
-			}
+            }
 			if (lastAttack == 1)
 			{
 				trail.SetActive(true);
@@ -134,8 +134,7 @@ public class KasaAttack : MonoBehaviour
 				movement.stamina -= 20;
 			}
 		}
- 
-		StartCoroutine(AttackCooldownReset());
+        StartCoroutine(AttackCooldownReset());
 	}
 
 	IEnumerator AttackCooldownReset()
@@ -144,14 +143,17 @@ public class KasaAttack : MonoBehaviour
 		yield return new WaitForSeconds(attackCooldown);
 		canAttack = true;
 		umbrellaUI.SetActive(false);
-	}
+        AttackUI.SetActive(false);
+    }
 
 	IEnumerator ResetAttack()
 	{
 		yield return new WaitForSeconds(0.5f);
 		isAttacking = false;
 		trail.SetActive(false);
-	}
+        umbrellaUI.SetActive(true);
+        AttackUI.SetActive(true);
+    }
 
 	private void OnTriggerEnter(Collider other)
 	{
