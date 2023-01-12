@@ -12,7 +12,10 @@ public class MainMenu : MonoBehaviour
     public Text fovText;
     public Slider fovSlider;
     public float fieldOV;
-    public float sens;
+    public float sens, brightness;
+    public GameObject brightnesS;
+    public Text brightnessText;
+    public Slider brightnessSlider;
 
     public Text musicText;
     public Slider musicSlider;
@@ -43,12 +46,17 @@ public class MainMenu : MonoBehaviour
         ambient = PlayerPrefs.GetFloat("AmbientVolume");
         ambientlider.value = ambient;
 
+        brightnesS.GetComponent<Brightness>().brightnessPref = brightness;
+        brightness = PlayerPrefs.GetFloat("Currentbrightness");
+        brightnessSlider.value = brightness;
+
         soundManager.GetComponent<SoundManager>().sfxVolume = sfx;
         sfx = PlayerPrefs.GetFloat("SFXVolume");
         sfxSlider.value = sfx;
     }
     private void Update()
 	{
+        PlayerPrefs.SetFloat("Currentbrightness", brightness);
         PlayerPrefs.SetFloat("CurrentFov", fieldOV);
         PlayerPrefs.SetFloat("CurrentSens", sens);
         PlayerPrefs.SetFloat("MusicVolume", music);
@@ -100,6 +108,11 @@ public class MainMenu : MonoBehaviour
         sensText.text = sens.ToString("F0");
     }
 
+    public void ChangeBrightness(float value)
+    {
+        brightness = value;
+        brightnessText.text = brightness.ToString("F0");
+    }
     public void ChangeFov(float fOV)
     {
         fieldOV = fOV;
