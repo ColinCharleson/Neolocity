@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63ba851fe3e7d7a40bb54949b56227d0
+guid: 4e1bfd74e52b6b0448c7fa2e3f8c3108
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
@@ -7,13 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Concrete
-    second: {fileID: 2100000, guid: 280de02b685102b4bbdf67d29e2881c9, type: 2}
+      name: Green
+    second: {fileID: 2100000, guid: 7f0e76bca1257964c98d64562b60da74, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Rebar
-    second: {fileID: 2100000, guid: 21f0c41baf303354488e02f9593ec2b9, type: 2}
+      name: Mud
+    second: {fileID: 2100000, guid: 508eed98e714ac1449958221c1742182, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: c685499332fe32946bd9bed5b6e0f8ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Whitw
+    second: {fileID: 2100000, guid: b07a052c2219cf0408fee9fd7125af85, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

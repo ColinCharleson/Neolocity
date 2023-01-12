@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63ba851fe3e7d7a40bb54949b56227d0
+guid: dc83b2d306491604c9d5825a2b6e5565
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Concrete
-    second: {fileID: 2100000, guid: 280de02b685102b4bbdf67d29e2881c9, type: 2}
+      name: Fence
+    second: {fileID: 2100000, guid: 81edd0ffc5ad25d4484acd5e84331e11, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Rebar
-    second: {fileID: 2100000, guid: 21f0c41baf303354488e02f9593ec2b9, type: 2}
+      name: Post
+    second: {fileID: 2100000, guid: 764ffabcef4cf5c4eaee65a1088653b2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
