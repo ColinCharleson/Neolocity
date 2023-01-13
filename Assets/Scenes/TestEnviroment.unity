@@ -21262,7 +21262,7 @@ MonoBehaviour:
   timeSinceLastHit: 2
   lastAttack: 0
   attackLock: 0
-  attackRegeneration: 25
+  attackRegeneration: 35
   attackBar: 100
   timeSinceHit: 0
   enemyTakeDmg: 1
@@ -39408,7 +39408,7 @@ MonoBehaviour:
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
   m_ShowToolkit: 0
-  m_ShowCustomSorter: 1
+  m_ShowCustomSorter: 0
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
@@ -77721,7 +77721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1968555409
 RectTransform:
   m_ObjectHideFlags: 0

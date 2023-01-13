@@ -78,6 +78,16 @@ public class KasaAttack : MonoBehaviour
 			}
 		}
 
+		if(attackCooldown >= 3)
+        {
+			attackBar -= attackRegeneration * Time.deltaTime;
+		}
+
+		if (attackBar <= 0)
+		{
+			attackBar = 0;
+		}
+
 		if (Input.GetKey(InputSystem.key.block) && !movement.gliding && !movement.isSprinting && !movement.onWall)
 		{
 			Block();
@@ -144,8 +154,8 @@ public class KasaAttack : MonoBehaviour
 		StartCoroutine(ResetAttack());
 		yield return new WaitForSeconds(attackCooldown);
 		canAttack = true;
-		umbrellaUI.SetActive(false);
         AttackUI.SetActive(false);
+		attackBar = 100;
 	}
 
 	IEnumerator ResetAttack()
@@ -153,9 +163,7 @@ public class KasaAttack : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 		isAttacking = false;
 		trail.SetActive(false);
-        umbrellaUI.SetActive(true);
         AttackUI.SetActive(true);
-		attackBar -= attackRegeneration * Time.deltaTime;
 	}
 
 

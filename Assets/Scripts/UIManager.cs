@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
         staminaBar.fillAmount = staminaPercentage;
 
         //Attack
-        float attackFill = kasa.attackBar / 4;
+        float attackFill = kasa.attackBar / 100;
 
         attackBar.fillAmount = attackFill;
 
