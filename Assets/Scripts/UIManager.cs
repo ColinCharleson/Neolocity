@@ -13,9 +13,11 @@ public class UIManager : MonoBehaviour
     public Image healthBar;
     public TextMeshProUGUI healthText;
 
-    public Image staminaBar;
+    public Image staminaBar , attackBar;
 
     public PlayerController player;
+
+    public KasaAttack kasa;
 
     public GameObject load;
 
@@ -45,6 +47,11 @@ public class UIManager : MonoBehaviour
         float staminaPercentage =  player.stamina / 100;
      
         staminaBar.fillAmount = staminaPercentage;
+
+        //Attack
+        float attackFill = kasa.attackBar / 4;
+
+        attackBar.fillAmount = attackFill;
 
         //health
         float healthPercentage = PlayerHealth.hp.health / PlayerHealth.hp.maxHealth;

@@ -14,7 +14,8 @@ public class KasaAttack : MonoBehaviour
 	public float timeSinceLastHit;
 	public float lastAttack;
 	public bool attackLock = false;
-
+	public float attackRegeneration;
+	public float attackBar;
 
 	//enemy damage cooldown
 	public float timeSinceHit;
@@ -34,6 +35,7 @@ public class KasaAttack : MonoBehaviour
 	public float blockingSpeed;
 	public float regenTimer;
 
+
 	//Trail Effect
 	public GameObject trail;
 
@@ -49,12 +51,11 @@ public class KasaAttack : MonoBehaviour
 		timeSinceBlockBroke += Time.deltaTime;
 		timeSinceHit += Time.deltaTime;
 		kasa.SetBool("Blocking", isBlocking);
-
 		if (Input.GetKeyDown(InputSystem.key.attack))
 		{
 			
 			if (canAttack && !movement.onWall && !movement.gliding && timeSinceLastHit > 0.5f && movement.stamina >= 0 && !attackLock && !movement.sprintLock)
-			{
+			{ 
 				if (lastAttack == 3)
 				{
 					if (timeSinceLastHit >= 3)
@@ -121,7 +122,8 @@ public class KasaAttack : MonoBehaviour
 				isAttacking = true;
 				timeSinceLastHit = 0;
 				movement.stamina -= 30;
-            }
+
+			}
 			if (lastAttack == 1)
 			{
 				trail.SetActive(true);
@@ -134,7 +136,7 @@ public class KasaAttack : MonoBehaviour
 				movement.stamina -= 20;
 			}
 		}
-        StartCoroutine(AttackCooldownReset());
+		StartCoroutine(AttackCooldownReset());
 	}
 
 	IEnumerator AttackCooldownReset()
@@ -144,7 +146,7 @@ public class KasaAttack : MonoBehaviour
 		canAttack = true;
 		umbrellaUI.SetActive(false);
         AttackUI.SetActive(false);
-    }
+	}
 
 	IEnumerator ResetAttack()
 	{
@@ -153,7 +155,9 @@ public class KasaAttack : MonoBehaviour
 		trail.SetActive(false);
         umbrellaUI.SetActive(true);
         AttackUI.SetActive(true);
-    }
+		attackBar -= attackRegeneration * Time.deltaTime;
+	}
+
 
 	private void OnTriggerEnter(Collider other)
 	{
