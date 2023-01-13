@@ -68,13 +68,11 @@ public class KasaAttack : MonoBehaviour
 			if(movement.stamina <= 0)
             {
 				attackLock = true;
-				umbrellaUI.SetActive(true);
 			}
 
 			if (movement.stamina >= 100)
 			{
 				attackLock = false;
-				umbrellaUI.SetActive(false);
 			}
 		}
 
