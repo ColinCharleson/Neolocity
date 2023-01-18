@@ -80,7 +80,8 @@ public class UIManager : MonoBehaviour
 
         if(PlayerHealth.hp.health == 0)
 		{
-            StartCoroutine(GameReset());
+            Debug.Log("hp is " + PlayerHealth.hp.health);
+          //  StartCoroutine(GameReset());
 		}
     }
 
