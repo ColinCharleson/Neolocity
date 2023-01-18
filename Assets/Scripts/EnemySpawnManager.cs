@@ -7,7 +7,6 @@ public class EnemySpawnManager : MonoBehaviour
 {
     public static EnemySpawnManager instance;
 
-    public int activeEnemyCount;
     public int maxEnemies = 15;
     GameObject[] enemies;
 
@@ -18,22 +17,19 @@ public class EnemySpawnManager : MonoBehaviour
 
     public float spawnRadius = 20;
     public float safeRadius = 10;
+    public float deSpawnRadius = 50;
     private void Awake()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
         if (!instance)
         {
             instance = this;
         }
-		else
-		{
+        else
+        {
             Destroy(this);
-		}
-    }
-	private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(playerPos, spawnRadius);
-        Gizmos.DrawSphere(playerPos, safeRadius);
+        }
     }
 	void Update()
     {
@@ -43,8 +39,9 @@ public class EnemySpawnManager : MonoBehaviour
 		{
             EnemySpawn();
 		}
-    }
 
+        EnemyDeSpawning();
+    }
     void EnemySpawn()
 	{
          randomPosition = new Vector3(Random.Range(playerPos.x - spawnRadius, playerPos.x + spawnRadius),
@@ -57,12 +54,27 @@ public class EnemySpawnManager : MonoBehaviour
         if (Vector3.Distance(playerPos, hit.position) > safeRadius && hit.position.x != float.PositiveInfinity)
         {
             Instantiate(groundEnemy, hit.position, Quaternion.identity);
-            activeEnemyCount += 1;
         }
 		else
 		{
             EnemySpawn();
 		}
 	}
+    void EnemyDeSpawning()
+	{
+		foreach (GameObject enemy in enemies)
+		{
+            if(Vector3.Distance(playerPos, enemy.transform.position ) > deSpawnRadius)
+			{
+                if(enemy.layer == 9)
+				{
 
+				}
+				else
+				{
+                    Destroy(enemy);
+				}
+			}
+		}
+	}
 }
