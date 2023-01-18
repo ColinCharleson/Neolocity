@@ -98,11 +98,6 @@ public class MainMenu : MonoBehaviour
         musicText.text = (music * 100).ToString("0");
     }
 
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
-    }
-
     public void Senestivity(float sensi)
     {
         sens = sensi * 10;
