@@ -15365,11 +15365,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeEnemyCount: 0
-  maxEnemies: 10
+  maxEnemies: 5
   randomPosition: {x: 0, y: 0, z: 0}
   groundEnemy: {fileID: 2321900515168116844, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
-  spawnRadius: 20
-  safeRadius: 17.55
+  spawnRadius: 30.59
+  safeRadius: 18
 --- !u!4 &490155686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8d43d2e277b897e4988944d787bf609a, type: 3}
