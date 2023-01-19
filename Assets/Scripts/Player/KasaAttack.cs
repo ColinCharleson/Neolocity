@@ -164,7 +164,6 @@ public class KasaAttack : MonoBehaviour
         AttackUI.SetActive(true);
 	}
 
-
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Enemy" && isAttacking && enemyTakeDmg)
@@ -172,6 +171,13 @@ public class KasaAttack : MonoBehaviour
 			other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
 			enemyTakeDmg = false;
 		}
+
+		if (other.gameObject.tag == "ProjectileEnemy" && isAttacking && enemyTakeDmg)
+		{
+			other.GetComponent<ProjectileEnemyAI>().TakeDamage(swingDamage);
+			enemyTakeDmg = false;
+		}
+
 		StartCoroutine(CanAttackEnenmy());
 	}
 
