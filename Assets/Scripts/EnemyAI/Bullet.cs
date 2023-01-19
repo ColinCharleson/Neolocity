@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
 
       else if (collision.gameObject.tag == "Player" && kasaAttack.isBlocking)
         {
-            kasaAttack.blockHealth -= 1;
+            kasaAttack.blockHealth -= 3;
             Vector3 aimShot = Camera.main.transform.forward;
             float mag = laser.velocity.magnitude;
             laser.transform.rotation = Quaternion.LookRotation(aimShot);

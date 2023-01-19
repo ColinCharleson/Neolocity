@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kasaAttack: {fileID: 0}
-  damage: 30
+  damage: 50
   reflectDamage: 2
   player: {fileID: 0}
   laser: {fileID: 5783588608601232514}

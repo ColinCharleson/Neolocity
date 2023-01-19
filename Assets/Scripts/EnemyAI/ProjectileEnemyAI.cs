@@ -45,9 +45,7 @@ public class ProjectileEnemyAI : MonoBehaviour
     public GameObject laserPos;
 
     //Attacking
-    public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public int damage;
     bool isAlive = true;
     public float deathtimer = 0;
     public float chargebeam = 0;
