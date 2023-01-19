@@ -248,6 +248,9 @@ public class ProjectileEnemyAI : MonoBehaviour
         }
     }
 
+
+
+
     IEnumerator ResetAttack()
     {
         if (isAlive == true)

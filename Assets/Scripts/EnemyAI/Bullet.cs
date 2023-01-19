@@ -6,7 +6,10 @@ public class Bullet : MonoBehaviour
 {
     public KasaAttack kasaAttack;
     public int damage;
+    public int reflectDamage;
     public Transform player;
+    public Rigidbody laser;
+    public bool deflected = false;
 
     private void Awake()
     {
@@ -16,24 +19,40 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-       if (collision.gameObject.tag == "Player" && !kasaAttack.isBlocking)
-       {
+        if (collision.gameObject.tag == "Player" && !kasaAttack.isBlocking)
+        {
                Vector3 dmgDirection = collision.transform.position - transform.position;
                dmgDirection = dmgDirection.normalized;
-               Debug.Log("Penis");
+               FindObjectOfType<PlayerHealth>().DamagePlayer(damage, dmgDirection);
+               Destroy(gameObject);
+        }
 
-                FindObjectOfType<PlayerHealth>().DamagePlayer(damage, dmgDirection);
-       }
+      else if (collision.gameObject.tag == "Player" && kasaAttack.isBlocking)
+        {
+            kasaAttack.blockHealth -= 1;
+            Vector3 aimShot = Camera.main.transform.forward;
+            float mag = laser.velocity.magnitude;
+            laser.transform.rotation = Quaternion.LookRotation(aimShot);
+            laser.velocity = aimShot * mag;
+            deflected = true;
+        }
 
-       else if (collision.gameObject.tag == "Player" && kasaAttack.isBlocking)
-       {
-                kasaAttack.blockHealth -= 1;
-                Destroy(gameObject);
-       }
+       else if (collision.gameObject.tag == "ProjectileEnemy" && deflected == true)
+        {
+            collision.GetComponent<ProjectileEnemyAI>().TakeDamage(reflectDamage);
+            Destroy(gameObject);
+        }
+
+       else if (collision.gameObject.tag == "Enemy" && deflected == true)
+        {
+            collision.GetComponent<EnemyAI>().TakeDamage(reflectDamage);
+            Destroy(gameObject);
+        }
 
         else
         {
             Destroy(gameObject, 3);
+            deflected = false;
         }
     }
 }

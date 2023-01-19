@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5783588608601232514}
   - component: {fileID: 6654846701831217352}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Laser
   m_TagString: ProjectileEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,5 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kasaAttack: {fileID: 0}
-  yellowParticles: {fileID: 0}
   damage: 30
+  reflectDamage: 2
+  player: {fileID: 0}
+  laser: {fileID: 5783588608601232514}
+  deflected: 0
