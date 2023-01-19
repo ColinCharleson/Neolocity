@@ -3382,6 +3382,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5050360444725616960, guid: e31a149044bcaee47a5f327ecff84266, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050360444725616960, guid: e31a149044bcaee47a5f327ecff84266, type: 3}
       propertyPath: m_TagString
       value: ProjectileEnemy
       objectReference: {fileID: 0}
@@ -3431,11 +3435,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050360444725616974, guid: e31a149044bcaee47a5f327ecff84266, type: 3}
       propertyPath: m_Drag
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5050360444725616974, guid: e31a149044bcaee47a5f327ecff84266, type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5050360444725616975, guid: e31a149044bcaee47a5f327ecff84266, type: 3}
       propertyPath: m_AutoBraking
@@ -3443,7 +3447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050360444725616975, guid: e31a149044bcaee47a5f327ecff84266, type: 3}
       propertyPath: m_StoppingDistance
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5050360445663524926, guid: e31a149044bcaee47a5f327ecff84266, type: 3}
       propertyPath: m_Enabled

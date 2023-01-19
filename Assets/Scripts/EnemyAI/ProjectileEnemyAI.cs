@@ -234,7 +234,7 @@ public class ProjectileEnemyAI : MonoBehaviour
                 chargeLaser1.Play();
                 chargeLaser2.Play();
 
-                if (chargebeam >= 5)
+                if (chargebeam >= 3)
                 {
                     Rigidbody rb = Instantiate(laser, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
                     rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
