@@ -41,7 +41,6 @@ public class EnemySpawnManager : MonoBehaviour
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         rangedEnemies = GameObject.FindGameObjectsWithTag("ProjectileEnemy");
-        Debug.Log(enemies.Length);
 
         if(enemies.Length < maxEnemies)
 		{
