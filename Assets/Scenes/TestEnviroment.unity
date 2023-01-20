@@ -16605,8 +16605,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnemies: 5
+  maxRangedEnemies: 1
   randomPosition: {x: 0, y: 0, z: 0}
   groundEnemy: {fileID: 2321900515168116844, guid: f62e449cfcaeaaa4197119369605ff3e, type: 3}
+  rangedEnemy: {fileID: 5050360444725616960, guid: e31a149044bcaee47a5f327ecff84266, type: 3}
   spawnRadius: 30
   safeRadius: 18
   deSpawnRadius: 50

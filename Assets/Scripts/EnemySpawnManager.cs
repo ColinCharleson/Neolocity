@@ -7,13 +7,17 @@ public class EnemySpawnManager : MonoBehaviour
 {
     public static EnemySpawnManager instance;
 
-    public int maxEnemies = 15;
+    public int maxEnemies = 5;
+    public int maxRangedEnemies = 1;
     GameObject[] enemies;
+    GameObject[] rangedEnemies;
 
     public Vector3 randomPosition;
     GameObject player;
     Vector3 playerPos;
+
     public GameObject groundEnemy;
+    public GameObject rangedEnemy;
 
     public float spawnRadius = 20;
     public float safeRadius = 10;
@@ -34,15 +38,24 @@ public class EnemySpawnManager : MonoBehaviour
 	void Update()
     {
         playerPos = player.transform.position;
+
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        rangedEnemies = GameObject.FindGameObjectsWithTag("ProjectileEnemy");
+        Debug.Log(enemies.Length);
+
         if(enemies.Length < maxEnemies)
 		{
-            EnemySpawn();
+            EnemySpawn(groundEnemy);
+		}
+
+        if(rangedEnemies.Length < maxRangedEnemies)
+		{
+            EnemySpawn(rangedEnemy);
 		}
 
         EnemyDeSpawning();
     }
-    void EnemySpawn()
+    void EnemySpawn(GameObject enemyType)
 	{
          randomPosition = new Vector3(Random.Range(playerPos.x - spawnRadius, playerPos.x + spawnRadius),
                                       Random.Range(playerPos.y - spawnRadius, playerPos.y + spawnRadius),
@@ -53,16 +66,30 @@ public class EnemySpawnManager : MonoBehaviour
 
         if (Vector3.Distance(playerPos, hit.position) > safeRadius && hit.position.x != float.PositiveInfinity)
         {
-            Instantiate(groundEnemy, hit.position, Quaternion.identity);
+            Instantiate(enemyType, hit.position, Quaternion.identity);
         }
 		else
 		{
-            EnemySpawn();
+            EnemySpawn(enemyType);
 		}
 	}
     void EnemyDeSpawning()
 	{
 		foreach (GameObject enemy in enemies)
+		{
+            if(Vector3.Distance(playerPos, enemy.transform.position ) > deSpawnRadius)
+			{
+                if(enemy.layer == 9)
+				{
+
+				}
+				else
+				{
+                    Destroy(enemy);
+				}
+			}
+		}
+        foreach (GameObject enemy in rangedEnemies)
 		{
             if(Vector3.Distance(playerPos, enemy.transform.position ) > deSpawnRadius)
 			{
