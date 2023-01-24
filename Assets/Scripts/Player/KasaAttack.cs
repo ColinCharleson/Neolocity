@@ -69,11 +69,13 @@ public class KasaAttack : MonoBehaviour
             {
 				attackLock = true;
 				movement.stamina = 0;
+				movement.sprintLock = true;
 			}
 
 			if (movement.stamina >= 100)
 			{
 				attackLock = false;
+				movement.sprintLock = false;
 			}
 		}
 
