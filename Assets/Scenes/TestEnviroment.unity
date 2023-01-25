@@ -85235,7 +85235,7 @@ MonoBehaviour:
   missionProgressDisplay: {fileID: 1338981813}
   missionProgressBack: {fileID: 1508262591}
   player: {fileID: 0}
-  data: {fileID: 11400000, guid: c2c4bd40f3eb6334281bfbf3d8a0d372, type: 2}
+  data: {fileID: 11400000, guid: 476111799fd8aa24cbc752a990c3ea45, type: 2}
   missionGoTo: {fileID: 0}
   missionKill: {fileID: 11400000, guid: 99dc354606ddcc44a98be04dcd5f9dea, type: 2}
   missionPickUp: {fileID: 0}
@@ -85320,7 +85320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132494842}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9, y: 23.67, z: 3.497}
+  m_LocalPosition: {x: 62.98, y: 3.25, z: -28.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
