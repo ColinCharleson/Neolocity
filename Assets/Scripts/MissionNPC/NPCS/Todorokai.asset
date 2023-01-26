@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Todorokai
   m_EditorClassIdentifier: 
   npcName: Todorokai
-  missionNumber: 1
+  missionNumber: 5
   notReadyMessage: not ready message
   missionMessage: temp kill message
   finishedMessage: finished mission

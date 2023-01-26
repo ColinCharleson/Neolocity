@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
 
 	//Other components
 	public Rigidbody body;
-	public Transform enemy;
 	Camera cam;
 	public Animator tempKasa;
 	public Slider slider;

@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
 
     public GameObject load;
 
+    public GameObject options;
+    public GameObject mainMenu;
+
     public AudioSource footstepsSource, sprintSource;
 
     // Start is called before the first frame update
@@ -63,6 +66,8 @@ public class UIManager : MonoBehaviour
 		{
             gameUI.enabled = !gameUI.enabled;
             pauseUI.enabled = !pauseUI.enabled;
+            options.SetActive(false);
+            mainMenu.SetActive(true);
         }
 
         if(pauseUI.enabled)

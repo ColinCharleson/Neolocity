@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Rendering.PostProcessing;
+//using UnityEngine.Rendering.PostProcessing;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     public Slider sensSlider;
     public Text fovText;
     public Slider fovSlider;
-    public float fieldOV, _motionBlur ;
+    public float fieldOV;
     public float sens;
 
     public Text musicText;
@@ -21,11 +21,12 @@ public class MainMenu : MonoBehaviour
     public Slider ambientlider;
     public Text sfxText;
     public Slider sfxSlider;
-    public Toggle MotionToggle;
+    public Text brightnessText;
+    public Slider brightnessSlider;
+    public Toggle mBToggle;
     public GameObject player;
     public GameObject soundManager;
-    public GameObject motionBlur;
-    public float sfx, ambient , music;
+    public float sfx, ambient , music, brightness;
  
 
     void Start()
@@ -42,6 +43,9 @@ public class MainMenu : MonoBehaviour
         music = PlayerPrefs.GetFloat("MusicVolume");
         musicSlider.value = music;
 
+        brightness = PlayerPrefs.GetFloat("Brightness");
+        brightnessSlider.value = brightness;
+
         soundManager.GetComponent<SoundManager>().ambientVolume = ambient;
         ambient = PlayerPrefs.GetFloat("AmbientVolume");
         ambientlider.value = ambient;
@@ -50,17 +54,15 @@ public class MainMenu : MonoBehaviour
         sfx = PlayerPrefs.GetFloat("SFXVolume");
         sfxSlider.value = sfx;
 
-        motionBlur.GetComponent<ToggleMotionBlur>().motionOnOff = _motionBlur;
-        PlayerPrefs.GetFloat("ToggleMotion", 1);
-        _motionBlur = MotionToggle ? 1 : 0;
-
-        if(PlayerPrefs.GetInt("Motion Blur Toggle") == 1)
+        if (PlayerPrefs.GetInt("MotionBlur") == 1)
         {
-            MotionToggle.isOn = true;
+            mBToggle.isOn = true;
+            PlayerPrefs.SetInt("MotionBlur", 1);
         }
         else
         {
-            MotionToggle.isOn = false;
+            mBToggle.isOn = false;
+            PlayerPrefs.SetInt("MotionBlur", 0);
         }
     }
     private void Update()
@@ -70,18 +72,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetFloat("MusicVolume", music);
         PlayerPrefs.SetFloat("AmbientVolume", ambient);
         PlayerPrefs.SetFloat("SFXVolume", sfx);
-        PlayerPrefs.SetFloat("ToggleMotion", _motionBlur);
-
-        if (MotionToggle.isOn == true)
-        {
-            PlayerPrefs.SetInt("Motion Blur Toggle", 1);
-        }
-        if (MotionToggle.isOn == false)
-        {
-            PlayerPrefs.SetInt("Motion Blur Toggle", 0);
-        }
-
-
+        PlayerPrefs.SetFloat("Brightness", brightness);
 
         string filePath = Application.dataPath + "/save.txt";
         if (System.IO.File.Exists(filePath))
@@ -92,22 +83,24 @@ public class MainMenu : MonoBehaviour
         {
             resume.SetActive(false);
         }
-	}
-
-    public void MotionBlurOnOff(bool on)
+    }
+    public void MotionBlurToggle()
     {
-        _motionBlur = on ? 1 : 0;
-
-        if (on)
+        if (PlayerPrefs.GetInt("MotionBlur") == 1)
         {
-            _motionBlur = 1;
+            PlayerPrefs.SetInt("MotionBlur", 0);
         }
         else
         {
-            _motionBlur = 0;
+            PlayerPrefs.SetInt("MotionBlur", 1);
         }
     }
-    public void MusicVolume(float volume)
+    public void BrightnessSlider(float volume)
+    {
+        brightness = volume;
+        brightnessText.text = ((50*brightness)+50).ToString("0");
+
+    }public void MusicVolume(float volume)
     {
         music = volume;
         musicText.text = (music * 100).ToString("0");

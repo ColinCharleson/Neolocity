@@ -37,7 +37,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ubrella Fabric
-    second: {fileID: 2100000, guid: 1b20b9ae6ffa2e84681f295136db8fb5, type: 2}
+    second: {fileID: 2100000, guid: 02216e9e1eeeddc44bdde0e9900ebbc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Umbrell HUD
+    second: {fileID: 2100000, guid: 3dcb89be10f87d54bb7246e5411fada0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
