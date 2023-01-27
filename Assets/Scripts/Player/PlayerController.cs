@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +34,11 @@ public class PlayerController : MonoBehaviour
 	Vector3 moveDirection;
 
 	public bool isAlive = true;
+
+	//Vignette
+	private Volume postProcessVolume;
+	private Vignette vignette;
+	bool clearVignette = false;
 
 	// Shiled
 	public KasaAttack kasaAttack;
@@ -87,6 +94,8 @@ public class PlayerController : MonoBehaviour
 		slider.value = mouseSensitivity / 10;
 		fov = PlayerPrefs.GetFloat("CurrentFov", 60);
 		fovSlider.value = fov;
+		postProcessVolume = GameObject.Find("Global Volume").GetComponent<Volume>();
+		postProcessVolume.profile.TryGet<Vignette>(out vignette);
 	}
 
 	void Update()
@@ -161,11 +170,35 @@ public class PlayerController : MonoBehaviour
 
 		if(stamina <= 0)
 		{
+			tempKasa.SetTrigger("Exhaust");
 			sprintLock = true;
+			clearVignette = false;
 		}
+
 		if(stamina >= 100)
 		{
 			sprintLock = false;
+		}
+
+		if (sprintLock)
+		{
+			if (vignette.intensity.value >= 0.4f)
+			{
+				clearVignette = true;
+			}
+
+			if (clearVignette)
+			{
+				vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.0f, Time.deltaTime * 0.1f);
+			}
+			else
+			{
+				vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.41f, Time.deltaTime * 2);
+			}
+		}
+		else
+		{
+			vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.0f, Time.deltaTime);
 		}
 
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))

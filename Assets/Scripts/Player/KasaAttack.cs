@@ -67,6 +67,7 @@ public class KasaAttack : MonoBehaviour
 
 			if(movement.stamina <= 0)
             {
+				kasa.SetTrigger("Exhaust");
 				attackLock = true;
 				movement.stamina = 0;
 				movement.sprintLock = true;
