@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject load;
 
-    public GameObject options;
+    public GameObject options, skillUI;
     public GameObject mainMenu;
 
     public AudioSource footstepsSource, sprintSource;
@@ -64,6 +64,7 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown(InputSystem.key.pause) && PlayerHealth.hp.health > 0)
 		{
+            skillUI.GetComponentInParent<Skillshop>().CashUpdate();
             gameUI.enabled = !gameUI.enabled;
             pauseUI.enabled = !pauseUI.enabled;
             options.SetActive(false);

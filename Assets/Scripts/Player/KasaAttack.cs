@@ -171,13 +171,13 @@ public class KasaAttack : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Enemy" && isAttacking && enemyTakeDmg)
 		{
-			other.GetComponent<EnemyAI>().TakeDamage(swingDamage);
+			other.GetComponent<EnemyAI>().TakeDamage(swingDamage * movement.damageSP);
 			enemyTakeDmg = false;
 		}
 
 		if (other.gameObject.tag == "ProjectileEnemy" && isAttacking && enemyTakeDmg)
 		{
-			other.GetComponent<ProjectileEnemyAI>().TakeDamage(swingDamage);
+			other.GetComponent<ProjectileEnemyAI>().TakeDamage(swingDamage * movement.damageSP);
 			enemyTakeDmg = false;
 		}
 

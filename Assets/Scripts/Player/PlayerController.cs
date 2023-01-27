@@ -66,7 +66,14 @@ public class PlayerController : MonoBehaviour
 	//Footsteps
 	public AudioSource footstepsSource, sprintSource;
 
+	//Upgradeable Skill Points
+	public float speedSP = 1.0f;
+	public float damageSP = 1.0f;
+	public float jumpSP = 1.0f;
+	public float boostSP = 1.0f;
+	public float healthSP = 1.0f;
 
+	public int cash;
 
 	void Start()
 	{
@@ -125,9 +132,9 @@ public class PlayerController : MonoBehaviour
 		moveDirection = this.transform.forward * vertical + this.transform.right * horizontal;
 
 		if (isGrounded)
-			body.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Force);
+			body.AddForce(moveDirection.normalized * speed * speedSP * 10f, ForceMode.Force);
 		else 
-			body.AddForce(moveDirection.normalized * speed * 10f * airMultiplier, ForceMode.Force);
+			body.AddForce(moveDirection.normalized * speed * speedSP * 10f * airMultiplier, ForceMode.Force);
 
 		body.velocity = new Vector3(body.velocity.x, body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed, body.velocity.z);
 
@@ -193,7 +200,7 @@ public class PlayerController : MonoBehaviour
 		{
 			if (isGrounded)
 			{
-				body.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+				body.AddForce(transform.up * jumpForce * jumpSP, ForceMode.Impulse);
 			}
 
 			if (onWall)

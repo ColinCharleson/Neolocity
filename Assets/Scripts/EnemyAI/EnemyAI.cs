@@ -205,6 +205,7 @@ public class EnemyAI : MonoBehaviour
                 explodeParticles.Play();
                 lightParticles.Play();
 
+                playerController.cash += Random.Range(5, 20);
                 Destroy(gameObject, 2);
             }
         }

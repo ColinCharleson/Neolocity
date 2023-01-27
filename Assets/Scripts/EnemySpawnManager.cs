@@ -8,7 +8,7 @@ public class EnemySpawnManager : MonoBehaviour
     public static EnemySpawnManager instance;
 
     public int maxEnemies = 5;
-    public int maxRangedEnemies = 1;
+    public int maxRangedEnemies = 2;
     GameObject[] enemies;
     GameObject[] rangedEnemies;
 
@@ -18,6 +18,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     public GameObject groundEnemy;
     public GameObject rangedEnemy;
+    public GameObject flyingRangedEnemy;
 
     public float spawnRadius = 20;
     public float safeRadius = 10;
@@ -49,7 +50,14 @@ public class EnemySpawnManager : MonoBehaviour
 
         if(rangedEnemies.Length < maxRangedEnemies)
 		{
-            EnemySpawn(rangedEnemy);
+            if (Random.Range(0, 2) > 0.5f)
+            {
+                EnemySpawn(rangedEnemy);
+            }
+			else
+            {
+                EnemySpawn(flyingRangedEnemy);
+            }
 		}
 
         EnemyDeSpawning();

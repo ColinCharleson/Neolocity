@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
         thePlayer = FindObjectOfType<PlayerController>();
     }
 	private void FixedUpdate()
-    { 
+    {
 
         if (health < maxHealth && health > 0)
             HealthRegen();

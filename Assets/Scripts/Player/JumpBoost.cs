@@ -35,7 +35,7 @@ public class JumpBoost : MonoBehaviour
                 player.onWall = false;
                 boostEffect.Play();
 
-                player.body.AddForce(transform.up * boostForce, ForceMode.Impulse);
+                player.body.AddForce(transform.up * boostForce * player.boostSP, ForceMode.Impulse);
                 timeLeft = cooldownLength;
                 canJumpBoost = false;
             }
