@@ -64,23 +64,22 @@ public class KasaAttack : MonoBehaviour
 				else
 					Attack();
 			}
-
-			if(movement.stamina <= 0)
-            {
-				kasa.SetTrigger("Exhaust");
-				attackLock = true;
-				movement.stamina = 0;
-				movement.sprintLock = true;
-			}
-
-			if (movement.stamina >= 100)
-			{
-				attackLock = false;
-				movement.sprintLock = false;
-			}
 		}
 
-		if(attackCooldown >= 3)
+		if (movement.stamina <= 0)
+		{
+			kasa.SetTrigger("Exhaust");
+			movement.sprintLock = true;
+			attackLock = true;
+		}
+
+		if (movement.stamina >= 100)
+		{
+			attackLock = false;
+			movement.sprintLock = false;
+		}
+
+		if (attackCooldown >= 3)
         {
 			attackBar -= attackRegeneration * Time.deltaTime;
 		}

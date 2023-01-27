@@ -178,6 +178,7 @@ public class PlayerController : MonoBehaviour
 		if(stamina >= 100)
 		{
 			sprintLock = false;
+
 		}
 
 		if (sprintLock)
