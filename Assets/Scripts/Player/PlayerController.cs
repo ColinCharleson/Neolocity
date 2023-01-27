@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 	private float groundDrag = 5f;
 	private float airMultiplier = 0.2f;
 	public bool isSprinting = false;
-	public  bool sprintLock = false;
+	public bool sprintLock = false;
 	Vector3 moveDirection;
 
 	public bool isAlive = true;
@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
 	public float boostSP = 1.0f;
 	public float healthSP = 1.0f;
 
+	public int scrap;
 	public int cash;
 
 	void Start()
@@ -99,12 +100,12 @@ public class PlayerController : MonoBehaviour
 	}
 
 	void Update()
-    {
+	{
 		PlayerPrefs.SetFloat("CurrentSens", mouseSensitivity);
-    }
+	}
 
 	private void FixedUpdate()
-    {
+	{
 		//temp animations
 		tempKasa.SetBool("Gliding", gliding);
 		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
@@ -112,10 +113,10 @@ public class PlayerController : MonoBehaviour
 		tempKasa.SetBool("Sprint", isSprinting);
 
 		if (Application.isEditor)
-		if (Input.GetKey(KeyCode.R))
-			transform.position = new Vector3(26, 18, -1);
+			if (Input.GetKey(KeyCode.R))
+				transform.position = new Vector3(26, 18, -1);
 
-			SpeedControl();
+		SpeedControl();
 		TalkToNPC();
 		PickingUp();
 
@@ -127,13 +128,13 @@ public class PlayerController : MonoBehaviour
 				Rotation();
 			}
 		}
-		
+
 	}
 
 	void Movement()
 	{
 		//Keyboard inputs
-		vertical = Input.GetAxisRaw("Vertical") * speed; 
+		vertical = Input.GetAxisRaw("Vertical") * speed;
 		horizontal = Input.GetAxisRaw("Horizontal") * speed;
 
 
@@ -142,14 +143,14 @@ public class PlayerController : MonoBehaviour
 
 		if (isGrounded)
 			body.AddForce(moveDirection.normalized * speed * speedSP * 10f, ForceMode.Force);
-		else 
+		else
 			body.AddForce(moveDirection.normalized * speed * speedSP * 10f * airMultiplier, ForceMode.Force);
 
 		body.velocity = new Vector3(body.velocity.x, body.velocity.y * glideScript.glidePower * wallRunScript.fallingSpeed, body.velocity.z);
 
-		if(kasaAttack.isBlocking)
-        {
-			body.velocity = new Vector3(body.velocity.x * kasaAttack.blockingSpeed, body.velocity.y , body.velocity.z * kasaAttack.blockingSpeed);
+		if (kasaAttack.isBlocking)
+		{
+			body.velocity = new Vector3(body.velocity.x * kasaAttack.blockingSpeed, body.velocity.y, body.velocity.z * kasaAttack.blockingSpeed);
 		}
 
 		if (Input.GetKey(InputSystem.key.sprint) && stamina > 0 && isGrounded && !sprintLock && !attack.attackLock)
@@ -161,21 +162,21 @@ public class PlayerController : MonoBehaviour
 		}
 		else
 		{
-			cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov , 10f * Time.deltaTime);
+			cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, 10f * Time.deltaTime);
 			isSprinting = false;
 			speed = walkSpeed;
 			if (stamina < 100)
-			stamina += 10 * Time.deltaTime;
+				stamina += 10 * Time.deltaTime;
 		}
 
-		if(stamina <= 0)
+		if (stamina <= 0)
 		{
 			tempKasa.SetTrigger("Exhaust");
 			sprintLock = true;
 			clearVignette = false;
 		}
 
-		if(stamina >= 100)
+		if (stamina >= 100)
 		{
 			sprintLock = false;
 
@@ -246,7 +247,7 @@ public class PlayerController : MonoBehaviour
 
 				if (wallRunScript.wallRight)
 					body.AddForce((transform.up * 5 + -transform.right * 8) * jumpForce, ForceMode.Impulse);
-			} 
+			}
 		}
 
 		// handle drag
@@ -273,7 +274,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 	public void ChangeSensitivity(float sensi)
-    {
+	{
 		mouseSensitivity = sensi * 10;
 		sensText.text = mouseSensitivity.ToString("F0");
 	}
@@ -316,7 +317,23 @@ public class PlayerController : MonoBehaviour
 			speakInteractBox.SetActive(true);
 			if (Input.GetKey(InputSystem.key.interact) && !isTalking)
 			{
-				hit.transform.gameObject.GetComponent<MissionNPC>().TalkToNPC(MissionManager.instance.lastMission);
+				if (hit.transform.gameObject.GetComponent<MissionNPC>() != null)
+				{
+					hit.transform.gameObject.GetComponent<MissionNPC>().TalkToNPC(MissionManager.instance.lastMission);
+				}
+				isTalking = true;
+				body.velocity = Vector3.zero;
+			}
+		}
+		else if (Physics.Raycast(cam.transform.position, transform.forward, out hit, 3) && hit.collider.gameObject.CompareTag("Scrap Dealer") && !isTalking)
+		{
+			speakInteractBox.SetActive(true);
+			if (Input.GetKey(InputSystem.key.interact) && !isTalking)
+			{
+				if (hit.transform.gameObject.GetComponent<ScrapDealer>() != null)
+				{
+					hit.transform.gameObject.GetComponent<ScrapDealer>().TalkToNPC(scrap);
+				}
 				isTalking = true;
 				body.velocity = Vector3.zero;
 			}
@@ -340,6 +357,12 @@ public class PlayerController : MonoBehaviour
 			grabInteractBox.SetActive(true);
 			if (Input.GetKey(InputSystem.key.interact))
 			{
+				if (hit.transform.GetComponent<Scrap>() != null)
+				{
+					scrap += 1;
+					Destroy(hit.transform.gameObject);
+				}
+				else
 				Destroy(hit.transform.parent.parent.gameObject);
 			}
 		}

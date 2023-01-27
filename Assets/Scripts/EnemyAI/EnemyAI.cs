@@ -21,6 +21,7 @@ public class EnemyAI : MonoBehaviour
 
     public Animator enemyAnims;
 
+    public GameObject scrap;
     //UI
     public Slider slider;
     public GameObject healthBarUi;
@@ -205,7 +206,7 @@ public class EnemyAI : MonoBehaviour
                 explodeParticles.Play();
                 lightParticles.Play();
 
-                playerController.cash += Random.Range(5, 20);
+                Instantiate(scrap);
                 Destroy(gameObject, 2);
             }
         }
