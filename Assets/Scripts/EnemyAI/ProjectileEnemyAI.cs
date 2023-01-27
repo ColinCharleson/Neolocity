@@ -19,6 +19,8 @@ public class ProjectileEnemyAI : MonoBehaviour
     public float maxHealth;
     public float healthRegeneration;
 
+    public GameObject scrap;
+
     public Animator enemyAnims;
 
     //UI
@@ -210,7 +212,7 @@ public class ProjectileEnemyAI : MonoBehaviour
                 explodeParticles.Play();
                 lightParticles.Play();
 
-                playerController.cash += Random.Range(5, 20);
+                Instantiate(scrap, this.transform.position, Quaternion.identity);
                 Destroy(gameObject, 2);
             }
         }
