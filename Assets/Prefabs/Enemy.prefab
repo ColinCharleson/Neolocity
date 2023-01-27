@@ -468,6 +468,7 @@ MonoBehaviour:
   maxHealth: 5
   healthRegeneration: 0.5
   enemyAnims: {fileID: 2321900515168116838}
+  scrap: {fileID: 7805534063622363099, guid: a6718e5598b5a744a8888520923af469, type: 3}
   slider: {fileID: 4772147802762220710}
   healthBarUi: {fileID: 786756399282798238}
   kasaAttack: {fileID: 0}

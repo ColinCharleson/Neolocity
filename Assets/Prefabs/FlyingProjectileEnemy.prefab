@@ -5046,6 +5046,7 @@ MonoBehaviour:
   health: 5
   maxHealth: 5
   healthRegeneration: 0.5
+  scrap: {fileID: 7805534063622363099, guid: a6718e5598b5a744a8888520923af469, type: 3}
   enemyAnims: {fileID: 1581391348695788226}
   slider: {fileID: 8642728872792202754}
   healthBarUi: {fileID: 4548681787018261562}

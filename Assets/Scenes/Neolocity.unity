@@ -24686,6 +24686,7 @@ MonoBehaviour:
   jumpSP: 1
   boostSP: 1
   healthSP: 1
+  scrap: 0
   cash: 0
 --- !u!4 &652168839
 Transform:
@@ -63281,6 +63282,77 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e095d5f192a801749ace4769ff9d6aa3, type: 3}
+--- !u!1001 &1435902507
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 80.60745
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.89519024
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.064508
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020052, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841431600797020053, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: textBox
+      value: 
+      objectReference: {fileID: 358059863}
+    - target: {fileID: 2841431600797020053, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 1492432749}
+    - target: {fileID: 2841431600797020053, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: messageText
+      value: 
+      objectReference: {fileID: 533933546}
+    - target: {fileID: 2841431600797020075, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
+      propertyPath: m_Name
+      value: ScrapDealer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 54287da0c27980f4e988acbc886625a1, type: 3}
 --- !u!1001 &1436544388
 PrefabInstance:
   m_ObjectHideFlags: 0
