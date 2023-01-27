@@ -206,7 +206,7 @@ public class EnemyAI : MonoBehaviour
                 explodeParticles.Play();
                 lightParticles.Play();
 
-                Instantiate(scrap);
+                Instantiate(scrap, this.transform.position, Quaternion.identity);
                 Destroy(gameObject, 2);
             }
         }
