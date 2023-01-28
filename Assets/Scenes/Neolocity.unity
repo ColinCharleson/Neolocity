@@ -73366,7 +73366,7 @@ PrefabInstance:
     - target: {fileID: -4332741248828000052, guid: 7d13535c595e0a444b0eff841cb3edc8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 02216e9e1eeeddc44bdde0e9900ebbc0, type: 2}
+      objectReference: {fileID: 2100000, guid: 3a9650c5789610d47bfca65e11067e4c, type: 2}
     - target: {fileID: 919132149155446097, guid: 7d13535c595e0a444b0eff841cb3edc8, type: 3}
       propertyPath: m_Name
       value: Kasa
