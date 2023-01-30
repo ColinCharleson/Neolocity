@@ -38,6 +38,7 @@ public class KasaAttack : MonoBehaviour
 
 	//Trail Effect
 	public GameObject trail;
+	public ParticleSystem blockEffect;
 
 	private PlayerController movement;
 
@@ -179,6 +180,11 @@ public class KasaAttack : MonoBehaviour
 		{
 			other.GetComponent<ProjectileEnemyAI>().TakeDamage(swingDamage * movement.damageSP);
 			enemyTakeDmg = false;
+		}
+
+		if (other.gameObject.tag == "Bullet" && isBlocking)
+		{
+			blockEffect.Play();
 		}
 
 		StartCoroutine(CanAttackEnenmy());

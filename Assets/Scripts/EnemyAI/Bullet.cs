@@ -35,6 +35,7 @@ public class Bullet : MonoBehaviour
             float mag = laser.velocity.magnitude;
             laser.transform.rotation = Quaternion.LookRotation(aimShot);
             laser.velocity = aimShot * mag;
+            laser.transform.position = transform.position;
             deflected = true;
         }
 
