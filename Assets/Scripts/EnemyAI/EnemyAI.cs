@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour
 
     //Attacking
     public float timeBetweenAttacks;
-    bool alreadyAttacked;
+    public bool alreadyAttacked;
     public int damage = 50;
     bool isAlive = true;
     public float deathtimer = 0;
@@ -222,31 +222,22 @@ public class EnemyAI : MonoBehaviour
         if (isAlive == true)
         {
             transform.LookAt(player);
-
-            if (!alreadyAttacked)
-            {
-
-                enemyAnims.SetTrigger("Attacking");
-                alreadyAttacked = true;
-                Invoke(nameof(ResetAttack), timeBetweenAttacks);
-            }
-        }
-       
+        }   
     }
-    private void ResetAttack()
+    IEnumerator ResetAttack()
     {
         if (isAlive == true)
         {
+            yield return new WaitForSeconds(2f);
             alreadyAttacked = false;
         }
     }
-
 
     private void OnTriggerEnter(Collider collision)
     {
         if (isAlive == true)
         {
-            if (collision.gameObject.tag == "Player" && !kasaAttack.isBlocking)
+            if (collision.gameObject.tag == "Player" && !kasaAttack.isBlocking && !alreadyAttacked)
             {
                 enemyAnims.SetTrigger("Attacking");
 
@@ -254,6 +245,8 @@ public class EnemyAI : MonoBehaviour
                 dmgDirection = dmgDirection.normalized;
 
                 FindObjectOfType<PlayerHealth>().DamagePlayer(damage, dmgDirection);
+                alreadyAttacked = true;
+                StartCoroutine(ResetAttack());
             }
             if (collision.gameObject.tag == "Player" && kasaAttack.isBlocking)
             {

@@ -184,6 +184,8 @@ public class PlayerController : MonoBehaviour
 
 		if (sprintLock)
 		{
+			vignette.color.Override(Color.black);
+
 			if (vignette.intensity.value >= 0.4f)
 			{
 				clearVignette = true;

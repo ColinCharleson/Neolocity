@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class PlayerHealth : MonoBehaviour
     public ParticleSystem knockBackEffect;
 
     public float regenSpeed;
+
+    //Vignette
+    private Volume postProcessVolume;
+    private Vignette vignette;
 
     public PlayerController thePlayer;
 
@@ -27,6 +33,8 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         thePlayer = FindObjectOfType<PlayerController>();
+        postProcessVolume = GameObject.Find("Global Volume").GetComponent<Volume>();
+        postProcessVolume.profile.TryGet<Vignette>(out vignette);
     }
 	private void FixedUpdate()
     {
@@ -39,7 +47,33 @@ public class PlayerHealth : MonoBehaviour
         health += regenSpeed * Time.deltaTime;
 
         if (health >= maxHealth)
+        {
             health = maxHealth;
+        }
+
+        if (health <= 75)
+        {
+            vignette.color.Override(Color.red);
+
+            vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.3f, Time.deltaTime * 2);
+           
+            if (health <= 50)
+            {
+                vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.4f, Time.deltaTime * 2);
+            }
+            if (health <= 30)
+            {
+                vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.6f, Time.deltaTime * 2);
+            }
+            if (health <= 25)
+            {
+                vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.8f, Time.deltaTime * 2);
+            }
+        }
+        else 
+        {
+            vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.0f, Time.deltaTime * 2);
+        }
 
     }
     public void DamagePlayer(int damage, Vector3 direction)

@@ -261,7 +261,6 @@ public class ProjectileEnemyAI : MonoBehaviour
             chargebeam = 0;
             charged = false;
         }
-
     }
     private void KnockBack()
     {
