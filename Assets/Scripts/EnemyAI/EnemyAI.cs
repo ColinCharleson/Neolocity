@@ -228,7 +228,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (isAlive == true)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             alreadyAttacked = false;
         }
     }
