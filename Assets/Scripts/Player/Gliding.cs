@@ -13,6 +13,9 @@ public class Gliding : MonoBehaviour
     private PlayerController movement;
     private FallDamage fallDamage;
 
+    //Gliding Sound 
+    public AudioSource glidingSource;
+
     void Start()
     {
         body = GetComponent<Rigidbody>();
@@ -29,12 +32,14 @@ public class Gliding : MonoBehaviour
             movement.gliding = true;
             fallDamage.gliding = true;
             glidePower = min;
+            glidingSource.enabled = true;
 		}
         else
         {
             movement.gliding = false;
             fallDamage.gliding = false;
             glidePower = max;
+            glidingSource.enabled = false;
 		}
     }
 }

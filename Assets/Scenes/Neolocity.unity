@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07132466, g: 0.083913594, b: 0.10742578, a: 1}
+  m_IndirectSpecularColor: {r: 0.07132463, g: 0.083913565, b: 0.10742572, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -29699,6 +29699,7 @@ MonoBehaviour:
   min: 0.8
   max: 1
   glidePower: 1
+  glidingSource: {fileID: 1731896310}
 --- !u!114 &652168845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77672,6 +77673,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fabd7d4341357be4ca1514a40a85d29a, type: 3}
   m_PrefabInstance: {fileID: 1729373533}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1731896310 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4167497432080043562, guid: ca2c40575ebc3d743960367d2460b766, type: 3}
+  m_PrefabInstance: {fileID: 1449669657856577994}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1732978119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95102,6 +95108,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1103801719}
     - target: {fileID: 1449669657826476433, guid: ca2c40575ebc3d743960367d2460b766, type: 3}
+      propertyPath: glideSource
+      value: 
+      objectReference: {fileID: 1731896310}
+    - target: {fileID: 1449669657826476433, guid: ca2c40575ebc3d743960367d2460b766, type: 3}
       propertyPath: _ambientText
       value: 
       objectReference: {fileID: 533031700}
@@ -95155,18 +95165,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1449669657826476438, guid: ca2c40575ebc3d743960367d2460b766, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449669658083109614, guid: ca2c40575ebc3d743960367d2460b766, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449669658083109614, guid: ca2c40575ebc3d743960367d2460b766, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1449669658083109614, guid: ca2c40575ebc3d743960367d2460b766, type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
