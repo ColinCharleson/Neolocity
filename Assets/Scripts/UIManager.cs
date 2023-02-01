@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
             mainMenu.SetActive(true);
         }
 
-        if(pauseUI.enabled)
+        if(pauseUI.enabled || skillUI.activeSelf)
 		{
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;

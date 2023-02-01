@@ -8,6 +8,10 @@ TagManager:
   - MissionEnd
   - Enemy
   - Grabbable
+  - Ladder
+  - ProjectileEnemy
+  - Bullet
+  - Scrap Dealer
   layers:
   - Default
   - TransparentFX
@@ -19,7 +23,7 @@ TagManager:
   - Player
   - Post Processing
   - Objective
-  - 
+  - Items
   - 
   - 
   - 

@@ -10,9 +10,9 @@ public class ScrapDealer : MonoBehaviour
 
     [Header("Text Box Data")]
     //Text Box
-    public GameObject textBox;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI messageText;
+    public GameObject skillsUI;
+    public TextMeshProUGUI quitPrompt;
+    public Skillshop shop;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,24 +22,17 @@ public class ScrapDealer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(InputSystem.key.cancelTalk))
+        {
+            skillsUI.SetActive(false);
+        }
     }
 
     public void TalkToNPC(int playerScrap)
     {
-        textBox.SetActive(true);
-        nameText.text = "Scrap Dealer";
-        if (playerScrap > 0)
-        {
-            int sellPrice = playerScrap * Random.Range(5, 20);
-            messageText.text = "I see you have " + playerScrap.ToString() + " scrap I'll buy that all off of you for " + sellPrice.ToString();
-            player.GetComponent<PlayerController>().cash += sellPrice;
-            player.GetComponent<PlayerController>().scrap = 0;
-        }
-		else
-		{
-            messageText.text = "Bring me some robot scrap, I'll make it worth your time.";
-        }
-
+        quitPrompt.text = "Press " + InputSystem.key.cancelTalk.ToString() + " to stop trading with the scrap dealer";
+        shop.CashUpdate();
+        Cursor.lockState = CursorLockMode.None;
+        skillsUI.SetActive(true);
     }
 }

@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
 	public float healthSP = 1.0f;
 
 	public int scrap;
-	public int cash;
 
 	void Start()
 	{
