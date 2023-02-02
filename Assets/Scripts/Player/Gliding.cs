@@ -33,10 +33,30 @@ public class Gliding : MonoBehaviour
             fallDamage.gliding = true;
             glidePower = min;
             glidingSource.enabled = true;
-		}
+
+            if (Input.GetKey(InputSystem.key.glide) && Input.GetKey(KeyCode.A) & !movement.onWall)
+            {
+                movement.glidingLeft = true;
+            }
+            else
+            {
+                movement.glidingLeft = false;
+            }
+            if (Input.GetKey(InputSystem.key.glide) && Input.GetKey(KeyCode.D) & !movement.onWall)
+            {
+                movement.glidingRight = true;
+            }
+            else
+            {
+                movement.glidingRight = false;
+            }
+        }
+
         else
         {
+            movement.glidingLeft = false;
             movement.gliding = false;
+            movement.glidingRight = false;
             fallDamage.gliding = false;
             glidePower = max;
             glidingSource.enabled = false;

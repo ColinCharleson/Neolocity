@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
 	//Advanced movement variables
 	private Gliding glideScript;
 	public bool gliding = false;
+	public bool glidingLeft = false;
+	public bool glidingRight = false;
 	private WallRunning wallRunScript;
 	public bool onWall = false;
 
@@ -107,6 +109,8 @@ public class PlayerController : MonoBehaviour
 	{
 		//temp animations
 		tempKasa.SetBool("Gliding", gliding);
+		tempKasa.SetBool("FlyLeft", glidingLeft);
+		tempKasa.SetBool("FlyRight", glidingRight);
 		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
 		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
 		tempKasa.SetBool("Sprint", isSprinting);
