@@ -34,7 +34,7 @@ public class Gliding : MonoBehaviour
             glidePower = min;
             glidingSource.enabled = true;
 
-            if (Input.GetKey(InputSystem.key.glide) && Input.GetKey(KeyCode.A) & !movement.onWall)
+            if (Input.GetKey(InputSystem.key.glide) && Input.GetKey(KeyCode.A) && !movement.isGrounded)
             {
                 movement.glidingLeft = true;
             }
@@ -42,7 +42,7 @@ public class Gliding : MonoBehaviour
             {
                 movement.glidingLeft = false;
             }
-            if (Input.GetKey(InputSystem.key.glide) && Input.GetKey(KeyCode.D) & !movement.onWall)
+            if (Input.GetKey(InputSystem.key.glide) && Input.GetKey(KeyCode.D) && !movement.isGrounded)
             {
                 movement.glidingRight = true;
             }
