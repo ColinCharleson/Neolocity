@@ -30043,7 +30043,7 @@ MonoBehaviour:
   jumpSP: 1
   boostSP: 1
   healthSP: 1
-  scrap: 0
+  scrap: 1000
 --- !u!4 &652168839
 Transform:
   m_ObjectHideFlags: 0
@@ -76055,11 +76055,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1903946605}
   - {fileID: 1419609991}
   - {fileID: 264371414}
   - {fileID: 1887297549}
   - {fileID: 1809799222}
+  - {fileID: 1903946605}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
