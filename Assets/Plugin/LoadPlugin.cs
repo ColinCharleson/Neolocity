@@ -12,7 +12,7 @@ public class LoadPlugin : MonoBehaviour
 	private static extern int GetLines(string fileName);
 
 	string fn;
-	public Transform player;
+	public PlayerController player;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -30,8 +30,15 @@ public class LoadPlugin : MonoBehaviour
 
 	public void LoadPosition()
 	{
-		player.position = new Vector3(LoadFromFile(0, fn), LoadFromFile(1, fn), LoadFromFile(2, fn));
+		player.transform.position = new Vector3(LoadFromFile(0, fn), LoadFromFile(1, fn), LoadFromFile(2, fn));
+
 		PlayerHealth.hp.health = LoadFromFile(3, fn);
 		MissionManager.instance.lastMission = (int)LoadFromFile(4, fn);
+		player.speedSP = (float)LoadFromFile(5, fn);
+		player.damageSP = (float)LoadFromFile(6, fn);
+		player.jumpSP = (float)LoadFromFile(7, fn);
+		player.boostSP = (float)LoadFromFile(8, fn);
+		player.healthSP = (float)LoadFromFile(9, fn);
+		player.scrap = (int)LoadFromFile(10, fn);
 	}
 }

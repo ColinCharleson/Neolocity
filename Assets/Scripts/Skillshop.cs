@@ -7,7 +7,7 @@ using TMPro;
 
 public class Skillshop : MonoBehaviour
 {
-    public PlayerController player;
+	public PlayerController player;
 	public TextMeshProUGUI scrapText;
 	public GameObject skillShop;
 
@@ -23,13 +23,39 @@ public class Skillshop : MonoBehaviour
 	public void CashUpdate()
 	{
 		scrapText.text = player.scrap.ToString() + " scrap";
+
+		if (player.speedSP > 1)
+		{
+			speedCost.text = "Upgrade - " + 3 * (int)((player.speedSP - 0.9) * 10);
+			speedLvl.text = "Level " + (int)((player.speedSP - 1) * 10);
+		}
+		if (player.damageSP > 1)
+		{
+			damageCost.text = "Upgrade - " + 3 * (int)((player.damageSP - 0.9) * 10);
+			damageLvl.text = "Level " + (int)((player.damageSP - 1) * 10);
+		}
+		if (player.jumpSP > 1)
+		{
+			jumpCost.text = "Upgrade - " + 3 * (int)((player.jumpSP - 0.9) * 10);
+			jumpLvl.text = "Level " + (int)((player.jumpSP - 1) * 10);
+		}
+		if (player.boostSP > 1)
+		{
+			boostCost.text = "Upgrade - " + 3 * (int)((player.boostSP - 0.9) * 10);
+			boostLvl.text = "Level " + (int)((player.boostSP - 1) * 10);
+		}
+		if (player.healthSP > 1)
+		{
+			healthCost.text = "Upgrade - " + 3 * (int)((player.healthSP - 0.9) * 10);
+			healthLvl.text = "Level " + (int)((player.healthSP - 1) * 10);
+		}
 	}
 	public void UpgradeSpeed()
 	{
 		if (player.speedSP < 2 && (player.scrap + 0.7) >= (3 * ((player.speedSP - 0.9) * 10)))
 		{
 			player.speedSP += 0.1f;
-			player.scrap -= 3 * (int)((player.speedSP-1) * 10);
+			player.scrap -= 3 * (int)((player.speedSP - 1) * 10);
 			speedCost.text = "Upgrade - " + 3 * (int)((player.speedSP - 0.9) * 10);
 			speedLvl.text = "Level " + (int)((player.speedSP - 1) * 10);
 			if (player.speedSP >= 2f)
@@ -60,7 +86,7 @@ public class Skillshop : MonoBehaviour
 			player.scrap -= 3 * (int)((player.jumpSP - 1) * 10);
 			jumpCost.text = "Upgrade - " + 3 * (int)((player.jumpSP - 0.9) * 10);
 			jumpLvl.text = "Level " + (int)((player.jumpSP - 1) * 10);
-			if(player.jumpSP >= 1.5f)
+			if (player.jumpSP >= 1.5f)
 			{
 				jumpCost.text = "Max Level";
 			}
@@ -93,7 +119,7 @@ public class Skillshop : MonoBehaviour
 			{
 				healthCost.text = "Max Level";
 			}
-			player.GetComponent<PlayerHealth>().maxHealth = player.healthSP *100;
+			player.GetComponent<PlayerHealth>().maxHealth = player.healthSP * 100;
 		}
 	}
 }
