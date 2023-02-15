@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public KasaAttack kasa;
 
     public GameObject load;
+    public Camera mapCam;
 
     public GameObject options, skillUI;
     public GameObject mainMenu;
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
     {
         gameUI.enabled = true;
         pauseUI.enabled = false;
+        mapCam.enabled = false;
     }
 
     void Update()
@@ -69,6 +71,8 @@ public class UIManager : MonoBehaviour
             pauseUI.enabled = !pauseUI.enabled;
             options.SetActive(false);
             mainMenu.SetActive(true);
+            mapCam.enabled = true;
+
         }
 
         if(pauseUI.enabled || skillUI.activeSelf)
@@ -82,6 +86,7 @@ public class UIManager : MonoBehaviour
 		{
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
+            mapCam.enabled = false;
         }
 
         if(PlayerHealth.hp.health == 0)
