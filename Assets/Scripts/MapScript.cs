@@ -10,14 +10,8 @@ public class MapScript : MonoBehaviour
 
     Transform objIconLocation = null;
 
-
-
     void LateUpdate()
     {
-        Vector3 newPosition = player.position;
-        newPosition.y = transform.position.y;
-        transform.position = newPosition;
-
         if (objIconLocation != MissionManager.instance.currentObjective)
         {
             objIconLocation = MissionManager.instance.currentObjective;
