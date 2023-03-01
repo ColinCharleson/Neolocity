@@ -1,20 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.UI;
+
 
 public class MapController : MonoBehaviour
 {
     public float dragSpeed = 2;
     private Vector3 drag;
     public Transform player;
+    public Volume postProcessVolume;
+    private Fog fog;
+
 
     public float minX; 
     public float maxX; 
     public float minZ;
     public float maxZ;
 
+    private void Start()
+    {
+        postProcessVolume.profile.TryGet(out fog);
+    }
+
     void Update()
     {
         if (Time.timeScale == 0)// if scene is paused do this
         {
+            fog.active = false;
+
             if (Input.GetMouseButtonDown(0))
             {
                 drag = Input.mousePosition;
@@ -46,6 +62,7 @@ public class MapController : MonoBehaviour
             Vector3 newPosition = player.position;
             newPosition.y = transform.position.y;
             transform.position = newPosition;
+            fog.active = true;
         }
     }
 }

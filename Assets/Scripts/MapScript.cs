@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MapScript : MonoBehaviour
 {
-
     public Transform player;
     public GameObject npcIcon;
 
