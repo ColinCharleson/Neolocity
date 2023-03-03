@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public ParticleSystem yellowParticles, explodeParticles, lightParticles;
+    public ParticleSystem yellowParticles, explodeParticles, lightParticles, smokeDamaged, deadSmoke, explode, smokeExplode, sparks;
 
     //enemy health
     public float health;
@@ -86,6 +86,11 @@ public class EnemyAI : MonoBehaviour
                     if (health > maxHealth)
                     {
                         health = 5;
+                    }
+
+                    if (health > 3 || health < 0)
+                    {
+                        smokeDamaged.Stop();
                     }
 
                     if (playerInSightRange && !playerInAttackRange)
@@ -206,6 +211,10 @@ public class EnemyAI : MonoBehaviour
             {
                 healthBarUi.SetActive(false);
             }
+            if (health < 2.5)
+            {
+                smokeDamaged.Play();
+            }
             if (health <= 0)
             {
                 isAlive = false;
@@ -216,6 +225,10 @@ public class EnemyAI : MonoBehaviour
                 lightParticles.Play();
 
                 Instantiate(scrap, this.transform.position, Quaternion.identity);
+                explode.Play();
+                smokeExplode.Play();
+                sparks.Play();
+                deadSmoke.Play();
                 Destroy(gameObject, 2);
             }
         }
