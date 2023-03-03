@@ -206,7 +206,7 @@ public class ProjectileEnemyAI : MonoBehaviour
             if (health <= 0)
             {
                 isAlive = false;
-                GetComponent<CapsuleCollider>().enabled = false;
+                GetComponent<BoxCollider>().enabled = false;
                 GetComponent<NavMeshAgent>().enabled = false;
                 enemyAnims.SetTrigger("Die");
                 explodeParticles.Play();

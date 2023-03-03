@@ -64,6 +64,15 @@ public class EnemyAI : MonoBehaviour
     {
         if (isAlive == true)
         {
+            if (agent.velocity.x == 0.0 || agent.velocity.z == 0.0)
+            {
+                enemyAnims.SetBool("IsMoving", false);
+            }
+            else
+            {
+                enemyAnims.SetBool("IsMoving", true);
+            }
+
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -200,7 +209,7 @@ public class EnemyAI : MonoBehaviour
             if (health <= 0)
             {
                 isAlive = false;
-                GetComponent<CapsuleCollider>().enabled = false;
+                GetComponent<BoxCollider>().enabled = false;
                 GetComponent<NavMeshAgent>().enabled = false;
                 enemyAnims.SetTrigger("Die");
                 explodeParticles.Play();
@@ -250,6 +259,7 @@ public class EnemyAI : MonoBehaviour
             }
             if (collision.gameObject.tag == "Player" && kasaAttack.isBlocking)
             {
+                enemyAnims.SetTrigger("Attacking");
                 yellowParticles.Play();
                 kasaAttack.blockHealth -= 1;
                 KnockBack();
