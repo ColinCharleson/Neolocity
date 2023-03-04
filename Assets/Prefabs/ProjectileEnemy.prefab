@@ -4914,7 +4914,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221917831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.031, y: -0.516, z: 0.975}
+  m_LocalPosition: {x: 0.0287, y: -0.5363, z: 0.8132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19568,6 +19568,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &951410918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 951410919}
+  m_Layer: 0
+  m_Name: Laser Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &951410919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951410918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0313, y: -0.5463, z: 0.796}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5050360444725616973}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120055485
 GameObject:
   m_ObjectHideFlags: 0
@@ -44162,8 +44193,9 @@ Transform:
   - {fileID: 565404194}
   - {fileID: 1316372096}
   - {fileID: 3853495589555764686}
+  - {fileID: 951410919}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5050360444725616974
 Rigidbody:
@@ -44264,7 +44296,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   enemy: {fileID: 5050360444725616974}
   laser: {fileID: 6261230680630228401, guid: e91bb238c6b9c7844a534f3e5de4f0cd, type: 3}
-  laserPos: {fileID: 221917831}
+  laserPos: {fileID: 221917832}
   deathtimer: 0
   chargebeam: 0
   charged: 0

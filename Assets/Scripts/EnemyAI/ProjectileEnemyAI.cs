@@ -44,7 +44,7 @@ public class ProjectileEnemyAI : MonoBehaviour
     //Rigid Body
     public Rigidbody enemy;
     public GameObject laser;
-    public GameObject laserPos;
+    public Transform laserPos;
 
     //Attacking
     bool alreadyAttacked;
@@ -259,7 +259,7 @@ public class ProjectileEnemyAI : MonoBehaviour
                 if (chargebeam >= 3)
                 {
                     enemyAnims.SetTrigger("Attack");
-                    Rigidbody rb = Instantiate(laser, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                    Rigidbody rb = Instantiate(laser, laserPos.position, Quaternion.identity).GetComponent<Rigidbody>();
                     rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
                     rb.AddForce(transform.up * 2f, ForceMode.Impulse);
                     chargeShoot.Play();
