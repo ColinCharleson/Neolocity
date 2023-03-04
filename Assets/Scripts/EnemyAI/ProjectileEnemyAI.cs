@@ -68,6 +68,15 @@ public class ProjectileEnemyAI : MonoBehaviour
     {
         if (isAlive == true)
         {
+            if (agent.velocity.x == 0.0 || agent.velocity.z == 0.0)
+            {
+                enemyAnims.SetBool("IsMoving", false);
+            }
+            else
+            {
+                enemyAnims.SetBool("IsMoving", true);
+            }
+
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -185,6 +194,7 @@ public class ProjectileEnemyAI : MonoBehaviour
 
 
 
+
     public void TakeDamage(float damageTaken)
     {
         if (isAlive == true)
@@ -217,7 +227,6 @@ public class ProjectileEnemyAI : MonoBehaviour
                 isAlive = false;
                 GetComponent<BoxCollider>().enabled = false;
                 GetComponent<NavMeshAgent>().enabled = false;
-                enemyAnims.SetTrigger("Die");
       
 
                 Instantiate(scrap, this.transform.position, Quaternion.identity);
@@ -249,6 +258,7 @@ public class ProjectileEnemyAI : MonoBehaviour
 
                 if (chargebeam >= 3)
                 {
+                    enemyAnims.SetTrigger("Attack");
                     Rigidbody rb = Instantiate(laser, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
                     rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
                     rb.AddForce(transform.up * 2f, ForceMode.Impulse);
