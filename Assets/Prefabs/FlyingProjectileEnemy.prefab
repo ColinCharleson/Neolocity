@@ -29317,10 +29317,10 @@ GameObject:
   - component: {fileID: 1511377296739586394}
   - component: {fileID: 1581391348695788225}
   - component: {fileID: 1581391348695788226}
-  - component: {fileID: 4489676278153019829}
+  - component: {fileID: 483061528}
   m_Layer: 0
   m_Name: FlyingProjectileEnemy
-  m_TagString: ProjectileEnemy
+  m_TagString: FlyingProjectileEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29431,7 +29431,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4489676278153019829
+--- !u!114 &483061528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29440,7 +29440,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1581391348695788232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2393c2f3399b05144970edb6b87161bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e498733de31c12458254cd87a5b9547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1581391348695788231}
@@ -29925,7 +29925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6045034788095834383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2696, z: 1.352}
+  m_LocalPosition: {x: 0, y: 0.326, z: 1.352}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

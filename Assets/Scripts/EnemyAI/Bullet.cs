@@ -45,6 +45,12 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        else if(collision.gameObject.tag == "FlyingProjectileEnemy" && deflected == true)
+        {
+            collision.GetComponent<FlyingProjectileEnemyAI>().TakeDamage(reflectDamage);
+            Destroy(gameObject);
+        }
+
        else if (collision.gameObject.tag == "Enemy" && deflected == true)
         {
             collision.GetComponent<EnemyAI>().TakeDamage(reflectDamage);
