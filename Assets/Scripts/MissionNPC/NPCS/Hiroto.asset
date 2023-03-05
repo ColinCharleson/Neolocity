@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: Hiroto
   m_EditorClassIdentifier: 
   npcName: Hiroto
-  missionNumber: 2
+  missionNumber: 3
   notReadyMessage: I need someone more experienced to help me with my mission. Come
     back when youre ready.
-  missionMessage: I need you to scope out a building for me. There is a construction
-    building just west of this one. I heard the government had a secret hide out
-    over there!
-  finishedMessage: Dang our intel must be off. Thanks for scoping it out. I hear
-    Mai has a back up plan, go ask her about it when youre ready.
-  keepGoingMessage: You need to go scope out the building! Follow the compass to
-    help find it.
-  allDoneMessage: 'Thanks again for scoping out the building. '
+  missionMessage: There are some drones guarding the enemy hide out. You have to
+    take them out and then report back to me. Be careful, you can use your umbrella
+    to block projectiles.
+  finishedMessage: Perfect! You cleared the enemies, now we can proceed with our
+    plan. Thanks for the help.
+  keepGoingMessage: What are you waiting for? Go take out the robots!
+  allDoneMessage: 'Thanks again for the help. '

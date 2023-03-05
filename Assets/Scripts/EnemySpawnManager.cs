@@ -7,10 +7,12 @@ public class EnemySpawnManager : MonoBehaviour
 {
     public static EnemySpawnManager instance;
 
-    public int maxEnemies = 5;
+    public int maxEnemies = 3;
     public int maxRangedEnemies = 2;
+    public int maxFlyingEnemies = 2;
     GameObject[] enemies;
     GameObject[] rangedEnemies;
+    GameObject[] flyingEnemies;
 
     public Vector3 randomPosition;
     GameObject player;
@@ -42,6 +44,7 @@ public class EnemySpawnManager : MonoBehaviour
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         rangedEnemies = GameObject.FindGameObjectsWithTag("ProjectileEnemy");
+        flyingEnemies = GameObject.FindGameObjectsWithTag("FlyingProjectileEnemy");
 
         if(enemies.Length < maxEnemies)
 		{
@@ -50,14 +53,12 @@ public class EnemySpawnManager : MonoBehaviour
 
         if(rangedEnemies.Length < maxRangedEnemies)
 		{
-            if (Random.Range(0, 2) > 0.5f)
-            {
-                EnemySpawn(rangedEnemy);
-            }
-			else
-            {
-                EnemySpawn(flyingRangedEnemy);
-            }
+            EnemySpawn(rangedEnemy);
+		}
+        
+        if(flyingEnemies.Length < maxFlyingEnemies)
+		{
+            EnemySpawn(flyingRangedEnemy);
 		}
 
         EnemyDeSpawning();

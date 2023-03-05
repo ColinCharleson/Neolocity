@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1fbb189975593443b4c7b4c3e6ee59a, type: 3}
   m_Name: TestKill
   m_EditorClassIdentifier: 
-  spawnArea: {x: 28, y: 13, z: 0}
+  spawnArea: {x: 15, y: 0, z: 10}
   battlePrefab: {fileID: 8899498646476238274, guid: a8185b6b0d4554d46abeb886c7f01535, type: 3}
