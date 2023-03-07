@@ -66,7 +66,7 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isAlive == true)
+        if (isAlive)
         {
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -139,7 +139,7 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
 
     private void Patrolling()
     {
-        if (isAlive == true)
+        if (isAlive)
         {
             if (!walkPointSet) SearchWalkPoint();
 
@@ -158,7 +158,7 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
 
     void SearchWalkPoint()
     {
-        if (isAlive == true)
+        if (isAlive)
         {
             //caculating random point in range
             float randZ = Random.Range(-walkPointRange, walkPointRange);
@@ -176,7 +176,7 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        if (isAlive == true)
+        if (isAlive)
         {
             transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
             agent.SetDestination(player.position);
@@ -184,11 +184,9 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
     }
 
 
-
-
     public void TakeDamage(float damageTaken)
     {
-        if (isAlive == true)
+        if (isAlive)
         {
             yellowParticles.Play();
             explodeParticles.Play();
@@ -237,7 +235,7 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
 
     private void AttackPlayer()
     {
-        if (isAlive == true)
+        if (isAlive)
         {
             transform.LookAt(player);
 
@@ -266,7 +264,7 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
 
     IEnumerator ResetAttack()
     {
-        if (isAlive == true)
+        if (isAlive)
         {
             yield return new WaitForSeconds(5f);
             alreadyAttacked = false;
@@ -276,7 +274,7 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
     }
     private void KnockBack()
     {
-        if (isAlive == true)
+        if (isAlive)
         {
             enemy.AddForce((transform.up * 3), ForceMode.Impulse);
             enemy.AddForce((-transform.forward * 60), ForceMode.Impulse);
