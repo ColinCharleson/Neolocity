@@ -66,7 +66,7 @@ public class EnemySpawnManager : MonoBehaviour
     void EnemySpawn(GameObject enemyType)
 	{
          randomPosition = new Vector3(Random.Range(playerPos.x - spawnRadius, playerPos.x + spawnRadius),
-                                      Random.Range(5, 30),
+                                      Random.Range(0, 30),
                                       Random.Range(playerPos.z - spawnRadius, playerPos.z + spawnRadius));
 
         NavMeshHit hit;
