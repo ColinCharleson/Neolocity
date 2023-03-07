@@ -66,7 +66,7 @@ public class EnemySpawnManager : MonoBehaviour
     void EnemySpawn(GameObject enemyType)
 	{
          randomPosition = new Vector3(Random.Range(playerPos.x - spawnRadius, playerPos.x + spawnRadius),
-                                      Random.Range(playerPos.y - spawnRadius, playerPos.y + spawnRadius),
+                                      Random.Range(5, 30),
                                       Random.Range(playerPos.z - spawnRadius, playerPos.z + spawnRadius));
 
         NavMeshHit hit;
@@ -98,6 +98,20 @@ public class EnemySpawnManager : MonoBehaviour
 			}
 		}
         foreach (GameObject enemy in rangedEnemies)
+		{
+            if(Vector3.Distance(playerPos, enemy.transform.position ) > deSpawnRadius)
+			{
+                if(enemy.layer == 9)
+				{
+
+				}
+				else
+				{
+                    Destroy(enemy);
+				}
+			}
+		}
+        foreach (GameObject enemy in flyingEnemies)
 		{
             if(Vector3.Distance(playerPos, enemy.transform.position ) > deSpawnRadius)
 			{
