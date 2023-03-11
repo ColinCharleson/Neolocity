@@ -19,8 +19,6 @@ public class PlayerController : MonoBehaviour
 	public Transform groundCheck;
 	private float groundDistance = 0.4f;
 	public LayerMask groundMask;
-	public int minDropCount = 1;
-	public int maxDropCount = 4;
 
 	// Player movement stats
 	private float speed;
