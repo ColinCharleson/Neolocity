@@ -117,7 +117,7 @@ public class EnemySpawnManager : MonoBehaviour
 			{
                 if(enemy.layer == 9)
 				{
-
+                   
 				}
 				else
 				{

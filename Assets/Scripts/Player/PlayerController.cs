@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 	public Transform groundCheck;
 	private float groundDistance = 0.4f;
 	public LayerMask groundMask;
+	public int minDropCount = 1;
+	public int maxDropCount = 4;
 
 	// Player movement stats
 	private float speed;
@@ -369,6 +371,16 @@ public class PlayerController : MonoBehaviour
 				}
 				else
 				Destroy(hit.transform.parent.parent.gameObject);
+			}
+		}
+		else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4) && hit.collider.gameObject.CompareTag("Chest"))
+		{
+			grabInteractBox.SetActive(true);
+			if (Input.GetKey(InputSystem.key.interact))
+			{
+				int scrapToAdd = Random.Range(1, 5);
+				scrap += scrapToAdd;
+				Destroy(hit.transform.gameObject);
 			}
 		}
 		else

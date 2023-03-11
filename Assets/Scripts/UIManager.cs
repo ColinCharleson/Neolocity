@@ -116,7 +116,6 @@ public class UIManager : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("You Cant Leave :D");
         Application.Quit();
     }
 }
