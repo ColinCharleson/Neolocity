@@ -105,7 +105,6 @@ public class PlayerController : MonoBehaviour
 	void Update()
 	{
 		PlayerPrefs.SetFloat("CurrentSens", mouseSensitivity);
-		scrapText.text = "Scrap: " + scrap;
 	}
 
 	private void FixedUpdate()
@@ -371,6 +370,7 @@ public class PlayerController : MonoBehaviour
 					scrap += 1;
 					Destroy(hit.transform.gameObject);
 					StartCoroutine(ResetText());
+					scrapText.text = "Scrap + 1 ";
 				}
 				else
 				{
@@ -386,6 +386,7 @@ public class PlayerController : MonoBehaviour
 				scrapFade.SetActive(true);
 				int scrapToAdd = Random.Range(1, 5);
 				scrap += scrapToAdd;
+				scrapText.text = "Scrap + " + scrapToAdd;
 				Destroy(hit.transform.gameObject);
 				StartCoroutine(ResetText());
 			}
