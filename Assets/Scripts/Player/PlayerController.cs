@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour
 	public float healthSP = 1.0f;
 
 	public int scrap;
+	public Text scrapText;
+	public GameObject scrapFade;
 
 	void Start()
 	{
@@ -103,6 +105,7 @@ public class PlayerController : MonoBehaviour
 	void Update()
 	{
 		PlayerPrefs.SetFloat("CurrentSens", mouseSensitivity);
+		scrapText.text = "Scrap: " + scrap;
 	}
 
 	private void FixedUpdate()
@@ -364,11 +367,15 @@ public class PlayerController : MonoBehaviour
 			{
 				if (hit.transform.GetComponent<Scrap>() != null)
 				{
+					scrapFade.SetActive(true);
 					scrap += 1;
 					Destroy(hit.transform.gameObject);
+					StartCoroutine(ResetText());
 				}
 				else
-				Destroy(hit.transform.parent.parent.gameObject);
+				{
+					Destroy(hit.transform.parent.parent.gameObject);
+				}
 			}
 		}
 		else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4) && hit.collider.gameObject.CompareTag("Chest"))
@@ -376,12 +383,21 @@ public class PlayerController : MonoBehaviour
 			grabInteractBox.SetActive(true);
 			if (Input.GetKey(InputSystem.key.interact))
 			{
+				scrapFade.SetActive(true);
 				int scrapToAdd = Random.Range(1, 5);
 				scrap += scrapToAdd;
 				Destroy(hit.transform.gameObject);
+				StartCoroutine(ResetText());
 			}
 		}
 		else
+		{
 			grabInteractBox.SetActive(false);
+		}
+	}
+	IEnumerator ResetText()
+	{
+		yield return new WaitForSeconds(0.6f);
+		scrapFade.SetActive(false);
 	}
 }

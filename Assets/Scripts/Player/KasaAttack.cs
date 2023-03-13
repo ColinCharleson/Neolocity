@@ -200,8 +200,8 @@ public class KasaAttack : MonoBehaviour
 	{
 		yield return new WaitForSeconds(0.5f);
 		enemyTakeDmg = true;
-
 	}
+
 	public void Block()
 	{
 		BlockUI();
