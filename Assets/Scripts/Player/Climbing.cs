@@ -8,6 +8,8 @@ public class Climbing : MonoBehaviour
 	public float climbingSpeed = 0.1f;
 
 	private Rigidbody rb;
+
+	public AudioSource ladderSource;
 	private void Start()
 	{
 		rb = this.GetComponent<Rigidbody>();
@@ -19,10 +21,12 @@ public class Climbing : MonoBehaviour
 			if(Input.GetKey(KeyCode.W))
 			{
 				rb.position += Vector3.up * climbingSpeed;
+				ladderSource.enabled = true;
 			}
 			else
 			{
 				rb.velocity = Vector3.zero;
+				ladderSource.enabled=false;
 			}
 
 
@@ -31,6 +35,7 @@ public class Climbing : MonoBehaviour
 		else
 		{
 			rb.useGravity = true;
+			ladderSource.enabled = false;
 		}
 	}
 	private void OnCollisionEnter(Collision collision)
