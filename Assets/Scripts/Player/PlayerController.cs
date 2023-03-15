@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 	public KasaAttack attack;
 
 	//Footsteps
-	public AudioSource footstepsSource, sprintSource;
+	public AudioSource footstepsSource, sprintSource, wallRunningSource;
 
 	//Upgradeable Skill Points
 	public float speedSP = 1.0f;
@@ -254,6 +254,7 @@ public class PlayerController : MonoBehaviour
 
 				if (wallRunScript.wallRight)
 					body.AddForce((transform.up * 5 + -transform.right * 8) * jumpForce, ForceMode.Impulse);
+
 			}
 		}
 

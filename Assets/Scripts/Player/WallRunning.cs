@@ -21,6 +21,9 @@ public class WallRunning : MonoBehaviour
 	private PlayerController movement;
 	private FallDamage fallDamage;
 
+	//Wall Running Sound
+	public AudioSource wallRunningSource;
+
 	private void Start()
 	{
 		orientation = GetComponent<Transform>();
@@ -42,6 +45,7 @@ public class WallRunning : MonoBehaviour
 		{
 			wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, groundMask);
 			wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, groundMask);
+
 		}
 		else
 		{
@@ -53,6 +57,7 @@ public class WallRunning : MonoBehaviour
 		{
 			if (wallRunCoolDown <= 0)
 			{
+				wallRunningSource.enabled = true;
 				fallingSpeed = 0.1f;
 				movement.onWall = true;
 				movement.gliding = false;
@@ -64,7 +69,7 @@ public class WallRunning : MonoBehaviour
 			movement.onWall = false;
 			fallDamage.onWall = false;
 			fallingSpeed = 1f;
-
+			wallRunningSource.enabled = false;
 
 		}
 	}
