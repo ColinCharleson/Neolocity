@@ -28,6 +28,7 @@ public class FallDamage : MonoBehaviour
 	public Rigidbody body;
 	public PlayerHealth playerHealth;
 
+	public AudioSource fallDamageSource;
 	private void Update()
 	{
 		//checking if take fall damage
@@ -46,10 +47,13 @@ public class FallDamage : MonoBehaviour
 		if (!wasGrounded && isGrounded && !gliding)
 		{
 			TakeDamage();
+			fallDamageSource.enabled = true;
+			
 		}
-
+		
 		wasGrounded = isGrounded;
 		wasFalling = isFalling;
+		
 	}
 
 	public void TakeDamage()
@@ -60,6 +64,10 @@ public class FallDamage : MonoBehaviour
 		{
 			tempKasa.SetTrigger("Shake");
 			playerHealth.health -= fallDistance * 3;
+			if (!fallDamageSource.isPlaying)
+			{
+			fallDamageSource.enabled = false;
+			}
 
 			if (PlayerHealth.hp.health <= 0)
 			{

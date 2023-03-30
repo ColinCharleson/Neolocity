@@ -15,6 +15,8 @@ public class JumpBoost : MonoBehaviour
 
     public float boostForce;
 
+    public AudioSource boostSource;
+
 	private void Start()
 	{
         player = GetComponent<PlayerController>();
@@ -23,6 +25,7 @@ public class JumpBoost : MonoBehaviour
     {
         if(canJumpBoost)
             jumpBoostIcon.SetActive(true);
+            
         else
             jumpBoostIcon.SetActive(false);
 
@@ -38,14 +41,16 @@ public class JumpBoost : MonoBehaviour
                 player.body.AddForce(transform.up * boostForce * player.boostSP, ForceMode.Impulse);
                 timeLeft = cooldownLength;
                 canJumpBoost = false;
+                boostSource.enabled = true;
             }
         }
 
         if(timeLeft <= 0)
         {
             canJumpBoost = true;
+            boostSource.enabled = false;
         }
-		else
+		else 
 		{
             timeLeft -= Time.deltaTime;
 		}
