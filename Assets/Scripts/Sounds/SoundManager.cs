@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 
     public Sound[] music, sfx, ambient;
     public AudioSource musicSource, sfxSource, ambientSource;
-    public AudioSource walkSource, runSoruce, glideSource, wallRunningSource, ladderSource, boostSource, fallDamageSource;
+    public AudioSource walkSource, runSoruce, glideSource, wallRunningSource, ladderSource, boostSource, fallDamageSource, droneSource;
 
     public Slider _musicSlider, _ambientSlider, _sfxSlider;
     public Text _musicText, _ambientText, _sfxText;
@@ -39,6 +39,7 @@ public class SoundManager : MonoBehaviour
         _ambientSlider.value = ambientVolume;
 
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
+        droneSource.volume = sfxVolume;
         walkSource.volume = sfxVolume;
         runSoruce.volume = sfxVolume;
         glideSource.volume = sfxVolume;
@@ -65,6 +66,7 @@ public class SoundManager : MonoBehaviour
         boostSource.volume = sfxVolume;
         ladderSource.volume = sfxVolume;
         fallDamageSource.volume = sfxVolume;
+        droneSource.volume = sfxVolume;
     }
 
     public void SFXVolume()

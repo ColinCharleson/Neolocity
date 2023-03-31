@@ -37,6 +37,10 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange;
 
+    //Sound
+    public SoundManager soundManager;
+    public GameObject soundManagerObject;
+
     //states
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
@@ -62,12 +66,16 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
         agent = GetComponent<NavMeshAgent>();
         health = maxHealth;
+        soundManagerObject = GameObject.Find("SoundManager");
+        soundManager = soundManagerObject.GetComponent<SoundManager>();
     }
 
     private void FixedUpdate()
     {
         if (isAlive)
         {
+          soundManager.droneSource.Play();
+
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -134,6 +142,7 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
                     break;
             }
         }
+
     }
 
 
