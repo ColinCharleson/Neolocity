@@ -10,13 +10,14 @@ public class SoundManager : MonoBehaviour
 
     public Sound[] music, sfx, ambient;
     public AudioSource musicSource, sfxSource, ambientSource;
-    public AudioSource walkSource, runSoruce, glideSource, wallRunningSource, ladderSource, boostSource, fallDamageSource, droneSource;
+    public AudioSource walkSource, runSoruce, glideSource, wallRunningSource, ladderSource, boostSource, fallDamageSource;
 
-    public Slider _musicSlider, _ambientSlider, _sfxSlider;
-    public Text _musicText, _ambientText, _sfxText;
+    public Slider _musicSlider, _ambientSlider, _sfxSlider, _enemySlider;
+    public Text _musicText, _ambientText, _sfxText, _enemyText;
     public float musicVolume = 1f;
     public float ambientVolume = 1f;
     public float sfxVolume = 1f;
+    public float enemyVolume = 1f;
 
     public void Awake()
     {
@@ -39,7 +40,6 @@ public class SoundManager : MonoBehaviour
         _ambientSlider.value = ambientVolume;
 
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
-        droneSource.volume = sfxVolume;
         walkSource.volume = sfxVolume;
         runSoruce.volume = sfxVolume;
         glideSource.volume = sfxVolume;
@@ -66,7 +66,6 @@ public class SoundManager : MonoBehaviour
         boostSource.volume = sfxVolume;
         ladderSource.volume = sfxVolume;
         fallDamageSource.volume = sfxVolume;
-        droneSource.volume = sfxVolume;
     }
 
     public void SFXVolume()
@@ -132,11 +131,17 @@ public class SoundManager : MonoBehaviour
         sfxVolume = volume;
         _sfxText.text = (sfxVolume*100).ToString("0");
     }
+    public void EnemyVolume(float volume)
+    {
+        enemyVolume = volume;
+        _enemyText.text = (enemyVolume * 100).ToString("0");
+    }
 
     public void SetVolumeSliders()
     {
         _sfxText.text = (sfxVolume * 100).ToString("0");
         _ambientText.text = (ambientVolume * 100).ToString("0");
         _musicText.text = (musicVolume * 100).ToString("0");
+        _enemyText.text = (enemyVolume * 100).ToString("0");
     }
 }
