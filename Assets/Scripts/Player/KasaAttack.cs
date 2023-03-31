@@ -187,6 +187,12 @@ public class KasaAttack : MonoBehaviour
 			other.GetComponent<FlyingProjectileEnemyAI>().TakeDamage(swingDamage * movement.damageSP);
 			enemyTakeDmg = false;
 		}
+		
+		if (other.gameObject.tag == "Boss" && isAttacking && enemyTakeDmg)
+		{
+			other.GetComponent<FinalBoss>().TakeDamage(swingDamage * movement.damageSP);
+			enemyTakeDmg = false;
+		}
 
 		if (other.gameObject.tag == "Bullet" && isBlocking)
 		{
