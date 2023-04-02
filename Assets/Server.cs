@@ -11,7 +11,8 @@ public class Server : MonoBehaviour
 
     public GameObject myCube;
     public GameObject otherCube;
-
+    public Camera Cam1;
+    public Camera Cam2;
     private static byte[] outBuffer = new byte[512];
     string tempData = "";
 
@@ -34,6 +35,10 @@ public class Server : MonoBehaviour
         {
             return;
         }
+        //player 1
+        Cam1.enabled = true;
+        //player 2
+        Cam2.enabled = false;
 
         // Represents a network endpoint as an IP address and a port
         IPEndPoint localEP = new IPEndPoint(ip, 0);

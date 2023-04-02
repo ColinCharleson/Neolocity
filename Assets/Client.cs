@@ -14,6 +14,8 @@ public class Client : MonoBehaviour
 {
     public GameObject myCube;
     public GameObject otherCube;
+    public Camera Cam1;
+    public Camera Cam2;
     private static byte[] outBuffer = new byte[512];
     string tempData = "";
     private static IPEndPoint remoteEP;
@@ -46,6 +48,10 @@ public class Client : MonoBehaviour
         {
             return;
         }
+        //player 1
+        Cam1.enabled = false;
+        // Player 2
+        Cam2.enabled = true;
 
         // Get cubes position and represent it as bytes
         outBuffer = Encoding.ASCII.GetBytes(myCube.transform.position.ToString());
