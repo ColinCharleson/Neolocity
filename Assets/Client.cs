@@ -49,9 +49,9 @@ public class Client : MonoBehaviour
             return;
         }
         //player 1
-        Cam1.enabled = false;
+        Cam1.enabled = true;
         // Player 2
-        Cam2.enabled = true;
+        Cam2.enabled = false;
 
         // Get cubes position and represent it as bytes
         outBuffer = Encoding.ASCII.GetBytes(myCube.transform.position.ToString());
