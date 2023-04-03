@@ -18,6 +18,8 @@ public class Server : MonoBehaviour
     private static byte[] outBuffer = new byte[512];
     string tempData = "";
 
+    public Vector3 clientTargetPos;
+    public float clientTargetRot;
     public void Start()
     {
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
@@ -25,7 +27,7 @@ public class Server : MonoBehaviour
 
         //Get the IP of the current computer
         IPHostEntry hostInfo = Dns.GetHostEntry(Dns.GetHostName());
-        ip = IPAddress.Parse("192.168.2.81");
+        ip = IPAddress.Parse("127.0.0.1");
 
         //Display host name and IP of server
         Debug.Log("Server name: " + hostInfo.HostName + " IP: " + ip);
@@ -46,6 +48,7 @@ public class Server : MonoBehaviour
         Cam1.enabled = true;
         //player 2
         Cam2.enabled = false;
+        Cam2.gameObject.GetComponent<AudioListener>().enabled = false;
 
         // Represents a network endpoint as an IP address and a port
         IPEndPoint localEP = new IPEndPoint(ip, 0);
@@ -61,26 +64,29 @@ public class Server : MonoBehaviour
         if (data != tempData)
         {
             // Updates cubes position
-            otherCube.transform.position = StringToVec3(data);
-            Debug.Log("Recv from: " + remoteEP + " Data: " + data);
+            StringToData(data);
+            otherCube.transform.position = clientTargetPos;
+            otherCube.transform.rotation = Quaternion.Euler(0, clientTargetRot, 0);
             tempData = data;
         }
 
         // Get cubes position and represent it as bytes
-        outBuffer = Encoding.ASCII.GetBytes(myCube.transform.position.ToString());
+        Vector4 dataToSend = new Vector4(myCube.transform.position.x, myCube.transform.position.y, myCube.transform.position.z, myCube.transform.rotation.eulerAngles.y);
+        outBuffer = Encoding.ASCII.GetBytes(dataToSend.ToString());
 
         // send cubes position to server
         socket.SendTo(outBuffer, remoteEP);
 
     }
 
-    private Vector3 StringToVec3(string data)
+    private void StringToData(string data)
     {
         // Removes brackets
         data = data.Substring(1, data.Length - 2);
         // Assigns each value to a different position in the array
         string[] vectorValues = data.Split(',');
 
-        return new Vector3(float.Parse(vectorValues[0]), float.Parse(vectorValues[1]), float.Parse(vectorValues[2]));
+        clientTargetPos = new Vector3(float.Parse(vectorValues[0]), float.Parse(vectorValues[1]), float.Parse(vectorValues[2]));
+        clientTargetRot = float.Parse(vectorValues[3]);
     }
 }

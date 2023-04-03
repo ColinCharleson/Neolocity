@@ -28,6 +28,9 @@ public class Client : MonoBehaviour
 
     public InputField ipInput;
     public static IPAddress ip;
+
+    public Vector3 clientTargetPos;
+    public float clientTargetRot;
     public static void StartClient()
     {
         try
@@ -63,9 +66,11 @@ public class Client : MonoBehaviour
         Cam1.enabled = true;
         // Player 2
         Cam2.enabled = false;
+        Cam2.gameObject.GetComponent<AudioListener>().enabled = false;
 
         // Get cubes position and represent it as bytes
-        outBuffer = Encoding.ASCII.GetBytes(myCube.transform.position.ToString());
+        Vector4 dataToSend = new Vector4(myCube.transform.position.x, myCube.transform.position.y, myCube.transform.position.z, myCube.transform.rotation.eulerAngles.y);
+        outBuffer = Encoding.ASCII.GetBytes(dataToSend.ToString());
 
         // send cubes position to server
         clientSoc.SendTo(outBuffer, remoteEP);
@@ -83,8 +88,9 @@ public class Client : MonoBehaviour
         if (data != tempData)
         {
             // Updates cubes position
-            otherCube.transform.position = StringToVec3(data);
-            Debug.Log("Recv from: " + remoteEP + " Data: " + data);
+            StringToData(data);
+            otherCube.transform.position = clientTargetPos;
+            otherCube.transform.rotation = Quaternion.Euler(0, clientTargetRot, 0);
             tempData = data;
         }
     }
@@ -108,13 +114,15 @@ public class Client : MonoBehaviour
             return IPAddress.Parse(ipInput.text);
         }
     }
-    private Vector3 StringToVec3(string data)
+
+    private void StringToData(string data)
     {
         // Removes brackets
         data = data.Substring(1, data.Length - 2);
         // Assigns each value to a different position in the array
         string[] vectorValues = data.Split(',');
 
-        return new Vector3(float.Parse(vectorValues[0]), float.Parse(vectorValues[1]), float.Parse(vectorValues[2]));
+        clientTargetPos = new Vector3(float.Parse(vectorValues[0]), float.Parse(vectorValues[1]), float.Parse(vectorValues[2]));
+        clientTargetRot = float.Parse(vectorValues[3]);
     }
 }
