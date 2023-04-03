@@ -205,6 +205,7 @@ public class ProjectileEnemyAI : MonoBehaviour
             health -= damageTaken;
             KnockBack();
             slider.value = HealthUi();
+            SoundManager.Instance.AttackHitPlay();
 
             if (health > maxHealth)
             {
