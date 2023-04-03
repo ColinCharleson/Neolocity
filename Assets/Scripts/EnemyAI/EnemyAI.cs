@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
+    public SoundManager soundManager;
+    public GameObject SoundManagerObject;
+
     public NavMeshAgent agent;
 
     public Transform player;
@@ -49,7 +52,7 @@ public class EnemyAI : MonoBehaviour
     public int damage = 50;
     bool isAlive = true;
     public float deathtimer = 0;
-
+    public AudioSource attackSource;
 
     private void Awake()
     {
@@ -58,6 +61,10 @@ public class EnemyAI : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
         agent = GetComponent<NavMeshAgent>();
         health = maxHealth;
+
+        SoundManagerObject = GameObject.Find("SoundManager");
+        soundManager = SoundManagerObject.GetComponent<SoundManager>();
+        soundManager.chompAttackSource.enabled = true;
     }
 
     private void FixedUpdate()
@@ -120,7 +127,8 @@ public class EnemyAI : MonoBehaviour
 
                 case EnemyState.attack:
                     AttackPlayer();
-
+                    //soundManager.chompAttackSource.Play();
+                    SoundManager.Instance.ChompPlay();
                     if (!playerInSightRange && !playerInAttackRange)
                     {
                         enemyState = EnemyState.patrol;
@@ -137,6 +145,7 @@ public class EnemyAI : MonoBehaviour
                     break;
             }
         }
+        //soundManager.chompAttackSource.enabled = false;
     }
 
 
@@ -244,6 +253,7 @@ public class EnemyAI : MonoBehaviour
         if (isAlive == true)
         {
             transform.LookAt(player);
+            
         }   
     }
     IEnumerator ResetAttack()
@@ -262,6 +272,7 @@ public class EnemyAI : MonoBehaviour
             if (collision.gameObject.tag == "Player" && !kasaAttack.isBlocking && !alreadyAttacked)
             {
                 enemyAnims.SetTrigger("Attacking");
+                SoundManager.Instance.ChompPlay();
 
                 Vector3 dmgDirection = collision.transform.position - transform.position;
                 dmgDirection = dmgDirection.normalized;
@@ -276,6 +287,7 @@ public class EnemyAI : MonoBehaviour
                 yellowParticles.Play();
                 kasaAttack.blockHealth -= 1;
                 KnockBack();
+                SoundManager.Instance.ChompPlay();
             }
         }
     }

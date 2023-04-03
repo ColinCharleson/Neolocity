@@ -11,7 +11,7 @@ public class EnemyVolume : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("EnemyVolum"))
+        if (PlayerPrefs.HasKey("EnemyVolume"))
         {
             LoadVolume();
         }
@@ -20,8 +20,6 @@ public class EnemyVolume : MonoBehaviour
             SetEnemyVolume();
         }
     }
-
-
 
     public void SetEnemyVolume()
     {
