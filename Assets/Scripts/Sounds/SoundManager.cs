@@ -148,6 +148,5 @@ public class SoundManager : MonoBehaviour
     public void ChompPlay()
     {
         chompAttackSource.Play();
-        Debug.Log("Nig");
     }
 }

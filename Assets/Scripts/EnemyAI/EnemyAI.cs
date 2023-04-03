@@ -127,7 +127,6 @@ public class EnemyAI : MonoBehaviour
 
                 case EnemyState.attack:
                     AttackPlayer();
-                    //soundManager.chompAttackSource.Play();
                     SoundManager.Instance.ChompPlay();
                     if (!playerInSightRange && !playerInAttackRange)
                     {
@@ -145,7 +144,7 @@ public class EnemyAI : MonoBehaviour
                     break;
             }
         }
-        //soundManager.chompAttackSource.enabled = false;
+       
     }
 
 
