@@ -48,6 +48,8 @@ public class Cube1 : MonoBehaviour
 
 	public Animator tempKasa;
 
+	public bool textChatting;
+	public Canvas chatBox;
 	// Start is called before the first frame update
 	void Awake()
 	{
@@ -60,24 +62,36 @@ public class Cube1 : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
 	{
+		if(Input.GetKeyDown(KeyCode.T))
+		{
+			textChatting = !textChatting;
+			chatBox.enabled = textChatting;
+		}
+
 		tempKasa.SetBool("Gliding", gliding);
 		tempKasa.SetBool("FlyLeft", glidingLeft);
 		tempKasa.SetBool("FlyRight", glidingRight);
 		tempKasa.SetBool("WallRunRight", wallRunScript.wallRight);
 		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
 
-		if (this.enabled)
-			Cursor.lockState = CursorLockMode.Locked;
 
-		transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * 4, 0,
-			Input.GetAxis("Vertical") * Time.deltaTime * 4);
-
-		if (isAlive)
+		if (textChatting == false)
 		{
-			Movement();
-			Rotation();
+			if (isAlive)
+			{
+				Movement();
+				Rotation();
+			}
+			SpeedControl();
+
+			if (this.enabled)
+				Cursor.lockState = CursorLockMode.Locked;
 		}
-		SpeedControl();
+		else
+		{
+			Cursor.lockState = CursorLockMode.Confined;
+			rb.velocity = Vector3.zero;
+		}
 	}
 	void Movement()
 	{
