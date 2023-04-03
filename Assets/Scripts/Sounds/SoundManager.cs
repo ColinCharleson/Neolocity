@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 
     public Sound[] music, sfx, ambient;
     public AudioSource musicSource, sfxSource, ambientSource;
-    public AudioSource walkSource, runSoruce, glideSource, wallRunningSource, ladderSource, boostSource, fallDamageSource, chompAttackSource;
+    public AudioSource walkSource, runSoruce, glideSource, wallRunningSource, ladderSource, boostSource, fallDamageSource, chompAttackSource, attackHitSource;
 
     public Slider _musicSlider, _ambientSlider, _sfxSlider, _enemySlider;
     public Text _musicText, _ambientText, _sfxText, _enemyText;
@@ -47,6 +47,7 @@ public class SoundManager : MonoBehaviour
         ladderSource.volume = sfxVolume;
         boostSource.volume = sfxVolume;
         fallDamageSource.volume = sfxVolume;
+        attackHitSource.volume = sfxVolume;
         _sfxSlider.value = sfxVolume;
     }
 
@@ -66,6 +67,7 @@ public class SoundManager : MonoBehaviour
         boostSource.volume = sfxVolume;
         ladderSource.volume = sfxVolume;
         fallDamageSource.volume = sfxVolume;
+        attackHitSource.volume = sfxVolume;
     }
 
     public void SFXVolume()
@@ -148,5 +150,10 @@ public class SoundManager : MonoBehaviour
     public void ChompPlay()
     {
         chompAttackSource.Play();
+    }
+
+    public void AttackHitPlay()
+    {
+        attackHitSource.Play();
     }
 }
