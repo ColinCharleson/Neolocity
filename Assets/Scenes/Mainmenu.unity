@@ -12399,7 +12399,7 @@ MonoBehaviour:
       - m_Target: {fileID: 832141733}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: EnemyVolume
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13916,6 +13916,7 @@ MonoBehaviour:
   music: 0
   enemy: 0
   brightness: 0
+  menuMusic: {fileID: 1424201046}
 --- !u!1 &832481173
 GameObject:
   m_ObjectHideFlags: 0
