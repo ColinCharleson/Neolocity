@@ -226,6 +226,7 @@ public class EnemyAI : MonoBehaviour
             }
             if (health <= 0)
             {
+                SoundManager.Instance.PlayExplosionSound(this.transform.position);
                 isAlive = false;
                 GetComponent<BoxCollider>().enabled = false;
                 GetComponent<NavMeshAgent>().enabled = false;

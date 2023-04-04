@@ -225,10 +225,10 @@ public class ProjectileEnemyAI : MonoBehaviour
             }
             if (health <= 0)
             {
+                SoundManager.Instance.PlayExplosionSound(this.transform.position);
                 isAlive = false;
                 GetComponent<BoxCollider>().enabled = false;
                 GetComponent<NavMeshAgent>().enabled = false;
-      
 
                 Instantiate(scrap, this.transform.position, Quaternion.identity);
                 explode.Play();

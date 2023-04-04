@@ -28,7 +28,7 @@ public class Server : MonoBehaviour
 
         //Get the IP of the current computer
         IPHostEntry hostInfo = Dns.GetHostEntry(Dns.GetHostName());
-        ip = IPAddress.Parse("127.0.0.1");
+        ip = IPAddress.Parse("192.168.2.81");
 
         //Display host name and IP of server
         Debug.Log("Server name: " + hostInfo.HostName + " IP: " + ip);

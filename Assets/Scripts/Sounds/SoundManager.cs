@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 
     public Sound[] music, sfx, ambient;
     public AudioSource musicSource, sfxSource, ambientSource;
-    public AudioSource walkSource, runSoruce, glideSource, wallRunningSource, ladderSource, boostSource, fallDamageSource, chompAttackSource, attackHitSource;
+    public AudioSource walkSource, runSoruce, glideSource, wallRunningSource, ladderSource, boostSource, fallDamageSource, chompAttackSource, attackHitSource, explosionSource;
 
     public Slider _musicSlider, _ambientSlider, _sfxSlider, _enemySlider;
     public Text _musicText, _ambientText, _sfxText, _enemyText;
@@ -18,6 +18,7 @@ public class SoundManager : MonoBehaviour
     public float ambientVolume = 1f;
     public float sfxVolume = 1f;
     public float enemyVolume = 1f;
+    public AudioClip explosionSound;
 
     public void Awake()
     {
@@ -49,6 +50,7 @@ public class SoundManager : MonoBehaviour
         boostSource.volume = sfxVolume;
         fallDamageSource.volume = sfxVolume;
         attackHitSource.volume = sfxVolume;
+        explosionSource.volume = sfxVolume;
         _sfxSlider.value = sfxVolume;
     }
 
@@ -69,6 +71,7 @@ public class SoundManager : MonoBehaviour
         ladderSource.volume = sfxVolume;
         fallDamageSource.volume = sfxVolume;
         attackHitSource.volume = sfxVolume;
+        explosionSource.volume = sfxVolume;
     }
 
     public void SFXVolume()
@@ -156,5 +159,15 @@ public class SoundManager : MonoBehaviour
     public void AttackHitPlay()
     {
         attackHitSource.Play();
+    }
+    public void ExplosionPlay()
+    {
+        explosionSource.Play();
+    }
+    public void PlayExplosionSound(Vector3 position)
+    {
+        explosionSource.transform.position = position;
+        explosionSource.spatialBlend = 1.0f;
+        explosionSource.PlayOneShot(explosionSound);
     }
 }
