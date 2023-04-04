@@ -48,7 +48,7 @@ public class RaceTimer : MonoBehaviour
 	} 
     public void EndRace(GameObject winner)
 	{
-        winDisplay.text = winner.name + "Won The Race";
+        winDisplay.text = winner.name + " Won The Race";
         raceStart = false;
 	}
 
