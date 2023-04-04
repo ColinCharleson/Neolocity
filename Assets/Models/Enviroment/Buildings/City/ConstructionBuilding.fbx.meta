@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Dry Wall
+    second: {fileID: 2100000, guid: 793bda7e3c4438a4d953e1c1654daa82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Rebar
     second: {fileID: 2100000, guid: 21f0c41baf303354488e02f9593ec2b9, type: 2}
   materials:

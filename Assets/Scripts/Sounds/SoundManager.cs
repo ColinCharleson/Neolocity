@@ -40,6 +40,7 @@ public class SoundManager : MonoBehaviour
         _ambientSlider.value = ambientVolume;
 
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
+        enemyVolume = PlayerPrefs.GetFloat("EnemyVolume");
         walkSource.volume = sfxVolume;
         runSoruce.volume = sfxVolume;
         glideSource.volume = sfxVolume;
