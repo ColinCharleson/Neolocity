@@ -16,10 +16,9 @@ public class Client : MonoBehaviour
     public GameObject otherCube;
     public Camera Cam1;
     public Camera Cam2;
+    public Camera MainCam;
     public JumpBoostM jumpScirpt1;
     public JumpBoostM jumpScirpt2;
-
-
 
     private static byte[] outBuffer = new byte[512];
     string tempData = "";
@@ -67,6 +66,9 @@ public class Client : MonoBehaviour
         // Player 2
         Cam2.enabled = false;
         Cam2.gameObject.GetComponent<AudioListener>().enabled = false;
+
+        //First Cam turn off
+        MainCam.enabled = false;
 
         // Get cubes position and represent it as bytes
         Vector4 dataToSend = new Vector4(myCube.transform.position.x, myCube.transform.position.y, myCube.transform.position.z, myCube.transform.rotation.eulerAngles.y);
