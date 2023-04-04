@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 
     public Sound[] music, sfx, ambient;
     public AudioSource musicSource, sfxSource, ambientSource;
-    public AudioSource walkSource, runSoruce, glideSource, wallRunningSource, ladderSource, boostSource, fallDamageSource, chompAttackSource, attackHitSource, explosionSource;
+    public AudioSource walkSource, runSoruce, glideSource, wallRunningSource, ladderSource, boostSource, fallDamageSource, chompAttackSource, attackHitSource, explosionSource, rollingSource;
 
     public Slider _musicSlider, _ambientSlider, _sfxSlider, _enemySlider;
     public Text _musicText, _ambientText, _sfxText, _enemyText;
@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
     public float sfxVolume = 1f;
     public float enemyVolume = 1f;
     public AudioClip explosionSound;
+    public AudioClip rollingSound;
 
     public void Awake()
     {
@@ -169,5 +170,12 @@ public class SoundManager : MonoBehaviour
         explosionSource.transform.position = position;
         explosionSource.spatialBlend = 1.0f;
         explosionSource.PlayOneShot(explosionSound);
+    }
+
+    public void PlayRollingSound(Vector3 position)
+    {
+        rollingSource.transform.position = position;
+        rollingSource.spatialBlend = 1.0f;
+        //rollingSource.Play(rollingSound);
     }
 }

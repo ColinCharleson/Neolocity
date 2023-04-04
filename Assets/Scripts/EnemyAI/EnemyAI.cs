@@ -53,7 +53,8 @@ public class EnemyAI : MonoBehaviour
     bool isAlive = true;
     public float deathtimer = 0;
     public AudioSource attackSource;
-
+    public AudioSource rollingSource;
+    public AudioClip rollingSound;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -79,7 +80,10 @@ public class EnemyAI : MonoBehaviour
             {
                 enemyAnims.SetBool("IsMoving", true);
             }
-
+            if (agent.velocity.magnitude > 0f && !GetComponent<AudioSource>().isPlaying)
+            {
+                GetComponent<AudioSource>().PlayOneShot(rollingSound);
+            }
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -89,7 +93,6 @@ public class EnemyAI : MonoBehaviour
                     health += healthRegeneration * Time.deltaTime;
                     slider.value = HealthUi();
                     Patrolling();
-
                     if (health > maxHealth)
                     {
                         health = 5;
@@ -147,7 +150,6 @@ public class EnemyAI : MonoBehaviour
        
     }
 
-
     private void Patrolling()
     {
         if (isAlive == true)
@@ -159,7 +161,6 @@ public class EnemyAI : MonoBehaviour
                 agent.SetDestination(walkPoint);
             }
             Vector3 distanceTowalkPoint = transform.position - walkPoint;
-
             //if walkpoint reached
             if (distanceTowalkPoint.magnitude < 1f)
                 walkPointSet = false;

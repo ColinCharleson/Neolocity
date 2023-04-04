@@ -55,6 +55,9 @@ public class ProjectileEnemyAI : MonoBehaviour
 
     //projectile
 
+    public AudioSource walkingSource;
+    public AudioClip walkingSound;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -75,6 +78,10 @@ public class ProjectileEnemyAI : MonoBehaviour
             else
             {
                 enemyAnims.SetBool("IsMoving", true);
+            }
+            if (agent.velocity.magnitude > 0f && !GetComponent<AudioSource>().isPlaying)
+            {
+                GetComponent<AudioSource>().PlayOneShot(walkingSound);
             }
 
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
