@@ -50,6 +50,7 @@ public class Cube1 : MonoBehaviour
 
 	public bool textChatting;
 	public Canvas chatBox;
+	public Canvas pauseUI;
 	// Start is called before the first frame update
 	void Awake()
 	{
@@ -75,7 +76,7 @@ public class Cube1 : MonoBehaviour
 		tempKasa.SetBool("WallRunLeft", wallRunScript.wallLeft);
 
 
-		if (textChatting == false)
+		if (textChatting == false && pauseUI.enabled == false)
 		{
 			if (isAlive)
 			{

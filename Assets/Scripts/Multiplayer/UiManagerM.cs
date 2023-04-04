@@ -21,11 +21,8 @@ public class UiManagerM : MonoBehaviour
 
     void Update()
     { 
-        if(mutiplayer == false)
+        if(mutiplayer.enabled == false)
         {
-            gameUI.enabled = true; 
-            pauseUI.enabled = false;
-
             if (Input.GetKeyDown(InputSystem.key.pause))
             {
                 gameUI.enabled = !gameUI.enabled;
