@@ -22,12 +22,14 @@ public class MainMenu : MonoBehaviour
     public Slider ambientlider;
     public Text sfxText;
     public Slider sfxSlider;
+    public Text enemyText;
+    public Slider enemySlider;
     public Text brightnessText;
     public Slider brightnessSlider;
     public Toggle mBToggle;
     public GameObject player;
     public GameObject soundManager;
-    public float sfx, ambient , music, brightness;
+    public float sfx, ambient , music, enemy, brightness;
  
 
     void Start()
@@ -55,6 +57,10 @@ public class MainMenu : MonoBehaviour
         sfx = PlayerPrefs.GetFloat("SFXVolume");
         sfxSlider.value = sfx;
 
+        soundManager.GetComponent<SoundManager>().enemyVolume = enemy;
+        enemy = PlayerPrefs.GetFloat("EnemyVolume");
+        enemySlider.value = enemy;
+
         if (PlayerPrefs.GetInt("MotionBlur") == 1)
         {
             mBToggle.isOn = true;
@@ -73,6 +79,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetFloat("MusicVolume", music);
         PlayerPrefs.SetFloat("AmbientVolume", ambient);
         PlayerPrefs.SetFloat("SFXVolume", sfx);
+        PlayerPrefs.SetFloat("EnemyVolume",enemy);
         PlayerPrefs.SetFloat("Brightness", brightness);
 
         string filePath = Application.dataPath + "/save.txt";
@@ -117,11 +124,17 @@ public class MainMenu : MonoBehaviour
         sfx = volume;
         sfxText.text = (sfx * 100).ToString("0");
     }
+    public void EnemyVolume(float volume)
+    {
+        enemy = volume;
+        enemyText.text = (sfx * 100).ToString("0");
+    }
     public void SetVolumeSliders()
     {
         sfxText.text = (sfx * 100).ToString("0");
         ambientText.text = (ambient * 100).ToString("0");
         musicText.text = (music * 100).ToString("0");
+        enemyText.text = (sfx * 100).ToString("0");
     }
 
     public void Senestivity(float sensi)
