@@ -53,19 +53,6 @@ public class Client : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (race.raceEnd == true)
-        {
-            bool isConnected = clientSoc.Poll(1000, SelectMode.SelectRead) && (clientSoc.Available == 0);
-
-            if (!isConnected)
-            {
-                // Client has disconnected, go back to main menu
-                SceneManager.LoadScene("MainMenu");
-                clientSoc.Close();
-                return;
-            }
-
-        }
         if (!Application.isPlaying)
         {
             return;
