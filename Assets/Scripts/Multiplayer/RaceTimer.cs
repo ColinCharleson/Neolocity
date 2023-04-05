@@ -23,7 +23,6 @@ public class RaceTimer : MonoBehaviour
 		{
 			time += Time.deltaTime;
 			timeDisplay.text = time.ToString("0.00");
-
 		}
 
 		if (!raceInit)
@@ -53,9 +52,14 @@ public class RaceTimer : MonoBehaviour
 	}
 	public void EndRace(GameObject winner)
 	{
+		// Disable the players so they can't move
+		player1.SetActive(false);
+		player2.SetActive(false);
+
 		winDisplay.text = winner.name + " Won The Race";
 		raceStart = false;
 		StartCoroutine(GameEnd());
+		StartCoroutine(LoadMainMenu());
 	}
 
 	IEnumerator Countdown()
@@ -78,6 +82,13 @@ public class RaceTimer : MonoBehaviour
 		{
 			raceInit = false;
 		}
+	}
+
+	IEnumerator LoadMainMenu()
+	{
+		yield return new WaitForSeconds(5);
+		// Load the main menu scene
+		UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
 	}
 
 	IEnumerator GameEnd()

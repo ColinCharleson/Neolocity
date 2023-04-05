@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 	public float fov = 60;
 	public KasaAttack attack;
 
-	//Footsteps
+	//Sounds
 	public AudioSource footstepsSource, sprintSource, wallRunningSource, ladderSource, boostSource, fallDamageSource, outOfBreathSource;
 
 	//Upgradeable Skill Points

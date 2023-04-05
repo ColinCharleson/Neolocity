@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinalBoss : MonoBehaviour
 {
-    private float health = 20;
+    private float health = 10;
     private float maxHealth;
 
     public Image healthBar;
@@ -29,7 +30,7 @@ public class FinalBoss : MonoBehaviour
 	{
 		 if(health <= 0)
 		{
-			//End game
+			SceneManager.LoadScene("EndCutscene");
 		}
 	}
 }
