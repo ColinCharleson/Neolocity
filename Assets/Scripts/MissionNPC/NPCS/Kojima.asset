@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409d2a2155d020f4f9d95a63daa5fdb4, type: 3}
+  m_Name: Kojima
+  m_EditorClassIdentifier: 
+  npcName: Kojima
+  missionNumber: 4
+  notReadyMessage: Finish some other missions then come back to me
+  missionMessage: 'Todorokai told me you were coming. This mission is going to be
+    different, I need you to hack a robot that''s going to be patrolling a certain
+    area in the city. I''m sending the location of the robot to your compass, good
+    luck. '
+  finishedMessage: Good work! However, the Information given seems to be protected
+    by some sort of firewall. Meet Up with Togashi, He might be able to make use
+    of this.
+  keepGoingMessage: Its now or never, We have to get that information from that robot!
+    The compass will show you where to go.
+  allDoneMessage: Great Work. Hopefully, Togashi can make use of this information!

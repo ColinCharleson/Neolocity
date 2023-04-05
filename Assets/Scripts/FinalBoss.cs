@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinalBoss : MonoBehaviour
@@ -29,7 +30,7 @@ public class FinalBoss : MonoBehaviour
 	{
 		 if(health <= 0)
 		{
-			//End game
+			SceneManager.LoadScene("EndCutscene");
 		}
 	}
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409d2a2155d020f4f9d95a63daa5fdb4, type: 3}
+  m_Name: Mai
+  m_EditorClassIdentifier: 
+  npcName: Mai
+  missionNumber: 2
+  notReadyMessage: Go talk to Hiroto first, once you've proven yourself you may return.
+  missionMessage: We have received intel of a future robot attack fleet. We need
+    you to scout out the area to prepare for the attack. Once you have located and
+    analyzed the area, report back to me.
+  finishedMessage: Now that we know their plan we are ready! Todorokai will prepare
+    you and debrief you with the next step of the mission, speak to him when you
+    get the chance.
+  keepGoingMessage: No time to talk! Go scout out the area before the robot fleet
+    arrives! The compass will show you where to go.
+  allDoneMessage: Thanks for your help! Together we can free the city.
