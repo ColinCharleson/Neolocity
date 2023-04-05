@@ -196,7 +196,7 @@ public class KasaAttack : MonoBehaviour
 		
 		if (other.gameObject.tag == "Boss" && isAttacking && enemyTakeDmg)
 		{
-			other.GetComponent<FinalBoss>().TakeDamage(swingDamage * movement.damageSP);
+			other.GetComponentInParent<FinalBoss>().TakeDamage(swingDamage * movement.damageSP);
 			enemyTakeDmg = false;
 		}
 
