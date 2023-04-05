@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 	public KasaAttack attack;
 
 	//Footsteps
-	public AudioSource footstepsSource, sprintSource, wallRunningSource, ladderSource, boostSource, fallDamageSource;
+	public AudioSource footstepsSource, sprintSource, wallRunningSource, ladderSource, boostSource, fallDamageSource, outOfBreathSource;
 
 	//Upgradeable Skill Points
 	public float speedSP = 1.0f;
@@ -179,12 +179,13 @@ public class PlayerController : MonoBehaviour
 			tempKasa.SetTrigger("Exhaust");
 			sprintLock = true;
 			clearVignette = false;
+			outOfBreathSource.enabled = true;
 		}
 
 		if (stamina >= 100)
 		{
 			sprintLock = false;
-
+			outOfBreathSource.enabled = false;
 		}
 
 		if (sprintLock)
