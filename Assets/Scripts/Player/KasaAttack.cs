@@ -42,6 +42,9 @@ public class KasaAttack : MonoBehaviour
 
 	private PlayerController movement;
 
+	//Block Sound
+	public AudioSource blockingSource;
+
 	private void Start()
 	{
 		movement = GetComponent<PlayerController>();
@@ -94,12 +97,14 @@ public class KasaAttack : MonoBehaviour
 		{
 			Block();
 			canAttack = false;
+			blockingSource.enabled = true;
 		}
 		else
 		{
 			canBlock = true;
 			isBlocking = false;
 			canAttack = true;
+			blockingSource.enabled =false;
 		}
 
 		if (timeSinceBlockBroke > 2f)
@@ -166,6 +171,7 @@ public class KasaAttack : MonoBehaviour
 		isAttacking = false;
 		trail.SetActive(false);
         AttackUI.SetActive(true);
+		blockingSource.enabled = false;
 	}
 
 	private void OnTriggerEnter(Collider other)
