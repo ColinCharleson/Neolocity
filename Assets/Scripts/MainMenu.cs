@@ -34,6 +34,8 @@ public class MainMenu : MonoBehaviour
     public AudioSource menuMusic;
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         player.GetComponentInChildren<PlayerController>().mouseSensitivity = sens;
         sens = PlayerPrefs.GetFloat("CurrentSens", 100);
         sensSlider.value = sens / 10;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07132463, g: 0.083913565, b: 0.10742572, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8684,6 +8684,10 @@ PrefabInstance:
     - target: {fileID: 6654846701831217352, guid: e91bb238c6b9c7844a534f3e5de4f0cd, type: 3}
       propertyPath: damage
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654846701831217352, guid: e91bb238c6b9c7844a534f3e5de4f0cd, type: 3}
+      propertyPath: reflectDamage
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -34891,6 +34895,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483061528, guid: 397056d87938e864596b8fa4fa813ca7, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 350455212}
     - target: {fileID: 1581391348695788229, guid: 397056d87938e864596b8fa4fa813ca7, type: 3}
       propertyPath: m_RootOrder
       value: 15
