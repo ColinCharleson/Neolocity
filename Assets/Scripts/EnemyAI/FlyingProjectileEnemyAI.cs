@@ -54,6 +54,8 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
     public bool charged = false;
 
     //projectile
+    public AudioSource chargingSource;
+    public AudioSource shotSource;
 
     private void Awake()
     {
@@ -250,6 +252,7 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
 
                 if (chargebeam >= 3)
                 {
+                    shotSource.Play();
                     Rigidbody rb = Instantiate(laser, laserPos.position, Quaternion.identity).GetComponent<Rigidbody>();
                     rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
                     rb.AddForce(transform.up * 2f, ForceMode.Impulse);
@@ -273,6 +276,7 @@ public class FlyingProjectileEnemyAI : MonoBehaviour
             alreadyAttacked = false;
             chargebeam = 0;
             charged = false;
+            chargingSource.Play();
         }
     }
     private void KnockBack()

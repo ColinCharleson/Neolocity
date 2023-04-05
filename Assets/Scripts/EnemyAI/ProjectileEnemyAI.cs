@@ -57,6 +57,8 @@ public class ProjectileEnemyAI : MonoBehaviour
 
     public AudioSource walkingSource;
     public AudioClip walkingSound;
+    public AudioSource chargingSource;
+    public AudioSource shotSource;
 
     private void Awake()
     {
@@ -199,9 +201,6 @@ public class ProjectileEnemyAI : MonoBehaviour
         }
     }
 
-
-
-
     public void TakeDamage(float damageTaken)
     {
         if (isAlive == true)
@@ -267,6 +266,7 @@ public class ProjectileEnemyAI : MonoBehaviour
                 if (chargebeam >= 3)
                 {
                     enemyAnims.SetTrigger("Attack");
+                    shotSource.Play();
                     Rigidbody rb = Instantiate(laser, laserPos.position, Quaternion.identity).GetComponent<Rigidbody>();
                     rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
                     rb.AddForce(transform.up * 2f, ForceMode.Impulse);
@@ -290,6 +290,7 @@ public class ProjectileEnemyAI : MonoBehaviour
             alreadyAttacked = false;
             chargebeam = 0;
             charged = false;
+            chargingSource.Play();
         }
     }
     private void KnockBack()
