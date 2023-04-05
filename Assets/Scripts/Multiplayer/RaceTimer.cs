@@ -6,6 +6,7 @@ using TMPro;
 public class RaceTimer : MonoBehaviour
 {
 	public bool raceStart;
+	public bool raceEnd;
 	private bool raceInit;
 	public float time;
 
@@ -54,6 +55,7 @@ public class RaceTimer : MonoBehaviour
 	{
 		winDisplay.text = winner.name + " Won The Race";
 		raceStart = false;
+		StartCoroutine(GameEnd());
 	}
 
 	IEnumerator Countdown()
@@ -76,5 +78,11 @@ public class RaceTimer : MonoBehaviour
 		{
 			raceInit = false;
 		}
+	}
+
+	IEnumerator GameEnd()
+	{
+		yield return new WaitForSeconds(5);
+		raceEnd = true;
 	}
 }

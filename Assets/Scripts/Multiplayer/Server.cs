@@ -3,9 +3,11 @@ using System.Net;
 using System.Text;
 using System.Net.Sockets;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Server : MonoBehaviour
 {
+    public RaceTimer race;
     private Socket socket;
     IPAddress ip;
 
@@ -36,6 +38,19 @@ public class Server : MonoBehaviour
 
     public void Update()
     {
+        if (race.raceEnd == true)
+		{
+            bool isConnected = socket.Poll(1000, SelectMode.SelectRead) && (socket.Available == 0);
+
+            if (!isConnected)
+            {
+                // Client has disconnected, go back to main menu
+                SceneManager.LoadScene("MainMenu");
+                socket.Close();
+                return;
+            }
+
+        }
         if (!Application.isPlaying)
         {
             return;

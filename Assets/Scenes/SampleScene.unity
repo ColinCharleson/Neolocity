@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a386e5c77c1fbd74986380ecdebcc5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  race: {fileID: 1958430945}
   myCube: {fileID: 2136822148}
   otherCube: {fileID: 512741864}
   Cam1: {fileID: 248716961}
@@ -343,7 +344,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59529453}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8055553db427c749bdb332d8c5d27fa, type: 3}
   m_Name: 
@@ -34594,6 +34595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26925f3cf83c600409ff6bf4b2fa4a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  race: {fileID: 1958430945}
   myCube: {fileID: 512741864}
   otherCube: {fileID: 2136822148}
   Cam1: {fileID: 910874989}
@@ -34626,7 +34628,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155236092}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86e4ea352366b1448ac178e8a92f9ca1, type: 3}
   m_Name: 
@@ -44598,6 +44600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceStart: 0
+  raceEnd: 0
   time: 0
   timeDisplay: {fileID: 184537331}
   winDisplay: {fileID: 881311506}

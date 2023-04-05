@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //Lec04
 using System;
@@ -12,6 +13,7 @@ using System.Net.Sockets;
 
 public class Client : MonoBehaviour
 {
+    public RaceTimer race;
     public GameObject myCube;
     public GameObject otherCube;
     public Camera Cam1;
@@ -51,6 +53,19 @@ public class Client : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (race.raceEnd == true)
+        {
+            bool isConnected = clientSoc.Poll(1000, SelectMode.SelectRead) && (clientSoc.Available == 0);
+
+            if (!isConnected)
+            {
+                // Client has disconnected, go back to main menu
+                SceneManager.LoadScene("MainMenu");
+                clientSoc.Close();
+                return;
+            }
+
+        }
         if (!Application.isPlaying)
         {
             return;
