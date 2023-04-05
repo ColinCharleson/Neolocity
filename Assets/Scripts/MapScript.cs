@@ -11,12 +11,20 @@ public class MapScript : MonoBehaviour
 
     void LateUpdate()
     {
-        if (objIconLocation != MissionManager.instance.currentObjective)
+        if (MissionManager.instance.lastMission != 6)
         {
-            objIconLocation = MissionManager.instance.currentObjective;
+            if (objIconLocation != MissionManager.instance.currentObjective)
+            {
+                objIconLocation = MissionManager.instance.currentObjective;
 
+                Vector3 iconPosition = objIconLocation.position + new Vector3(0, 40, 0);
+                npcIcon.transform.position = iconPosition;
+            }
+        }
+		else
+		{
+            objIconLocation = GameObject.Find("End Door").transform;
             Vector3 iconPosition = objIconLocation.position + new Vector3(0, 40, 0);
-            npcIcon.transform.position = iconPosition;
         }
     }
 }

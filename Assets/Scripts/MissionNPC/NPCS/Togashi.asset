@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409d2a2155d020f4f9d95a63daa5fdb4, type: 3}
+  m_Name: Togashi
+  m_EditorClassIdentifier: 
+  npcName: Togashi
+  missionNumber: 5
+  notReadyMessage: You've made great progress so far. Keep going, and we can save
+    the city!
+  missionMessage: We won't be able to stop them with all these patrol robots! The
+    coordinates of an incoming fleet have been sent to your compass. Take them out
+    so we can continue with the plan.
+  finishedMessage: Great job! Those robots didn't stand a chance. Shuna is waiting
+    for you. Head west, and she will give you the final steps of the plan.
+  keepGoingMessage: Good luck! Someone has to take out those robots! Remember to
+    use your block to deflect lasers.
+  allDoneMessage: I don't know how you managed to take out all those robots! Great
+    work.

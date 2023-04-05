@@ -25,16 +25,23 @@ public class MissionManager : MonoBehaviour
         var objects = GameObject.FindGameObjectsWithTag("NPC");
         var objectCount = objects.Length;
 
-        if (missionActive == false)
-		{
-            foreach (var obj in objects)
+        if (lastMission != 6)
+        {
+            if (missionActive == false)
             {
-                if(obj.GetComponent<MissionNPC>().data.missionNumber == lastMission + 1)
-				{
-                    currentObjective = obj.transform;
-				}
-            }
+                foreach (var obj in objects)
+                {
+                    if (obj.GetComponent<MissionNPC>().data.missionNumber == lastMission + 1)
+                    {
+                        currentObjective = obj.transform;
+                    }
+                }
 
+            }
         }
+		else
+		{
+            currentObjective = GameObject.Find("End Door").transform;
+		}
     }
 }
