@@ -54,7 +54,6 @@ public class EnemyAI : MonoBehaviour
     public float deathtimer = 0;
     public AudioSource attackSource;
     public AudioSource rollingSource;
-    public AudioClip rollingSound;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -82,7 +81,8 @@ public class EnemyAI : MonoBehaviour
             }
             if (agent.velocity.magnitude > 0f && !GetComponent<AudioSource>().isPlaying)
             {
-                GetComponent<AudioSource>().PlayOneShot(rollingSound);
+                rollingSource.maxDistance = 20f;
+                GetComponent<AudioSource>().Play();
             }
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);

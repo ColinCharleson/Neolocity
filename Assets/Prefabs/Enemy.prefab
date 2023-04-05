@@ -24797,7 +24797,6 @@ MonoBehaviour:
   deathtimer: 0
   attackSource: {fileID: 0}
   rollingSource: {fileID: 8845822738508537924}
-  rollingSound: {fileID: 8300000, guid: 57eea4c2161d4454dbbbb98427a80e48, type: 3}
 --- !u!54 &2321900515168116834
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24871,21 +24870,21 @@ AudioSource:
   m_GameObject: {fileID: 2321900515168116844}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -134995163720256285, guid: eb9a531dfe8e6974fa51c9f09033d900, type: 2}
   m_audioClip: {fileID: 8300000, guid: 57eea4c2161d4454dbbbb98427a80e48, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0

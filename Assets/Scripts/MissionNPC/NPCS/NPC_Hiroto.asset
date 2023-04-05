@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409d2a2155d020f4f9d95a63daa5fdb4, type: 3}
+  m_Name: NPC_Hiroto
+  m_EditorClassIdentifier: 
+  npcName: Hiroto
+  missionNumber: 1
+  notReadyMessage: N/A
+  missionMessage: We have had enough of this corrupt government! We need to put a
+    stop to them, but I need you to prove that you got what it takes first. Head
+    to the dump to retrive a package for me! Your compass will guide you.
+  finishedMessage: Great work! So you got what it takes. Go talk to Mai, she will
+    have a mission for you to get started with our plan!
+  keepGoingMessage: What are you waiting for, go get my package and bring it here.
+    Use your compass to find out what direction to head in!
+  allDoneMessage: You've already proven yourself! Go help the citizens of neolocity.
