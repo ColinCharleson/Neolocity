@@ -24793,7 +24793,7 @@ MonoBehaviour:
   enemy: {fileID: 2321900515168116834}
   timeBetweenAttacks: 0
   alreadyAttacked: 0
-  damage: 30
+  damage: 20
   deathtimer: 0
   attackSource: {fileID: 0}
   rollingSource: {fileID: 8845822738508537924}
