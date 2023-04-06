@@ -51,16 +51,12 @@ public class PlayerHealth : MonoBehaviour
             health = maxHealth;
         }
 
-        if (health <= 75)
+        if (health <= 50)
         {
             vignette.color.Override(Color.red);
 
-            vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.3f, Time.deltaTime * 2);
-           
-            if (health <= 50)
-            {
-                vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.4f, Time.deltaTime * 2);
-            }
+            vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.4f, Time.deltaTime * 2);
+
             if (health <= 30)
             {
                 vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.6f, Time.deltaTime * 2);
