@@ -291,6 +291,7 @@ public class MissionNPC : MonoBehaviour
 					{
 						missionStarted = false;
 						missionProgressDisplay.text = "YOU FAILED: Return to " + data.name + " to try again";
+						MissionManager.instance.currentObjective = this.transform;
 					}
 				}
 				else
