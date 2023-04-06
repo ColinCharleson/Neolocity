@@ -11,6 +11,7 @@ public class GlidingM : MonoBehaviour
 
     private Rigidbody body;
     private Cube1 movement;
+    public Animator anims;
 
     //Gliding Sound 
     public AudioSource glidingSource;
@@ -27,6 +28,7 @@ public class GlidingM : MonoBehaviour
         //Glide input
         if (Input.GetKey(InputSystem.key.glide) && !movement.onWall)
         {
+            anims.SetBool("isGliding", true);
             movement.gliding = true;
             glidePower = min;
             glidingSource.enabled = true;
@@ -51,6 +53,7 @@ public class GlidingM : MonoBehaviour
 
         else
         {
+            anims.SetBool("isGliding", false);
             movement.glidingLeft = false;
             movement.gliding = false;
             movement.glidingRight = false;

@@ -12,7 +12,9 @@ public class Server : MonoBehaviour
     IPAddress ip;
 
     public GameObject myCube;
+    public GameObject characterModel;
     public GameObject otherCube;
+    public Animator otherAnims;
     public Camera Cam1;
     public Camera Cam2;
     public Camera MainCam;
@@ -25,6 +27,7 @@ public class Server : MonoBehaviour
     public float clientTargetRot;
     public void Start()
     {
+        characterModel.SetActive(false);
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         socket.Bind(new IPEndPoint(IPAddress.Any, 8889));
 
@@ -48,9 +51,9 @@ public class Server : MonoBehaviour
         jumpScirpt1.enabled = false;
 
         //player 1
-        Cam1.enabled = true;
+        Cam1.gameObject.SetActive(true);
         //player 2
-        Cam2.enabled = false;
+        Cam2.gameObject.SetActive(false);
         Cam2.gameObject.GetComponent<AudioListener>().enabled = false;
 
         //First Cam turn off
@@ -66,9 +69,11 @@ public class Server : MonoBehaviour
         // Converts the buffer to a string from bytes
         string data = Encoding.ASCII.GetString(buffer, 0, bytesReceived);
 
+        otherAnims.SetBool("isRunning", false);
         // Makes sure the server is only updating if new data was received
         if (data != tempData)
         {
+            otherAnims.SetBool("isRunning", true);
             // Updates cubes position
             StringToData(data);
             otherCube.transform.position = clientTargetPos;

@@ -15,7 +15,9 @@ public class Client : MonoBehaviour
 {
     public RaceTimer race;
     public GameObject myCube;
+    public GameObject characterModel;
     public GameObject otherCube;
+    public Animator otherAnims;
     public Camera Cam1;
     public Camera Cam2;
     public Camera MainCam;
@@ -64,9 +66,9 @@ public class Client : MonoBehaviour
         jumpScirpt1.enabled = false;
 
         //player 1
-        Cam1.enabled = true;
-        // Player 2
-        Cam2.enabled = false;
+        Cam1.gameObject.SetActive(true);
+        //player 2
+        Cam2.gameObject.SetActive(false);
         Cam2.gameObject.GetComponent<AudioListener>().enabled = false;
 
         //First Cam turn off
@@ -88,9 +90,11 @@ public class Client : MonoBehaviour
         // Converts the buffer to a string from bytes
         string data = Encoding.ASCII.GetString(buffer, 0, bytesReceived);
 
+        otherAnims.SetBool("isRunning", false);
         // Makes sure the server is only updating if new data was received
         if (data != tempData)
         {
+            otherAnims.SetBool("isRunning", true);
             // Updates cubes position
             StringToData(data);
             otherCube.transform.position = clientTargetPos;
@@ -102,6 +106,7 @@ public class Client : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        characterModel.SetActive(false);
         ip = GetIP();
         //represents a network endpoint as an IP address and a port
         StartClient();

@@ -63,12 +63,6 @@ public class Cube1 : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
 	{
-		if(Input.GetKeyDown(KeyCode.T))
-		{
-			textChatting = !textChatting;
-			chatBox.enabled = textChatting;
-		}
-
 		tempKasa.SetBool("Gliding", gliding);
 		tempKasa.SetBool("FlyLeft", glidingLeft);
 		tempKasa.SetBool("FlyRight", glidingRight);

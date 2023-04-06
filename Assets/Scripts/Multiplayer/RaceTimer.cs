@@ -33,7 +33,7 @@ public class RaceTimer : MonoBehaviour
 			}
 			else
 			{
-				timeDisplay.text = "Waiting for all players to enter the start zone";
+				timeDisplay.text = "Everyone must touch the blue pillar to start";
 			}
 
 		if (Vector3.Distance(player1.transform.position, endPosition.position) < 3)
@@ -55,6 +55,8 @@ public class RaceTimer : MonoBehaviour
 		// Disable the players so they can't move
 		winDisplay.text = winner.name + " Won The Race";
 		raceStart = false;
+		player1.SetActive(false);
+		player2.SetActive(false);
 		StartCoroutine(GameEnd());
 		StartCoroutine(LoadMainMenu());
 	}
