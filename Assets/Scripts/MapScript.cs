@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class MapScript : MonoBehaviour
 {
-    public Transform player;
-    public GameObject npcIcon;
+	public Transform player;
+	public GameObject npcIcon;
+	public Vector3 iconPosition;
+	public Transform objIconLocation = null;
 
-    Transform objIconLocation = null;
+	void LateUpdate()
+	{
+		if (MissionManager.instance.lastMission != 6)
+		{
+			objIconLocation = MissionManager.instance.currentObjective;
 
-    void LateUpdate()
-    {
-        if (MissionManager.instance.lastMission != 6)
-        {
-            if (objIconLocation != MissionManager.instance.currentObjective)
-            {
-                objIconLocation = MissionManager.instance.currentObjective;
-
-                Vector3 iconPosition = objIconLocation.position + new Vector3(0, 40, 0);
-                npcIcon.transform.position = iconPosition;
-            }
-        }
+			iconPosition = objIconLocation.position + new Vector3(0, 40, 0);
+			npcIcon.transform.rotation = Quaternion.Euler(0, 180, 0);
+			npcIcon.transform.position = iconPosition;
+		}
 		else
 		{
-            objIconLocation = GameObject.Find("End Door").transform;
-            Vector3 iconPosition = objIconLocation.position + new Vector3(0, 40, 0);
-        }
-    }
+			objIconLocation = GameObject.Find("End Door").transform;
+			iconPosition = objIconLocation.position + new Vector3(0, 40, 0);
+		}
+	}
 }
