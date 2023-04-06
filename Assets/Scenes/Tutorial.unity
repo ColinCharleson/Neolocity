@@ -30916,6 +30916,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5731900430111027594, guid: e07b203ea1e57ef4d994cbe7d79bbbba, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5731900430905596948, guid: e07b203ea1e57ef4d994cbe7d79bbbba, type: 3}
       propertyPath: slider
       value: 
