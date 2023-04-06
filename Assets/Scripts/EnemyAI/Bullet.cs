@@ -19,6 +19,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        if (collision.gameObject.layer == 3)
+        {
+            Destroy(gameObject);
+        }
+
         if (collision.gameObject.tag == "Player" && !kasaAttack.isBlocking)
         {
                Vector3 dmgDirection = collision.transform.position - transform.position;

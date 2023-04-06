@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Togashi
   missionNumber: 5
-  notReadyMessage: You've made great progress so far. Keep going, and we can save
-    the city!
+  notReadyMessage: You have nothing of interest to me, come back after completing
+    more missions.
   missionMessage: We won't be able to stop them with all these patrol robots! The
     coordinates of an incoming fleet have been sent to your compass. Take them out
     so we can continue with the plan.

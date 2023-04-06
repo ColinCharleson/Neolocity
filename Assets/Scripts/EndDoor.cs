@@ -10,7 +10,7 @@ public class EndDoor : MonoBehaviour
 	{
 		if (MissionManager.instance.lastMission == 6)
 		{
-			if(Vector3.Distance(player.transform.position, this.transform.position) <1)
+			if(Vector3.Distance(player.transform.position, this.transform.position) <2)
 			{
 				SceneManager.LoadScene("BossBattle");
 			}

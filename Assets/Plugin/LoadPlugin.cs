@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Runtime.InteropServices;
 
 public class LoadPlugin : MonoBehaviour
@@ -30,6 +31,8 @@ public class LoadPlugin : MonoBehaviour
 
 	public void LoadPosition()
 	{
+		Scene scene = SceneManager.GetActiveScene();
+		if (scene.name == "Neolocity")
 		player.transform.position = new Vector3(LoadFromFile(0, fn), LoadFromFile(1, fn), LoadFromFile(2, fn));
 
 		PlayerHealth.hp.health = LoadFromFile(3, fn);

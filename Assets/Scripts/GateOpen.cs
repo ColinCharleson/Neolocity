@@ -7,7 +7,7 @@ public class GateOpen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MissionManager.instance.lastMission == 3)
+        if (MissionManager.instance.lastMission >= 3)
             Destroy(this.gameObject);
     }
 }

@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         thePlayer = FindObjectOfType<PlayerController>();
+        maxHealth = thePlayer.healthSP * 100;
         postProcessVolume = GameObject.Find("Global Volume").GetComponent<Volume>();
         postProcessVolume.profile.TryGet<Vignette>(out vignette);
     }
